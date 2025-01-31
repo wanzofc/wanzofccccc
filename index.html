@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader & Search</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #1e1e1e; color: white; }
+        input, button { padding: 10px; margin: 5px; border: none; }
+        button { background: #ff5722; color: white; cursor: pointer; }
+        .result { margin-top: 20px; }
+        img { width: 200px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            const [url, setUrl] = React.useState('');
+            const [query, setQuery] = React.useState('');
+            const [result, setResult] = React.useState(null);
+            const [searchResults, setSearchResults] = React.useState([]);
+
+            const handleDownload = async () => {
+                if (!url) return alert("Masukkan URL!");
+                const platform = url.includes("tiktok") ? "tiktok" : "igdl";
+                const apiUrl = `/api/${platform}?url=${encodeURIComponent(url)}`;
+                const res = await fetch(apiUrl);
+                const data = await res.json();
+                setResult(data);
+            };
+
+            const handleSearch = async () => {
+                if (!query) return alert("Masukkan kata kunci!");
+                const apiUrl = `/api/tiktok-search?query=${encodeURIComponent(query)}`;
+                const res = await fetch(apiUrl);
+                const data = await res.json();
+                setSearchResults(data.results || []);
+            };
+
+            return (
+                <div>
+                    <h1>Downloader & Search</h1>
+                    
+                    <input type="text" placeholder="Masukkan URL TikTok/IG" value={url} onChange={e => setUrl(e.target.value)} />
+                    <button onClick={handleDownload}>Download</button>
+                    
+                    <br/>
+
+                    <input type="text" placeholder="Cari video TikTok" value={query} onChange={e => setQuery(e.target.value)} />
+                    <button onClick={handleSearch}>Search</button>
+
+                    {result && (
+                        <div className="result">
+                            <h3>Hasil Download:</h3>
+                            <img src={result.thumbnail} alt="Thumbnail"/>
+                            <br/>
+                            <a href={result.download_url} download><button>Download Video</button></a>
+                        </div>
+                    )}
+
+                    {searchResults.length > 0 && (
+                        <div className="result">
+                            <h3>Hasil Pencarian TikTok:</h3>
+                            {searchResults.map((vid, i) => (
+                                <div key={i}>
+                                    <img src={vid.thumbnail} alt="Thumbnail"/>
+                                    <p>{vid.title}</p>
+                                    <a href={vid.video_url} target="_blank"><button>Lihat Video</button></a>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+</body>
+</html>
