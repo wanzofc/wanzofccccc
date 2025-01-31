@@ -160,7 +160,51 @@ app.get('/api/d/capcut', async (req, res) => {
     } catch {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "CapCut Template Downloader bermasalah." });
     }
-});                                          
+});
+app.get('/api/stalk/youtube', async (req, res) => {
+    const username = req.query.username;
+    if (!username) return res.status(400).json({ result: false, message: "Tambahkan parameter 'username'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/stalk/youtube?username=${encodeURIComponent(username)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "YouTube Stalker", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "YouTube Stalker bermasalah." });
+    }
+});
+app.get('/api/stalk/tiktok', async (req, res) => {
+    const username = req.query.username;
+    if (!username) return res.status(400).json({ result: false, message: "Tambahkan parameter 'username'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/stalk/tiktok?username=${encodeURIComponent(username)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "TikTok Stalker", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Stalker bermasalah." });
+    }
+});
+app.get('/api/stalk/github', async (req, res) => {
+    const user = req.query.user;
+    if (!user) return res.status(400).json({ result: false, message: "Tambahkan parameter 'user'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/stalk/github?user=${encodeURIComponent(user)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "GitHub Stalker", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "GitHub Stalker bermasalah." });
+    }
+});
+app.get('/api/s/tiktok', async (req, res) => {
+    const query = req.query.query;
+    if (!query) return res.status(400).json({ result: false, message: "Tambahkan parameter 'query'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/tiktok?query=${encodeURIComponent(query)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "TikTok Search", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Search bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
