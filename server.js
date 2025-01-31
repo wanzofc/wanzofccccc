@@ -18,14 +18,22 @@ const forwardRequest = async (req, res, endpoint, queryParam) => {
         const url = `${BASE_URL}/${endpoint}?${queryParam}=${encodeURIComponent(queryValue)}`;
         const response = await axios.get(url);
 
-        // Ambil hanya bagian data dari respons API eksternal
-        const aiResponse = response.data.data || response.data;
+        // Debugging: Cetak respons API eksternal di console
+        console.log("API Response:", response.data);
+
+        // Coba ambil jawaban AI dengan berbagai kemungkinan format
+        const aiResponse =
+            response.data.data?.message || // Jika API eksternal mengembalikan { "data": { "message": "Jawaban AI" } }
+            response.data.data || // Jika API eksternal mengembalikan { "data": "Jawaban AI" }
+            response.data || // Jika API eksternal langsung mengembalikan "Jawaban AI"
+            "No response from AI";
 
         res.json({
             status: true,
             data: aiResponse
         });
     } catch (error) {
+        console.error("Error fetching AI response:", error.message);
         res.status(500).json({
             status: false,
             data: "Server error"
@@ -46,14 +54,22 @@ app.get("/api/ai/llama33", async (req, res) => {
         const url = `${BASE_URL}/llama33?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`;
         const response = await axios.get(url);
 
-        // Ambil hanya bagian data dari respons API eksternal
-        const aiResponse = response.data.data || response.data;
+        // Debugging: Cetak respons API eksternal di console
+        console.log("API Response:", response.data);
+
+        // Coba ambil jawaban AI dengan berbagai kemungkinan format
+        const aiResponse =
+            response.data.data?.message || 
+            response.data.data || 
+            response.data || 
+            "No response from AI";
 
         res.json({
             status: true,
             data: aiResponse
         });
     } catch (error) {
+        console.error("Error fetching AI response:", error.message);
         res.status(500).json({
             status: false,
             data: "Server error"
