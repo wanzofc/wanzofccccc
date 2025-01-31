@@ -42,10 +42,8 @@
 <body>
     <h1>API WANZOFC TECH</h1>
     <div id="root"></div>
-
     <script type="text/babel">
         const { useEffect } = React;
-
         const apiList = [
             { name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo" },
             { name: "AI - Image to Text", url: "/api/ai/image2text" },
@@ -61,12 +59,10 @@
             { name: "Random Blue Archive Image", url: "/api/r/blue-archive" },
             { name: "Random Anime Quotes", url: "/api/r/quotesanime" }
         ];
-
         function APIList() {
             useEffect(() => {
                 gsap.to("a", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
             }, []);
-
             return (
                 <div className="container">
                     <h3>Daftar Endpoint:</h3>
@@ -76,7 +72,6 @@
                 </div>
             );
         }
-
         ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
     </script>
 </body>
