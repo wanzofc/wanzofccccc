@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API WANZOFC TECH</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,6 +32,7 @@
             text-decoration: none;
             display: block;
             margin: 10px 0;
+            opacity: 0;
         }
         a:hover {
             text-decoration: underline;
@@ -36,18 +41,43 @@
 </head>
 <body>
     <h1>API WANZOFC TECH</h1>
-    <div class="container">
-        <h3>Daftar Endpoint:</h3>
-        <a href="/api/ai/deepseek-chat?content=halo">AI - Deepseek Chat</a>
-        <a href="/api/ai/image2text">AI - Image to Text</a>
-        <a href="/api/ai/gemini-pro?content=halo">AI - Gemini Pro</a>
-        <a href="/api/ai/meta-llama?content=halo">AI - Meta Llama</a>
-        <a href="/api/ai/dbrx-instruct?content=halo">AI - DBRX Instruct</a>
-        <a href="/api/ai/deepseek-r1?content=halo">AI - Deepseek R1</a>
-        <a href="/api/gita?q=halo">AI - Gita</a>
-        <a href="/api/anime/latest">Anime - Terbaru</a>
-        <a href="/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal">Anime - Anichin Episode</a>
-        <a href="/api/anime/anichin-download?url=https://anichin.forum/renegade-immortal-episode-69-subtitle-indonesia">Anime - Anichin Download</a>
-    </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        const apiList = [
+            { name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo" },
+            { name: "AI - Image to Text", url: "/api/ai/image2text" },
+            { name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo" },
+            { name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo" },
+            { name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo" },
+            { name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo" },
+            { name: "AI - Gita", url: "/api/gita?q=halo" },
+            { name: "Anime - Terbaru", url: "/api/anime/latest" },
+            { name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal" },
+            { name: "Anime - Anichin Download", url: "/api/anime/anichin-download?url=https://anichin.forum/renegade-immortal-episode-69-subtitle-indonesia" },
+            { name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file" },
+            { name: "Random Blue Archive Image", url: "/api/r/blue-archive" },
+            { name: "Random Anime Quotes", url: "/api/r/quotesanime" }
+        ];
+
+        function APIList() {
+            useEffect(() => {
+                gsap.to("a", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
+            }, []);
+
+            return (
+                <div className="container">
+                    <h3>Daftar Endpoint:</h3>
+                    {apiList.map((api, index) => (
+                        <a key={index} href={api.url} target="_blank">{api.name}</a>
+                    ))}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
+    </script>
 </body>
 </html>
