@@ -73,6 +73,14 @@ app.get('/api/metaai', async (req, res) => {
     }
 });
 
+app.get("/", (req, res) => {
+    res.json({
+        status: true,
+        message: "API is running!",
+        creator: "WANZOFC TECH"
+    });
+});
+
 // Server listen
 app.listen(PORT, () => {
     console.log(`Server berjalan di port ${PORT}`);
