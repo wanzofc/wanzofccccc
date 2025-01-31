@@ -8,11 +8,14 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background: #1e1e1e; color: white; }
-        input, button { padding: 10px; margin: 5px; border: none; }
-        button { background: #ff5722; color: white; cursor: pointer; }
+        body { font-family: Arial, sans-serif; text-align: center; background: #121212; color: white; }
+        input, button { padding: 10px; margin: 5px; border: none; border-radius: 5px; }
+        button { background: #ff5722; color: white; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #e64a19; }
         .result { margin-top: 20px; }
-        img { width: 200px; border-radius: 10px; }
+        video { width: 80%; border-radius: 10px; margin-top: 10px; }
+        .loading { width: 80%; height: 200px; background: #333; border-radius: 10px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
 </head>
 <body>
@@ -24,22 +27,28 @@
             const [query, setQuery] = React.useState('');
             const [result, setResult] = React.useState(null);
             const [searchResults, setSearchResults] = React.useState([]);
+            const [loading, setLoading] = React.useState(false);
+            const [searchLoading, setSearchLoading] = React.useState(false);
 
             const handleDownload = async () => {
                 if (!url) return alert("Masukkan URL!");
+                setLoading(true);
                 const platform = url.includes("tiktok") ? "tiktok" : "igdl";
                 const apiUrl = `/api/${platform}?url=${encodeURIComponent(url)}`;
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 setResult(data);
+                setLoading(false);
             };
 
             const handleSearch = async () => {
                 if (!query) return alert("Masukkan kata kunci!");
+                setSearchLoading(true);
                 const apiUrl = `/api/tiktok-search?query=${encodeURIComponent(query)}`;
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 setSearchResults(data.results || []);
+                setSearchLoading(false);
             };
 
             return (
@@ -54,21 +63,29 @@
                     <input type="text" placeholder="Cari video TikTok" value={query} onChange={e => setQuery(e.target.value)} />
                     <button onClick={handleSearch}>Search</button>
 
-                    {result && (
+                    {loading && <div className="loading"></div>}
+
+                    {result && !loading && (
                         <div className="result">
                             <h3>Hasil Download:</h3>
-                            <img src={result.thumbnail} alt="Thumbnail"/>
+                            <video controls>
+                                <source src={result.download_url} type="video/mp4"/>
+                            </video>
                             <br/>
                             <a href={result.download_url} download><button>Download Video</button></a>
                         </div>
                     )}
 
-                    {searchResults.length > 0 && (
+                    {searchLoading && <div className="loading"></div>}
+
+                    {searchResults.length > 0 && !searchLoading && (
                         <div className="result">
                             <h3>Hasil Pencarian TikTok:</h3>
                             {searchResults.map((vid, i) => (
                                 <div key={i}>
-                                    <img src={vid.thumbnail} alt="Thumbnail"/>
+                                    <video controls>
+                                        <source src={vid.video_url} type="video/mp4"/>
+                                    </video>
                                     <p>{vid.title}</p>
                                     <a href={vid.video_url} target="_blank"><button>Lihat Video</button></a>
                                 </div>
