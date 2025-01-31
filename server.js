@@ -139,6 +139,28 @@ app.get('/api/d/igdl', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Instagram Downloader bermasalah." });
     }
 });
+app.get('/api/d/snackvideo', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/snackvideo?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "SnackVideo Downloader", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "SnackVideo Downloader bermasalah." });
+    }
+});
+app.get('/api/d/capcut', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/capcut?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "CapCut Template Downloader", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "CapCut Template Downloader bermasalah." });
+    }
+});                                          
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
