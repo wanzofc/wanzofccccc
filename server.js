@@ -13,22 +13,19 @@ const BASE_URL = "https://api.siputzx.my.id/api/ai";
 const forwardRequest = async (req, res, endpoint, queryParam) => {
     try {
         const queryValue = req.query[queryParam] || req.body[queryParam];
-        if (!queryValue) return res.status(400).json({ message: `${queryParam} is required`, creator: "WANZOFC TECH" });
+        if (!queryValue) return res.status(400).json({ status: false, data: `${queryParam} is required` });
 
         const url = `${BASE_URL}/${endpoint}?${queryParam}=${encodeURIComponent(queryValue)}`;
         const response = await axios.get(url);
 
         res.json({
-            status: "success",
-            creator: "WANZOFC TECH",
-            result: response.data
+            status: true,
+            data: response.data
         });
     } catch (error) {
         res.status(500).json({
-            status: "error",
-            message: "Server error",
-            details: error.message,
-            creator: "WANZOFC TECH"
+            status: false,
+            data: "Server error"
         });
     }
 };
@@ -40,23 +37,20 @@ app.get("/api/ai/meta-llama-33-70B-instruct-turbo", (req, res) => forwardRequest
 app.get("/api/ai/llama33", async (req, res) => {
     const prompt = req.query.prompt || req.body.prompt;
     const text = req.query.text || req.body.text;
-    if (!prompt || !text) return res.status(400).json({ message: "Both prompt and text are required", creator: "WANZOFC TECH" });
+    if (!prompt || !text) return res.status(400).json({ status: false, data: "Both prompt and text are required" });
 
     try {
         const url = `${BASE_URL}/llama33?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`;
         const response = await axios.get(url);
 
         res.json({
-            status: "success",
-            creator: "WANZOFC TECH",
-            result: response.data
+            status: true,
+            data: response.data
         });
     } catch (error) {
         res.status(500).json({
-            status: "error",
-            message: "Server error",
-            details: error.message,
-            creator: "WANZOFC TECH"
+            status: false,
+            data: "Server error"
         });
     }
 });
@@ -64,9 +58,8 @@ app.get("/api/ai/llama33", async (req, res) => {
 // Root route
 app.get("/", (req, res) => {
     res.json({
-        status: "running",
-        message: "REST API is running!",
-        creator: "WANZOFC TECH"
+        status: true,
+        data: "REST API is running!"
     });
 });
 
