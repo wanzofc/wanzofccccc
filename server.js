@@ -117,6 +117,28 @@ app.get('/api/r/quotesanime', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil quote anime." });
     }
 });
+app.get('/api/d/tiktok', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tiktok?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "TikTok Downloader", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Downloader bermasalah." });
+    }
+});
+app.get('/api/d/igdl', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/igdl?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Instagram Downloader", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Instagram Downloader bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
