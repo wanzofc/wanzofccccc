@@ -11,7 +11,6 @@ app.get("/api/tiktok", async (req, res) => {
     const data = await response.json();
     res.json({
         download_url: data.video_url || "",
-        thumbnail: data.thumbnail || ""
     });
 });
 
@@ -22,7 +21,6 @@ app.get("/api/igdl", async (req, res) => {
     const data = await response.json();
     res.json({
         download_url: data.media || "",
-        thumbnail: data.thumbnail || ""
     });
 });
 
