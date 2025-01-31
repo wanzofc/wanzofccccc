@@ -1,114 +1,78 @@
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
+const express = require('express');
+const path = require('path');
+const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors());
 app.use(express.json());
 
-const BASE_URL = "https://api.siputzx.my.id/documentation";
+// Endpoint API Dukun
+app.get('/dukun', async (req, res) => {
+    const text = req.query.content;
 
-// Fungsi untuk meneruskan request ke API eksternal dan mengemas respons
-const forwardRequest = async (req, res, endpoint, queryParam) => {
-    try {
-        const queryValue = req.query[queryParam] || req.body[queryParam];
-        if (!queryValue) return res.status(400).json({ status: false, message: `${queryParam} is required` });
-
-        const url = `${BASE_URL}/${endpoint}?${queryParam}=${encodeURIComponent(queryValue)}`;
-        const response = await axios.get(url);
-
-        // Debugging: Cetak respons API eksternal di console
-        console.log("API Response:", response.data);
-
-        // Menangani berbagai kemungkinan format respons API eksternal
-        let aiResponse =
-            response.data.botResponse ||  // Jika API eksternal mengembalikan { "botResponse": "Jawaban AI" }
-            response.data.data?.message || // Jika API eksternal mengembalikan { "data": { "message": "Jawaban AI" } }
-            response.data.data || // Jika API eksternal mengembalikan { "data": "Jawaban AI" }
-            response.data || // Jika API eksternal langsung mengembalikan "Jawaban AI"
-            "No response from AI";
-
-        // Pastikan AI Response adalah string
-        if (typeof aiResponse !== "string") {
-            aiResponse = JSON.stringify(aiResponse);
-        }
-
-        res.json({
-            status: true,
-            message: "Success",
-            data: aiResponse,
-            botResponse: aiResponse,
-            creator: "WANZOFC TECH"
-        });
-    } catch (error) {
-        console.error("Error fetching AI response:", error.message);
-        res.status(500).json({
-            status: false,
-            message: "Server error",
-            data: "No response from AI",
-            botResponse: "No response from AI",
-            creator: "WANZOFC TECH"
+    if (!text || text.trim() === "") {
+        return res.status(400).json({
+            creator: "TANIA X WANZOFC",
+            result: false,
+            message: "Tolong tambahkan pertanyaan setelah parameter 'content'.",
+            data: null
         });
     }
-};
-
-// Endpoint API
-app.get("/api/ai/metaai", (req, res) => forwardRequest(req, res, "metaai", "query"));
-app.get("/api/ai/nous-hermes", (req, res) => forwardRequest(req, res, "nous-hermes", "content"));
-app.get("/api/ai/meta-llama-33-70B-instruct-turbo", (req, res) => forwardRequest(req, res, "meta-llama-33-70B-instruct-turbo", "content"));
-app.get("/api/ai/llama33", async (req, res) => {
-    const prompt = req.query.prompt || req.body.prompt;
-    const text = req.query.text || req.body.text;
-    if (!prompt || !text) return res.status(400).json({ status: false, message: "Both prompt and text are required" });
 
     try {
-        const url = `${BASE_URL}/llama33?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`;
-        const response = await axios.get(url);
-
-        // Debugging: Cetak respons API eksternal di console
-        console.log("API Response:", response.data);
-
-        let aiResponse =
-            response.data.botResponse || 
-            response.data.data?.message || 
-            response.data.data || 
-            response.data || 
-            "No response from AI";
-
-        if (typeof aiResponse !== "string") {
-            aiResponse = JSON.stringify(aiResponse);
-        }
-
+        const apiUrl = `https://api.siputzx.my.id/api/ai/dukun?content=${encodeURIComponent(text)}`;
+        const apiResponse = await axios.get(apiUrl);
+        const botResponse = apiResponse.data?.data || "Maaf, saya tidak bisa menjawab saat ini.";
         res.json({
-            status: true,
-            message: "Success",
-            data: aiResponse,
-            botResponse: aiResponse,
-            creator: "WANZOFC TECH"
+            creator: "WANZOFC X TANIA",
+            result: true,
+            message: "sebut nama kamu",
+            data: botResponse
         });
     } catch (error) {
-        console.error("Error fetching AI response:", error.message);
+        console.error("Error wanz:", error.message);
         res.status(500).json({
-            status: false,
-            message: "Server error",
-            data: "No response from AI",
-            botResponse: "No response from AI",
-            creator: "WANZOFC TECH"
+            creator: "WANZOFC X TANIA",
+            result: false,
+            message: "Maaf, dukun sedang bermeditasi. Coba lagi nanti.",
+            data: null
         });
     }
 });
 
-// Root route
-app.get("/", (req, res) => {
-    res.json({
-        status: true,
-        message: "API is running!",
-        creator: "WANZOFC TECH"
-    });
+// Endpoint untuk Meta AI
+app.get('/metaai', async (req, res) => {
+    const query = req.query.query;
+
+    if (!query || query.trim() === "") {
+        return res.status(400).json({
+            creator: "TANIA X WANZOFC",
+            result: false,
+            message: "Tolong tambahkan pertanyaan setelah parameter 'query'.",
+            data: null
+        });
+    }
+    try {
+        const apiUrl = `https://api.siputzx.my.id/api/ai/metaai?query=${encodeURIComponent(query)}`;
+        const apiResponse = await axios.get(apiUrl);
+        const botResponse = apiResponse.data?.result || "Maaf, saya tidak bisa menjawab saat ini.";
+        res.json({
+            creator: "WANZOFC X TANIA",
+            result: true,
+            message: "metaai",
+            data: botResponse
+        });
+    } catch (error) {
+        console.error("Error metaai:", error.message);
+        res.status(500).json({
+            creator: "WANZOFC X TANIA",
+            result: false,
+            message: "Maaf, Meta AI sedang bermasalah. Coba lagi nanti.",
+            data: null
+        });
+    }
 });
 
-// Start server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server berjalan di port ${PORT}`);
 });
