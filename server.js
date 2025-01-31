@@ -18,9 +18,12 @@ const forwardRequest = async (req, res, endpoint, queryParam) => {
         const url = `${BASE_URL}/${endpoint}?${queryParam}=${encodeURIComponent(queryValue)}`;
         const response = await axios.get(url);
 
+        // Ambil hanya bagian data dari respons API eksternal
+        const aiResponse = response.data.data || response.data;
+
         res.json({
             status: true,
-            data: response.data
+            data: aiResponse
         });
     } catch (error) {
         res.status(500).json({
@@ -43,9 +46,12 @@ app.get("/api/ai/llama33", async (req, res) => {
         const url = `${BASE_URL}/llama33?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`;
         const response = await axios.get(url);
 
+        // Ambil hanya bagian data dari respons API eksternal
+        const aiResponse = response.data.data || response.data;
+
         res.json({
             status: true,
-            data: response.data
+            data: aiResponse
         });
     } catch (error) {
         res.status(500).json({
