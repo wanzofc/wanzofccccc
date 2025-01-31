@@ -3,19 +3,12 @@ const axios = require('axios');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
-
 app.use(express.json());
-app.use(express.static(__dirname)); // Agar index.html bisa diakses
-
-// Fungsi untuk memformat teks menjadi paragraf
+app.use(express.static(__dirname)); 
 const formatParagraph = (text) => text ? text.replace(/\.\s+/g, ".\n\n") : "Tidak ada jawaban.";
-
-// Endpoint root (menampilkan index.html)
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
-
-// AI - Deepseek Chat
 app.get('/api/ai/deepseek-chat', async (req, res) => {
     const query = req.query.content || "halo";
     try {
@@ -25,8 +18,6 @@ app.get('/api/ai/deepseek-chat', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Deepseek Chat bermasalah." });
     }
 });
-
-// AI - Image to Text
 app.get('/api/ai/image2text', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/ai/image2text?url=https://cataas.com/cat");
@@ -35,8 +26,6 @@ app.get('/api/ai/image2text', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Image to Text bermasalah." });
     }
 });
-
-// AI - Gemini Pro
 app.get('/api/ai/gemini-pro', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -46,8 +35,6 @@ app.get('/api/ai/gemini-pro', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gemini Pro bermasalah." });
     }
 });
-
-// AI - Meta Llama
 app.get('/api/ai/meta-llama', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -57,8 +44,6 @@ app.get('/api/ai/meta-llama', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Meta Llama bermasalah." });
     }
 });
-
-// AI - DBRX Instruct
 app.get('/api/ai/dbrx-instruct', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -68,8 +53,6 @@ app.get('/api/ai/dbrx-instruct', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "DBRX Instruct bermasalah." });
     }
 });
-
-// AI - Deepseek R1
 app.get('/api/ai/deepseek-r1', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -79,8 +62,6 @@ app.get('/api/ai/deepseek-r1', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Deepseek R1 bermasalah." });
     }
 });
-
-// AI - Gita
 app.get('/api/gita', async (req, res) => {
     const query = req.query.q || "hai";
     try {
@@ -90,8 +71,6 @@ app.get('/api/gita', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gita AI bermasalah." });
     }
 });
-
-// Anime - Latest
 app.get('/api/anime/latest', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/anime/latest");
@@ -100,8 +79,6 @@ app.get('/api/anime/latest', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anime Terbaru bermasalah." });
     }
 });
-
-// Anime - Anichin Episode
 app.get('/api/anime/anichin-episode', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Tolong tambahkan parameter 'url'." });
@@ -113,8 +90,33 @@ app.get('/api/anime/anichin-episode', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anichin Episode bermasalah." });
     }
 });
+app.get('/api/mediafire', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Tambahkan parameter 'url'." });
 
-// Jalankan server di port 8080
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/mediafire?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "MediaFire Downloader", data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "MediaFire Downloader bermasalah." });
+    }
+});
+app.get('/api/random/blue-archive', async (req, res) => {
+    try {
+        const { data } = await axios.get("https://api.siputzx.my.id/api/r/blue-archive");
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Random Blue Archive Image", data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil gambar Blue Archive." });
+    }
+});
+app.get('/api/random/quotes-anime', async (req, res) => {
+    try {
+        const { data } = await axios.get("https://api.siputzx.my.id/api/r/quotesanime");
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Random Anime Quotes", data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil quote anime." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
