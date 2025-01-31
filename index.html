@@ -4,127 +4,214 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API WANZOFC TECH</title>
+    <link rel="icon" href="https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg" type="image/x-icon">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
+            background-image: url('https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
             color: #ffffff;
             text-align: center;
             padding: 20px;
-        }
-        h1 {
-            color: #00ff99;
-        }
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: black;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin-bottom: 20px;
-             position: relative; 
-        }
+            margin: 0;
+            overflow-x: hidden;
+         }
+         h1 {
+             color: #00ff99;
+              z-index: 1;
+            position: relative;
+         }
+         .container {
+              max-width: 700px;
+              margin: auto;
+             background-color: rgba(0, 0, 0, 0.8);
+              padding: 20px;
+              border-radius: 10px;
+             text-align: left;
+             margin-bottom: 20px;
+             position: relative;
+             z-index: 1;
+         }
         .chart-container {
             max-width: 700px;
             margin: auto;
-            background: black;
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             text-align: left;
             margin-bottom: 20px;
-             display: flex;
-            justify-content: center;
-        }
-       .api-item {
             display: flex;
-            justify-content: space-between;
-             align-items: center;
-            margin: 10px 0;
-             opacity: 0; 
+             justify-content: center;
+            z-index: 1;
+        }
+         .api-item {
+            display: flex;
+             justify-content: space-between;
+            align-items: center;
+             margin: 10px 0;
+            opacity: 0;
          }
-        .api-item a {
+         .api-item a {
             color: #00ff99;
             text-decoration: none;
              margin-right: 10px;
+         }
+        .api-item a:hover {
+             text-decoration: underline;
         }
-         .api-item a:hover {
-            text-decoration: underline;
-         }
          .try-button {
-             background-color: #00ff99;
-             color: #121212;
-              border: none;
-             padding: 5px 10px;
+            background-color: #ffcc00;
+            color: #121212;
+            border: none;
+            padding: 5px 10px;
              border-radius: 5px;
-             cursor: pointer;
-            text-decoration: none;
-            font-size: 12px;
-              transition: background-color 0.3s ease;
+           cursor: pointer;
+             text-decoration: none;
+             font-size: 12px;
+             transition: background-color 0.3s ease;
+        }
+        .try-button:hover {
+             background-color: #ffbb00;
          }
-         .try-button:hover {
-               background-color: #00cc77;
-         }
+         #lottie-container {
+             width: 100px;
+            height: 100px;
+             position: fixed;
+            top: 20px;
+             left: 20px;
+            z-index: 2;
+        }
+        canvas {
+            display: none;
+        }
     </style>
 </head>
 <body>
+   <audio id="background-music" loop>
+        <source src="https://files.catbox.moe/bqassm.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+    </audio>
+    <div id="lottie-container"></div>
     <h1>API WANZOFC TECH</h1>
     <div id="root"></div>
     <div id="vue-app"></div>
     <div id="chart-container"></div>
-
+    <script>
+         const animationContainer = document.getElementById('lottie-container');
+         const animationData = {
+            "v": "5.10.2",
+            "fr": 60,
+            "ip": 0,
+            "op": 120,
+            "w": 100,
+            "h": 100,
+            "nm": "Animation",
+            "ddd": 0,
+            "assets": [],
+            "layers": [{
+                "ddd": 0,
+                "ind": 1,
+                "ty": 4,
+                 "nm": "Shape Layer 1",
+                "sr": 1,
+                "ks": {
+                    "o": { "a": 0, "k": 100, "ix": 11 },
+                    "r": { "a": 0, "k": 0, "ix": 10 },
+                    "s": { "a": 0, "k": [ 100, 100 ], "ix": 6 },
+                    "p": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                    "a": { "a": 0, "k": [ 50, 50 ], "ix": 1 }
+                },
+                "ao": 0,
+                 "shapes": [{
+                    "ty": "gr",
+                    "it": [{
+                        "ty": "rc",
+                         "d": 1,
+                        "s": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                        "p": { "a": 0, "k": [ 0, 0 ], "ix": 3 },
+                         "r": { "a": 0, "k": 0, "ix": 4 },
+                       "nm": "Rectangle Path 1",
+                         "hd": false
+                    }, {
+                        "ty": "fl",
+                       "c": { "a": 0, "k": [ 0.0196078431372549, 1, 0.596078431372549, 1 ], "ix": 4 },
+                        "o": { "a": 0, "k": 100, "ix": 5 },
+                        "nm": "Fill 1",
+                       "hd": false
+                    }],
+                   "nm": "Group 1",
+                    "hd": false
+                }],
+                 "ip": 0,
+                "op": 120,
+                "st": 0,
+                 "bm": 0
+            }],
+           "markers": []
+        };
+        lottie.loadAnimation({
+             container: animationContainer,
+            renderer: 'svg',
+             loop: true,
+            autoplay: true,
+             animationData: animationData,
+        });
+    </script>
     <script type="text/babel">
-        const { useEffect, useState } = React;
-        const apiList = [
-             { name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo" },
+       const { useEffect, useState } = React;
+         const apiList = [
+            { name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo" },
             { name: "AI - Image to Text", url: "/api/ai/image2text" },
             { name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo" },
-            { name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo" },
-            { name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo" },
-            { name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo" },
-            { name: "AI - Gita", url: "/api/gita?q=halo" },
-            { name: "Anime - Terbaru", url: "/api/anime/latest" },
-            { name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal" },
+             { name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo" },
+             { name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo" },
+             { name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo" },
+             { name: "AI - Gita", url: "/api/gita?q=halo" },
+           { name: "Anime - Terbaru", url: "/api/anime/latest" },
+             { name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal" },
             { name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file" },
-            { name: "Random Blue Archive Image", url: "/api/r/blue-archive" },
-            { name: "Random Anime Quotes", url: "/api/r/quotesanime" }
+           { name: "Random Blue Archive Image", url: "/api/r/blue-archive" },
+             { name: "Random Anime Quotes", url: "/api/r/quotesanime" }
         ];
-        const fetchData = async (url) => {
-             try {
-                const response = await fetch(url);
+         const fetchData = async (url) => {
+            try {
+                 const response = await fetch(url);
                 if (!response.ok) {
                      throw new Error(`HTTP error! status: ${response.status}`);
-                 }
-                 const data = await response.json();
-                 return data;
+                }
+                const data = await response.json();
+                return data;
             } catch (error) {
                   console.error('Error fetching data:', error);
-                 return null;
+                return null;
              }
         };
-
         function APIList() {
             useEffect(() => {
-                gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
+                 gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
             }, []);
-            return (
+             return (
                 <div className="container">
                     <h3>LIST ENDPOINT:</h3>
                     {apiList.map((api, index) => (
                         <div key={index} className="api-item">
-                            <a href={api.url} target="_blank">{api.name}</a>
-                           <a href={api.url} target="_blank" className="try-button">try</a>
+                             <a href={api.url} target="_blank">{api.name}</a>
+                            <a href={api.url} target="_blank" className="try-button">try</a>
                         </div>
-                    ))}
+                   ))}
                 </div>
             );
-            }
+        }
         ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
     </script>
      <script>
@@ -132,76 +219,100 @@
          createApp({
             setup() {
                 const vueApiList = ref(apiList);
-                onMounted(() => {
-                   gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
+               onMounted(() => {
+                  gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
                 })
-                return {
-                   vueApiList
+                 return {
+                    vueApiList
                 };
             },
             template: `
-                 <div class="container">
+                <div class="container">
                     <h3>Daftar Endpoint (Vue.js):</h3>
-                     <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
-                        <a :href="api.url" target="_blank">{{ api.name }}</a>
-                       <a :href="api.url" target="_blank" class="try-button">Try</a>
-                     </div>
-                </div>
-           `
-       }).mount('#vue-app')
-     </script>
+                   <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
+                         <a :href="api.url" target="_blank">{{ api.name }}</a>
+                        <a :href="api.url" target="_blank" class="try-button">Try</a>
+                   </div>
+               </div>
+            `
+         }).mount('#vue-app')
+    </script>
     <script>
-    const chartContainer = document.getElementById('chart-container');
-     const renderChart = async () => {
-     const data = await fetchData('/api/r/quotesanime');
-        if(data && data.length > 0) {
-            const quotes = data.map((quote) => quote.quote);
-            const ctx = document.createElement('canvas');
-            chartContainer.appendChild(ctx);
+         const chartContainer = document.getElementById('chart-container');
+        const renderChart = async () => {
+            const data = await fetchData('/api/r/quotesanime');
+            if(data && data.length > 0) {
+                const quotes = data.map((quote) => quote.quote);
+                const ctx = document.createElement('canvas');
+                chartContainer.appendChild(ctx);
+                 new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: quotes.map((_, index) => `Quote ${index + 1}`),
+                       datasets: [{
+                            label: 'Anime Quotes',
+                           data: quotes.map(() => 1),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                           borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                       }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                   display: false
+                                }
+                           },
+                            x: {
+                                ticks: {
+                                   display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Jumlah Quote'
+                            }
+                        }
+                    }
+                });
+            } else {
+                 chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>"
+            }
+        }
+         renderChart()
+    </script>
+     <script>
+        const backgroundMusic = document.getElementById('background-music');
+       let musicStarted = false;
+        let currentTrackTime = 0;
 
-            new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: quotes.map((_, index) => `Quote ${index + 1}`),
-                 datasets: [{
-                  label: 'Anime Quotes',
-                    data: quotes.map(() => 1),
-                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                     borderColor: 'rgba(75, 192, 192, 1)',
-                     borderWidth: 1
-                   }]
-                },
-              options: {
-                responsive: true,
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    ticks: {
-                      display: false
-                     }
-                 },
-                    x: {
-                        ticks: {
-                            display: false
-                      }
-                  }
-               },
-               plugins: {
-                   legend: {
-                       display: false
-                   },
-                 title: {
-                    display: true,
-                    text: 'Jumlah Quote'
-                 }
-                }
+
+        function playMusic() {
+            if (!musicStarted) {
+                backgroundMusic.play();
+                 musicStarted = true;
+            } else {
+                 backgroundMusic.currentTime = currentTrackTime;
+                backgroundMusic.play();
              }
-          });
-        } else{
-         chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>"
-          }
-       }
-        renderChart()
- </script>
+         }
+
+        function pauseMusic() {
+             currentTrackTime = backgroundMusic.currentTime;
+             backgroundMusic.pause();
+        }
+
+       window.addEventListener('focus', playMusic);
+         window.addEventListener('blur', pauseMusic);
+        playMusic();
+     </script>
 </body>
 </html>
