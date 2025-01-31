@@ -90,7 +90,7 @@ app.get('/api/anime/anichin-episode', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anichin Episode bermasalah." });
     }
 });
-app.get('/api/mediafire', async (req, res) => {
+app.get('/api/d/mediafire', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Tambahkan parameter 'url'." });
 
@@ -101,7 +101,7 @@ app.get('/api/mediafire', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "MediaFire Downloader bermasalah." });
     }
 });
-app.get('/api/random/blue-archive', async (req, res) => {
+app.get('/api/r/blue-archive', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/blue-archive");
         res.json({ creator: "WANZOFC TECH", result: true, message: "Random Blue Archive Image", data });
@@ -109,7 +109,7 @@ app.get('/api/random/blue-archive', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil gambar Blue Archive." });
     }
 });
-app.get('/api/random/quotes-anime', async (req, res) => {
+app.get('/api/r/quotesanime"', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/quotesanime");
         res.json({ creator: "WANZOFC TECH", result: true, message: "Random Anime Quotes", data });
