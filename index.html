@@ -3,109 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kumpulan API dari wanzofc tech. temukan berbagai endpoint untuk AI, anime, dan lain-lain.">
     <title>API WANZOFC TECH</title>
     <link rel="icon" href="https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg" type="image/x-icon">
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+    <link rel="preload" href="https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg" as="image">
+    <link rel="preload" href="https://files.catbox.moe/bqassm.mp3" as="audio">
+    <meta property="og:title" content="API WANZOFC TECH" />
+    <meta property="og:description" content="kumpulan API dari wanzofc tech" />
+    <meta property="og:image" content="https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg" />
+    <meta property="og:url" content="https://wanzofc.us.kg" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "[URL Halaman Anda]",
+            "name": "API WANZOFC TECH",
+            "description": "Kumpulan API dari WanzoFC Tech"
+        }
+    </script>
     <style>
+        :root {
+            --primary-color: #00ff99;
+            --secondary-color: #ffcc00;
+            --background-color: rgba(0, 0, 0, 0.8);
+             --text-color: #ffffff;
+            --font-family: Arial, sans-serif;
+           --border-radius: 10px;
+       }
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-family);
             background-image: url('https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat;
-            background-attachment: fixed; 
-            color: #ffffff;
+            background-size: cover;
+             background-repeat: no-repeat;
+            background-attachment: fixed;
+             background-position: center;
+            color: var(--text-color);
             text-align: center;
             padding: 20px;
             margin: 0;
             overflow-x: hidden;
-         }
-         h1 {
-             color: #00ff99;
-              z-index: 1;
-            position: relative;
-         }
-         .container {
-              max-width: 700px;
-              margin: auto;
-             background-color: rgba(0, 0, 0, 0.8);
-              padding: 20px;
-              border-radius: 10px;
-             text-align: left;
-             margin-bottom: 20px;
-             position: relative;
+           transition: background-color 0.3s ease;
+        }
+       body.dark-mode {
+            background-color: #121212;
+             color: #e0e0e0;
+            background-image: none;
+        }
+        h1 {
+             color: var(--primary-color);
              z-index: 1;
-         }
+            position: relative;
+        }
+       .container {
+            max-width: 700px;
+           margin: auto;
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: left;
+            margin-bottom: 20px;
+             position: relative;
+           z-index: 1;
+           transition: background-color 0.3s ease;
+           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+       .container:hover {
+          box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+       }
         .chart-container {
             max-width: 700px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.8);
+           margin: auto;
+             background: var(--background-color);
             padding: 20px;
-            border-radius: 10px;
+             border-radius: var(--border-radius);
             text-align: left;
             margin-bottom: 20px;
             display: flex;
-             justify-content: center;
+           justify-content: center;
             z-index: 1;
         }
-         .api-item {
-            display: flex;
+        .api-item {
+           display: flex;
              justify-content: space-between;
-            align-items: center;
-             margin: 10px 0;
+             align-items: center;
+           margin: 10px 0;
             opacity: 0;
-         }
-         .api-item a {
-            color: #00ff99;
-            text-decoration: none;
-             margin-right: 10px;
-         }
-        .api-item a:hover {
-             text-decoration: underline;
+           transition: opacity 0.5s ease, transform 0.3s ease;
+           border-bottom: 1px solid #555;
+            padding-bottom: 5px;
         }
-         .try-button {
-            background-color: #ffcc00;
+        .api-item:last-child {
+           border-bottom: none;
+            padding-bottom: 0;
+        }
+        .api-item a {
+             color: var(--primary-color);
+            text-decoration: none;
+           margin-right: 10px;
+           transition: color 0.3s ease;
+       }
+        .api-item a:hover {
+           text-decoration: underline;
+        }
+        .try-button {
+             background-color: var(--secondary-color);
             color: #121212;
             border: none;
-            padding: 5px 10px;
-             border-radius: 5px;
+           padding: 5px 10px;
+            border-radius: 5px;
            cursor: pointer;
              text-decoration: none;
-             font-size: 12px;
-             transition: background-color 0.3s ease;
-        }
+            font-size: 12px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+       }
         .try-button:hover {
-             background-color: #ffbb00;
-         }
-         #lottie-container {
-             width: 100px;
-            height: 100px;
+           background-color: #ffbb00;
+        }
+       #lottie-container {
+            width: 100px;
+           height: 100px;
              position: fixed;
             top: 20px;
              left: 20px;
             z-index: 2;
         }
         canvas {
-            display: none;
+           display: none;
         }
-    </style>
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+         background-color: var(--primary-color);
+         border-radius: 4px;
+       }
+        ::-webkit-scrollbar-track {
+            background: #444;
+        }
+       .loading-skeleton {
+          background: #444;
+           height: 20px;
+            margin-bottom: 10px;
+          animation: skeleton-loading 1.5s linear infinite alternate;
+      }
+
+        
+      @keyframes skeleton-loading {
+         0% {
+            background-color: #444;
+        }
+        100% {
+           background-color: #555;
+       }
+      }
+    #music-controls {
+       position: fixed;
+      top: 20px;
+       right: 20px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    #music-controls button {
+       background-color: var(--secondary-color);
+        color: #121212;
+      border: none;
+        padding: 5px 10px;
+         border-radius: 5px;
+        cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s ease;
+    }
+    #music-controls button:hover {
+       background-color: #ffbb00;
+   }
+   
+    #dark-mode-toggle {
+     background-color: var(--secondary-color);
+      color: #121212;
+    border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background-color 0.3s ease;
+    }
+    #dark-mode-toggle:hover {
+      background-color: #ffbb00;
+    }
+    @media (max-width: 768px) {
+    .container, .chart-container {
+            max-width: 95%;
+       }
+       #music-controls {
+          top: 10px;
+           right: 10px;
+        }
+    }
+   body::before {
+        content: "";
+       position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://telegra.ph/file/51a27fe8bce6cdef6f266-076ee0030f5a7f1384.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+         background-attachment: fixed;
+        z-index: -1;
+       filter: blur(3px); 
+   }
+    #search-container {
+        margin: 20px auto;
+        max-width: 700px;
+        display: flex;
+        padding: 10px;
+        background-color: var(--background-color);
+        border-radius: var(--border-radius);
+        align-items: center;
+        position: relative;
+       z-index: 1;
+    }
+    #search-input {
+        flex-grow: 1;
+        padding: 10px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+       background-color: #444;
+       color: var(--text-color);
+    }
+   #search-button {
+       background-color: var(--secondary-color);
+        color: #121212;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+         transition: background-color 0.3s ease;
+       font-size: 12px;
+     }
+     #search-button:hover {
+         background-color: #ffbb00;
+     }
+    .filtered-item {
+         display: flex;
+           justify-content: space-between;
+             align-items: center;
+           margin: 10px 0;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+           border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+       }
+       .filtered-item:last-child {
+           border-bottom: none;
+            padding-bottom: 0;
+       }
+    .filtered-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+           margin-right: 10px;
+           transition: color 0.3s ease;
+       }
+        .filtered-item a:hover {
+           text-decoration: underline;
+        }
+</style>
 </head>
-<body>
-   <audio id="background-music" loop>
+<body >
+   <header>
+       <div id="music-controls">
+        <button id="play-pause-button">PLAY</button>
+         <button id="dark-mode-toggle">🌟</button>
+        </div>
+      </header>
+    <audio id="background-music" loop>
         <source src="https://files.catbox.moe/bqassm.mp3" type="audio/mpeg">
-         Your browser does not support the audio element.
     </audio>
     <div id="lottie-container"></div>
+     <div id="search-container">
+      <input type="text" id="search-input" placeholder="CARI API...">
+       <button id="search-button">CARI</button>
+    </div>
     <h1>API WANZOFC TECH</h1>
+    <main>
     <div id="root"></div>
     <div id="vue-app"></div>
     <div id="chart-container"></div>
+    </main>
+    <footer>
+        <p>© 2025 WANZOFC TECH.</p>
+    </footer>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <script>
          const animationContainer = document.getElementById('lottie-container');
          const animationData = {
@@ -167,8 +367,8 @@
              animationData: animationData,
         });
     </script>
-    <script type="text/babel">
-       const { useEffect, useState } = React;
+     <script type="text/babel">
+       const { useEffect, useState, useRef } = React;
          const apiList = [
             { name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo" },
             { name: "AI - Image to Text", url: "/api/ai/image2text" },
@@ -183,136 +383,209 @@
            { name: "Random Blue Archive Image", url: "/api/r/blue-archive" },
              { name: "Random Anime Quotes", url: "/api/r/quotesanime" }
         ];
-         const fetchData = async (url) => {
-            try {
-                 const response = await fetch(url);
-                if (!response.ok) {
-                     throw new Error(`HTTP error! status: ${response.status}`);
+        const fetchData = async (url) => {
+           try {
+               const response = await fetch(url);
+             if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'}`);
                 }
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                  console.error('Error fetching data:', error);
+                 return await response.json();
+             } catch (error) {
+                console.error('Error fetching data:', error);
+                const chartContainer = document.getElementById('chart-container');
+                 chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
                 return null;
-             }
-        };
-        function APIList() {
+           }
+       };
+       function APIList() {
+           const [filteredList, setFilteredList] = useState(apiList);
+             const searchInput = useRef(null);
+
             useEffect(() => {
-                 gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
-            }, []);
-             return (
-                <div className="container">
-                    <h3>LIST ENDPOINT:</h3>
-                    {apiList.map((api, index) => (
-                        <div key={index} className="api-item">
-                             <a href={api.url} target="_blank">{api.name}</a>
-                            <a href={api.url} target="_blank" className="try-button">try</a>
-                        </div>
-                   ))}
-                </div>
+                gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+             }, []);
+           const handleSearch = () => {
+                const searchTerm = searchInput.current.value.toLowerCase();
+                const newList = apiList.filter(api =>
+                  api.name.toLowerCase().includes(searchTerm)
+                );
+               setFilteredList(newList);
+               gsap.fromTo(".filtered-item",
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
+                  )
+            };
+           return (
+            <div className="container">
+               <h3>LIST ENDPOINT:</h3>
+                 {filteredList.length === 0 ? (
+                     <p>Tidak ada hasil yang ditemukan.</p>
+                 ) : (
+                  filteredList.map((api, index) => (
+                   <div key={index} className="api-item">
+                       <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                         <a href={api.url} target="_blank" className="try-button" aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                    </div>
+                  ))
+                 )}
+
+            </div>
             );
         }
-        ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
+       ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
+          document.getElementById('search-button').addEventListener('click', () => {
+              ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
+         });
+            document.getElementById('search-input').addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                  ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
+             }
+            });
     </script>
      <script>
         const { createApp, ref, onMounted } = Vue;
-         createApp({
+       createApp({
             setup() {
                 const vueApiList = ref(apiList);
-               onMounted(() => {
-                  gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5 });
-                })
-                 return {
-                    vueApiList
+                onMounted(() => {
+                  gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+               });
+               return {
+                   vueApiList,
                 };
             },
             template: `
                 <div class="container">
                     <h3>Daftar Endpoint (Vue.js):</h3>
-                   <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
-                         <a :href="api.url" target="_blank">{{ api.name }}</a>
-                        <a :href="api.url" target="_blank" class="try-button">Try</a>
-                   </div>
+                    <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
+                        <a :href="api.url" target="_blank" :aria-label="'Link to ' + api.name + ' API Endpoint'">{{ api.name }}</a>
+                        <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
+                    </div>
                </div>
-            `
-         }).mount('#vue-app')
+           `,
+       }).mount('#vue-app');
     </script>
     <script>
          const chartContainer = document.getElementById('chart-container');
-        const renderChart = async () => {
-            const data = await fetchData('/api/r/quotesanime');
-            if(data && data.length > 0) {
-                const quotes = data.map((quote) => quote.quote);
-                const ctx = document.createElement('canvas');
+       const renderChart = async () => {
+           const loadingSkeleton = document.createElement('div');
+            loadingSkeleton.className = 'loading-skeleton';
+             chartContainer.appendChild(loadingSkeleton);
+            
+             const data = await fetchData('/api/r/quotesanime');
+            chartContainer.innerHTML = '';
+             if(data && data.length > 0) {
+                 const quotes = data.map((quote) => quote.quote);
+                 const ctx = document.createElement('canvas');
                 chartContainer.appendChild(ctx);
                  new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: quotes.map((_, index) => `Quote ${index + 1}`),
-                       datasets: [{
-                            label: 'Anime Quotes',
-                           data: quotes.map(() => 1),
+                   type: 'bar',
+                   data: {
+                      labels: quotes.map((_, index) => `Quote ${index + 1}`),
+                        datasets: [{
+                         label: 'Anime Quotes',
+                         data: quotes.map(() => 1),
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                       }]
-                    },
+                         borderWidth: 1
+                        }]
+                   },
                     options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
+                       responsive: true,
+                       scales: {
+                         y: {
+                               beginAtZero: true,
                                 ticks: {
-                                   display: false
-                                }
+                                    display: false
+                               }
                            },
-                            x: {
-                                ticks: {
+                           x: {
+                              ticks: {
                                    display: false
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            title: {
-                                display: true,
-                                text: 'Jumlah Quote'
-                            }
-                        }
+                               }
+                          }
+                     },
+                      plugins: {
+                         legend: {
+                             display: false
+                         },
+                         title: {
+                            display: true,
+                           text: 'Jumlah Quote'
+                           }
+                       }
                     }
-                });
+               });
             } else {
-                 chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>"
-            }
-        }
-         renderChart()
+                chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
+           }
+       };
+         renderChart();
     </script>
      <script>
         const backgroundMusic = document.getElementById('background-music');
-       let musicStarted = false;
-        let currentTrackTime = 0;
-
-
-        function playMusic() {
+        const playPauseButton = document.getElementById('play-pause-button');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+       const body = document.body;
+        let musicStarted = false;
+         let currentTrackTime = 0;
+          let isDarkMode = localStorage.getItem('darkMode') === 'true';
+       if (isDarkMode) {
+             body.classList.add('dark-mode');
+         }
+       function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+             body.classList.toggle('dark-mode', isDarkMode);
+           localStorage.setItem('darkMode', isDarkMode);
+         }
+       function playMusic() {
             if (!musicStarted) {
                 backgroundMusic.play();
-                 musicStarted = true;
+                musicStarted = true;
+               playPauseButton.textContent = 'Pause';
             } else {
-                 backgroundMusic.currentTime = currentTrackTime;
+                backgroundMusic.currentTime = currentTrackTime;
                 backgroundMusic.play();
-             }
-         }
-
+                playPauseButton.textContent = 'Pause';
+            }
+        }
         function pauseMusic() {
-             currentTrackTime = backgroundMusic.currentTime;
-             backgroundMusic.pause();
+           currentTrackTime = backgroundMusic.currentTime;
+            backgroundMusic.pause();
+            playPauseButton.textContent = 'Play';
         }
 
-       window.addEventListener('focus', playMusic);
-         window.addEventListener('blur', pauseMusic);
+       playPauseButton.addEventListener('click', () => {
+          if (backgroundMusic.paused) {
+              playMusic();
+           } else {
+                pauseMusic();
+            }
+       });
+       darkModeToggle.addEventListener('click', toggleDarkMode);
+        window.addEventListener('focus', playMusic);
+       window.addEventListener('blur', pauseMusic);
         playMusic();
+     </script>
+     <script>
+     function lazyLoadImages() {
+      const images = document.querySelectorAll('img[data-src]');
+      const observer = new IntersectionObserver((entries, observer) => {
+       entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            const img = entry.target;
+             img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+      });
+       images.forEach(img => {
+         observer.observe(img);
+       });
+   }
+    lazyLoadImages();
      </script>
 </body>
 </html>
