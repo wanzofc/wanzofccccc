@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -7,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 
 // Endpoint API Dukun
-app.get('/dukun', async (req, res) => {
+app.get('/api/dukun', async (req, res) => {
     const text = req.query.content;
 
     if (!text || text.trim() === "") {
@@ -41,7 +40,7 @@ app.get('/dukun', async (req, res) => {
 });
 
 // Endpoint untuk Meta AI
-app.get('/metaai', async (req, res) => {
+app.get('/api/metaai', async (req, res) => {
     const query = req.query.query;
 
     if (!query || query.trim() === "") {
@@ -52,6 +51,7 @@ app.get('/metaai', async (req, res) => {
             data: null
         });
     }
+
     try {
         const apiUrl = `https://api.siputzx.my.id/api/ai/metaai?query=${encodeURIComponent(query)}`;
         const apiResponse = await axios.get(apiUrl);
@@ -73,6 +73,7 @@ app.get('/metaai', async (req, res) => {
     }
 });
 
+// Server listen
 app.listen(PORT, () => {
     console.log(`Server berjalan di port ${PORT}`);
 });
