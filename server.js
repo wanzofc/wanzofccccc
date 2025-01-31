@@ -109,7 +109,7 @@ app.get('/api/r/blue-archive', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil gambar Blue Archive." });
     }
 });
-app.get('/api/r/quotesanime"', async (req, res) => {
+app.get('/api/r/quotesanime', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/quotesanime");
         res.json({ creator: "WANZOFC TECH", result: true, message: "Random Anime Quotes", data });
