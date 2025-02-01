@@ -222,9 +222,9 @@ app.get('/api/ai/wanzofc', async (req, res) => {
 
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/yousearch?text=${encodeURIComponent(text)}`);
-        res.json({ creator: "WANZOFC TECH", result: true, message: "AI - YouSearch", data: data });
+        res.json({ creator: "WANZOFC TECH", result: true, message: "AI - wanzofc", data: data });
     } catch {
-        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - YouSearch bermasalah." });
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - wanzofc bermasalah." });
     }
 });
 app.listen(PORT, () => {
