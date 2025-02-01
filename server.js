@@ -495,6 +495,37 @@ app.get('/api/tools/translate', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal menerjemahkan teks." });
     }
 });
+app.get('/api/ai/lepton', async (req, res) => {
+    try {
+        const text = req.query.text;
+        if (!text) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter text!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/lepton?text=${encodeURIComponent(text)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Lepton AI Response", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari Lepton AI." });
+    }
+});
+app.get('/api/ai/gpt3', async (req, res) => {
+    try {
+        const prompt = req.query.prompt;
+        const content = req.query.content;
+        if (!prompt || !content) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter prompt dan content!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/gpt3?prompt=${encodeURIComponent(prompt)}&content=${encodeURIComponent(content)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "GPT-3 AI Response", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari GPT-3 AI." });
+    }
+});
+app.get('/api/r/waifu', async (req, res) => {
+    try {
+        const { data } = await axios.get("https://api.siputzx.my.id/api/r/waifu");
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Random Waifu Image", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan waifu random." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
