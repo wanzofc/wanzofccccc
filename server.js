@@ -330,6 +330,46 @@ app.get('/api/s/brave', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Brave bermasalah." });
     }
 });
+app.get('/api/berita/kompas', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/kompas`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Kompas", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Kompas bermasalah." });
+    }
+});
+app.get('/api/berita/jkt48', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/jkt48`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - JKT48", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - JKT48 bermasalah." });
+    }
+});
+app.get('/api/berita/cnn', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/cnn`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - CNN", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - CNN bermasalah." });
+    }
+});
+app.get('/api/berita/cnbcindonesia', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/cnbcindonesia`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - CNBC Indonesia", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - CNBC Indonesia bermasalah." });
+    }
+});
+app.get('/api/berita/antara', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/antara`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Antara", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Antara bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
