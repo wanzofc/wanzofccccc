@@ -605,5 +605,21 @@
    }
     lazyLoadImages();
      </script>
+   <script>
+!function(w, d, s, ...args){
+  var div = d.createElement('div');
+  div.id = 'aichatbot';
+  d.body.appendChild(div);
+  w.chatbotConfig = args;
+  var f = d.getElementsByTagName(s)[0],
+  j = d.createElement(s);
+  j.defer = true;
+  j.type = 'module';
+  j.src = 'https://aichatbot.sendbird.com/index.js';
+  f.parentNode.insertBefore(j, f);
+}(window, document, 'script', 'A692F5C5-D50F-4108-8BAA-336E9271FC8B', 'hLvKyQ4n-o6ybblJyZT09', {
+  apiHost: 'https://api-cf-us-3.sendbird.com',
+});
+</script> 
 </body>
 </html>
