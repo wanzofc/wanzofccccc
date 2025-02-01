@@ -258,6 +258,38 @@ app.get('/api/d/github', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Downloader - GitHub Repository bermasalah." });
     }
 });
+app.get('/api/info/jadwaltv', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/info/jadwaltv`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Informasi - Jadwal TV", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Jadwal TV bermasalah." });
+    }
+});
+app.get('/api/info/liburnasional', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/info/liburnasional`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Informasi - Hari Libur Nasional", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Hari Libur Nasional bermasalah." });
+    }
+});
+app.get('/api/info/bmkg', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/info/bmkg`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Informasi - BMKG", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - BMKG bermasalah." });
+    }
+});
+app.get('/api/info/cuaca', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/info/cuaca`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Informasi - Cuaca", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Cuaca bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
