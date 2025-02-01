@@ -370,6 +370,46 @@ app.get('/api/berita/antara', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Antara bermasalah." });
     }
 });
+app.get('/api/berita/tribunnews', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/tribunnews`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Tribunnews", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Tribunnews bermasalah." });
+    }
+});
+app.get('/api/berita/suara', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/suara`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Suara", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Suara bermasalah." });
+    }
+});
+app.get('/api/berita/merdeka', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/merdeka`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Merdeka", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Merdeka bermasalah." });
+    }
+});
+app.get('/api/berita/sindonews', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/sindonews`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Sindonews", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Sindonews bermasalah." });
+    }
+});
+app.get('/api/berita/liputan6', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/liputan6`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Berita - Liputan6", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Liputan6 bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
