@@ -205,6 +205,28 @@ app.get('/api/s/tiktok', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Search bermasalah." });
     }
 });
+app.get('/api/ai/uncovr', async (req, res) => {
+    const content = req.query.content;
+    if (!content) return res.status(400).json({ result: false, message: "Tambahkan parameter 'content'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/uncovr?content=${encodeURIComponent(content)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "AI - Uncovr Chat", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - Uncovr Chat bermasalah." });
+    }
+});
+app.get('/api/ai/wanzofc', async (req, res) => {
+    const text = req.query.text;
+    if (!text) return res.status(400).json({ result: false, message: "Tambahkan parameter 'text'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/yousearch?text=${encodeURIComponent(text)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "AI - YouSearch", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - YouSearch bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
