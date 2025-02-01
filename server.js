@@ -410,6 +410,46 @@ app.get('/api/berita/liputan6', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Liputan6 bermasalah." });
     }
 });
+app.get('/api/apk/playstore', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/playstore`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "APK - Play Store", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari Play Store." });
+    }
+});
+app.get('/api/apk/happymod', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/happymod`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "APK - HappyMod", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari HappyMod." });
+    }
+});
+app.get('/api/apk/appstore', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/appstore`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "APK - App Store", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari App Store." });
+    }
+});
+app.get('/api/apk/apkpure', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/apkpure`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "APK - APKPure", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari APKPure." });
+    }
+});
+app.get('/api/apk/apkmody', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/apkmody`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "APK - APKMody", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari APKMody." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
