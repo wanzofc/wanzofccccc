@@ -452,8 +452,11 @@ app.get('/api/apk/apkmody', async (req, res) => {
 });
 app.get('/api/tools/subdomains', async (req, res) => {
     try {
-        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/subdomains`);
-        res.json({ creator: "WANZOFC TECH", result: true, message: "Subdomain Scanner", data: data });
+        const domain = req.query.domain;
+        if (!domain) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter domain!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/subdomains?domain=${encodeURIComponent(domain)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: `Subdomain Scanner untuk ${domain}`, data: data });
     } catch {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data subdomain." });
     }
