@@ -227,6 +227,37 @@ app.get('/api/ai/wanzofc', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - wanzofc bermasalah." });
     }
 });
+app.get('/api/anime/otakudesu/search', async (req, res) => {
+    const s = req.query.s;
+    if (!s) return res.status(400).json({ result: false, message: "Tambahkan parameter 's'." });
+
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/anime/otakudesu/search?s=${encodeURIComponent(s)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Anime - Otakudesu Search", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anime - Otakudesu Search bermasalah." });
+    }
+});
+app.get('/api/d/savefrom', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/savefrom?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Downloader - SaveFrom", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Downloader - SaveFrom bermasalah." });
+    }
+});
+app.get('/api/d/github', async (req, res) => {
+    const url = req.query.url;
+    if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/d/github?url=${encodeURIComponent(url)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Downloader - GitHub Repository", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Downloader - GitHub Repository bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
