@@ -290,6 +290,46 @@ app.get('/api/info/cuaca', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Cuaca bermasalah." });
     }
 });
+app.get('/api/s/gitagram', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/gitagram`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Search - Gitagram", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Gitagram bermasalah." });
+    }
+});
+app.get('/api/s/duckduckgo', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/duckduckgo`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Search - DuckDuckGo", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - DuckDuckGo bermasalah." });
+    }
+});
+app.get('/api/s/combot', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/combot`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Search - Combot", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Combot bermasalah." });
+    }
+});
+app.get('/api/s/bukalapak', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/bukalapak`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Search - Bukalapak", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Bukalapak bermasalah." });
+    }
+});
+app.get('/api/s/brave', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/brave`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Search - Brave", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Brave bermasalah." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
