@@ -450,6 +450,48 @@ app.get('/api/apk/apkmody', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari APKMody." });
     }
 });
+app.get('/api/tools/subdomains', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/subdomains`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Subdomain Scanner", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data subdomain." });
+    }
+});
+app.get('/api/tools/text2base64', async (req, res) => {
+    try {
+        const text = req.query.text;
+        if (!text) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan teks untuk dikonversi!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/text2base64?text=${encodeURIComponent(text)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Text to Base64", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke Base64." });
+    }
+});
+app.get('/api/tools/text2qr', async (req, res) => {
+    try {
+        const text = req.query.text;
+        if (!text) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan teks untuk dikonversi!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/text2qr?text=${encodeURIComponent(text)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Text to QR Code", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke QR Code." });
+    }
+});
+app.get('/api/tools/translate', async (req, res) => {
+    try {
+        const text = req.query.text;
+        const lang = req.query.lang || "en"; // Default English jika tidak ada parameter lang
+        if (!text) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan teks untuk diterjemahkan!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/translate?text=${encodeURIComponent(text)}&lang=${lang}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Text Translation", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal menerjemahkan teks." });
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
