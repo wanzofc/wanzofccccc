@@ -9,6 +9,12 @@ const formatParagraph = (text) => text ? text.replace(/\.\s+/g, ".\n\n") : "Tida
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+app.get('/daftar', (req, res) => {
+    res.sendFile(path.join(__dirname, 'daftar.html'));
+});
 app.get('/api/ai/deepseek-chat', async (req, res) => {
     const query = req.query.content || "halo";
     try {
