@@ -644,10 +644,46 @@ app.get('/api/ai/stabilityai', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan gambar dari Stability AI." });
     }
 });
+app.get('/api/s/wikipedia', async (req, res) => {
+    try {
+        const query = req.query.query;
+        if (!query) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter query!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/wikipedia?query=${encodeURIComponent(query)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Wikipedia." });
+    }
+});
+app.get('/api/s/spotify', async (req, res) => {
+    try {
+        const query = req.query.query;
+        if (!query) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter query!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(query)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Spotify." });
+    }
+});
+app.get('/api/tools/fake-data', async (req, res) => {
+    try {
+        const type = req.query.type || "person";
+        const count = req.query.count || 5;
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/fake-data?type=${type}&count=${count}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil fake data." });
+    }
+});
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
-    
+app.use((req, res) => {
+  res.status(500).sendFile(path.join(__dirname, '404.html'));
+});
+        
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
