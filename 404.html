@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+       body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f4f4;
+          color: #333;
+          text-align: center;
+          padding: 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          margin: 0;
+      }
+      .container {
+          background-color: white;
+          padding: 30px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          width: 90%;
+      }
+      h1 {
+          font-size: 3em;
+          margin-bottom: 10px;
+          color: #e44d26;
+      }
+      p {
+          font-size: 1.2em;
+          margin-bottom: 20px;
+      }
+      a {
+          color: #3498db;
+          text-decoration: none;
+          border-bottom: 1px dashed #3498db;
+          transition: color 0.3s ease;
+      }
+      a:hover {
+          color: #2980b9;
+      }
+      .emoji {
+          font-size: 4em;
+          display: inline-block;
+          margin-bottom: 20px;
+      }
+      .animation-element {
+          opacity: 0; /* Start hidden */
+          transform: translateY(20px); /* Start slightly below */
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+     const { useState, useEffect, useRef } = React;
+
+
+      function NotFoundPage() {
+        const h1Ref = useRef(null);
+        const pRef = useRef(null);
+        const aRef = useRef(null);
+        const emojiRef = useRef(null);
+
+
+        useEffect(() => {
+          gsap.fromTo(emojiRef.current, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" });
+          gsap.fromTo(h1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 });
+          gsap.fromTo(pRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.4 });
+          gsap.fromTo(aRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.6 });
+
+        }, []);
+
+
+      return React.createElement("div", { className: "container" },
+         React.createElement("span", { className: "emoji", ref: emojiRef  }, "🤔"),
+          React.createElement("h1", { ref: h1Ref }, "Oops! Halaman Tidak Ditemukan"),
+          React.createElement("p", { ref: pRef }, "Sepertinya halaman yang Anda cari tidak ada. Mungkin tautannya salah atau halaman tersebut telah dihapus."),
+          React.createElement("p", {},
+              React.createElement("a", { href: "/", ref: aRef }, "kembali ke beranda")
+           )
+       );
+    }
+
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(NotFoundPage));
+
+
+    </script>
+</body>
+</html>
