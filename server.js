@@ -733,6 +733,53 @@ app.get('/api/primbon/tafsirmimpi', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Tafsir Mimpi." });
     }
 });
+app.get('/api/primbon/artinama', async (req, res) => {
+    try {
+        const nama = req.query.nama;
+        if (!nama) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter nama!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/artinama?nama=${encodeURIComponent(nama)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Arti Nama." });
+    }
+});
+
+app.get('/api/primbon/kecocokan_nama_pasangan', async (req, res) => {
+    try {
+        const { nama1, nama2 } = req.query;
+        if (!nama1 || !nama2) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter nama1 dan nama2!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/kecocokan_nama_pasangan?nama1=${encodeURIComponent(nama1)}&nama2=${encodeURIComponent(nama2)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Kecocokan Nama Pasangan." });
+    }
+});
+
+app.get('/api/primbon/nomorhoki', async (req, res) => {
+    try {
+        const phoneNumber = req.query.phoneNumber;
+        if (!phoneNumber) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter phoneNumber!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/nomorhoki?phoneNumber=${phoneNumber}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Nomor Hoki." });
+    }
+});
+
+app.get('/api/primbon/zodiak', async (req, res) => {
+    try {
+        const zodiak = req.query.zodiak;
+        if (!zodiak) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter zodiak!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/zodiak?zodiak=${encodeURIComponent(zodiak)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Zodiak." });
+    }
+});
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
