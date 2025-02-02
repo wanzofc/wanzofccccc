@@ -677,11 +677,67 @@ app.get('/api/tools/fake-data', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil fake data." });
     }
 });
+app.get('/api/primbon/cek_potensi_penyakit', async (req, res) => {
+    try {
+        const { tgl, bln, thn } = req.query;
+        if (!tgl || !bln || !thn) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter tgl, bln, dan thn!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/cek_potensi_penyakit?tgl=${tgl}&bln=${bln}&thn=${thn}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Primbon Penyakit." });
+    }
+});
+app.get('/api/primbon/ramalanjodoh', async (req, res) => {
+    try {
+        const { nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2 } = req.query;
+        if (!nama1 || !tgl1 || !bln1 || !thn1 || !nama2 || !tgl2 || !bln2 || !thn2)
+            return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan semua parameter yang diperlukan!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/ramalanjodoh?nama1=${encodeURIComponent(nama1)}&tgl1=${tgl1}&bln1=${bln1}&thn1=${thn1}&nama2=${encodeURIComponent(nama2)}&tgl2=${tgl2}&bln2=${bln2}&thn2=${thn2}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Ramalan Jodoh." });
+    }
+});
+app.get('/api/primbon/rejeki_hoki_weton', async (req, res) => {
+    try {
+        const { tgl, bln, thn } = req.query;
+        if (!tgl || !bln || !thn) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter tgl, bln, dan thn!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/rejeki_hoki_weton?tgl=${tgl}&bln=${bln}&thn=${thn}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Rejeki Weton." });
+    }
+});
+app.get('/api/primbon/sifat_usaha_bisnis', async (req, res) => {
+    try {
+        const { tgl, bln, thn } = req.query;
+        if (!tgl || !bln || !thn) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter tgl, bln, dan thn!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/sifat_usaha_bisnis?tgl=${tgl}&bln=${bln}&thn=${thn}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Sifat Usaha." });
+    }
+});
+app.get('/api/primbon/tafsirmimpi', async (req, res) => {
+    try {
+        const mimpi = req.query.mimpi;
+        if (!mimpi) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter mimpi!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/tafsirmimpi?mimpi=${encodeURIComponent(mimpi)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Tafsir Mimpi." });
+    }
+});
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
 app.use((req, res) => {
-  res.status(500).sendFile(path.join(__dirname, '404.html'));
+  res.status(500).json(path.join(__dirname, '404.html'));
 });
         
 app.listen(PORT, () => {
