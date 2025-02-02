@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 NOT FOUND</title>
-     <meta name="description" content="Halaman tidak ditemukan. Sepertinya tautan yang Anda cari tidak ada atau telah dihapus. Kembali ke halaman beranda.">
+    <meta name="description" content="Halaman tidak ditemukan. Sepertinya tautan yang Anda cari tidak ada atau telah dihapus. Kembali ke halaman beranda.">
     <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Halaman Tidak Ditemukan - 404 Not Found">
+    <meta property="og:description" content="Oops! Sepertinya halaman yang Anda cari tidak ada.">
+    <meta property="og:image" content="URL_GAMBAR_ANDA_DI_SINI">
+    <meta property="og:url" content="URL_HALAMAN_404_ANDA">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-       body {
+        body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #333;
@@ -23,10 +28,10 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-         body.dark-mode {
-          background-color: #1a1a1a;
-          color: #f0f0f0;
-         }
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
 
         .container {
             background-color: white;
@@ -36,61 +41,82 @@
             max-width: 600px;
             width: 90%;
             transition: background-color 0.3s;
-            position: relative; 
+            position: relative;
             overflow: hidden;
+             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+           
         }
         .dark-mode .container {
             background-color: #333;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
+
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
             color: #e44d26;
             transition: color 0.3s;
         }
+
         .dark-mode h1 {
-          color: #f05a3b;
+            color: #f05a3b;
         }
+
         p {
             font-size: 1.2em;
             margin-bottom: 20px;
-             transition: color 0.3s;
+            transition: color 0.3s;
         }
-         .dark-mode p {
-          color: #f0f0f0;
+
+        .dark-mode p {
+            color: #f0f0f0;
         }
+
         a {
             color: #3498db;
             text-decoration: none;
             border-bottom: 1px dashed #3498db;
             transition: color 0.3s, border-bottom 0.3s;
         }
-          .dark-mode a {
-             color: #61dafb;
-             border-bottom-color: #61dafb;
+
+        .dark-mode a {
+            color: #61dafb;
+            border-bottom-color: #61dafb;
         }
+
         a:hover {
             color: #2980b9;
         }
+
         .dark-mode a:hover {
-          color: #4aaae3;
+            color: #4aaae3;
         }
+
         .emoji {
             font-size: 4em;
             display: inline-block;
             margin-bottom: 20px;
+             transition: transform 0.3s;
         }
-          .lottie-container {
-              width: 200px;
-              height: 200px;
-              margin: 0 auto;
-               margin-bottom: 20px;
-          }
-          .dark-mode .lottie-container {
-              filter: invert(1);
-          }
-         .dark-mode-toggle {
+
+           .emoji:hover {
+             transform: scale(1.1);
+           }
+
+        .lottie-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .lottie-container {
+            filter: invert(1);
+        }
+
+        .dark-mode-toggle {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -100,11 +126,75 @@
             border: none;
             color: #333;
             transition: color 0.3s;
-         }
+             z-index: 10;
+        }
+
          .dark-mode .dark-mode-toggle {
-          color: #f0f0f0;
+             color: #f0f0f0;
          }
-         .mini-game-container {
+
+
+          .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+          }
+
+          .search-bar input {
+            flex-grow: 1;
+              padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            transition: border-color 0.3s;
+          }
+
+           .dark-mode .search-bar input{
+               background-color: #444;
+             color: #f0f0f0;
+             border-color: #666;
+          }
+
+          .search-bar button {
+             padding: 10px 15px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #3498db;
+              color: white;
+               cursor: pointer;
+                 transition: background-color 0.3s;
+          }
+           .dark-mode .search-bar button {
+            background-color: #2980b9;
+         }
+
+
+         .popular-links {
+            margin-bottom: 20px;
+        }
+        .popular-links h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .popular-links ul {
+             list-style: none;
+             padding: 0;
+         }
+
+         .popular-links li {
+            margin-bottom: 5px;
+            transition: transform 0.3s;
+           }
+           .popular-links li:hover {
+              transform: translateX(5px);
+           }
+          .popular-links a{
+            display: inline-block;
+          }
+
+        .mini-game-container {
            margin-bottom: 20px;
            display: none;
          }
@@ -156,41 +246,131 @@
         .dark-mode .feedback-form button{
              background: #f05a3b;
         }
-    @media (max-width: 768px) {
-          body {
-            padding: 20px;
+      .breadcrumbs {
+            margin-bottom: 20px;
+             font-size: 0.9em;
          }
-        .container {
-          padding: 20px;
-          width: 95%;
+
+        .breadcrumbs a{
+          color: #777;
+          text-decoration: none;
+           margin: 0 5px;
+            transition: color 0.3s;
         }
-        h1 {
-            font-size: 2.5em;
+         .dark-mode .breadcrumbs a{
+             color: #bbb;
+         }
+        .breadcrumbs a:hover {
+            color: #333;
         }
-        p {
-            font-size: 1.1em;
+        .dark-mode .breadcrumbs a:hover{
+            color: #ddd;
         }
-        .emoji {
-          font-size: 3em;
+      .breadcrumbs span {
+            margin: 0 5px;
+            color: #aaa;
         }
-        .lottie-container {
-           width: 150px;
-           height: 150px;
+        .dark-mode .breadcrumbs span{
+             color: #888;
         }
-      }
+
+        .social-share {
+          margin-top: 20px;
+        }
+        .social-share a {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 24px;
+             color: #555;
+                transition: color 0.3s;
+        }
+        .dark-mode .social-share a{
+           color: #bbb;
+        }
+        .social-share a:hover {
+          color: #3498db;
+        }
+           .dark-mode .social-share a:hover {
+               color: #61dafb;
+        }
+        .subscription-form {
+          margin-top: 20px;
+          display: flex;
+            flex-direction: column;
+              align-items: center;
+        }
+        .subscription-form input{
+          padding: 10px;
+           margin-bottom: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+           transition: border-color 0.3s;
+            background-color: #f9f9f9;
+            color: #333;
+         }
+          .dark-mode .subscription-form input {
+             background-color: #444;
+              border-color: #666;
+             color: #f0f0f0;
+         }
+
+        .subscription-form button{
+             background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+              cursor: pointer;
+             transition: background-color 0.3s;
+        }
+         .dark-mode .subscription-form button {
+           background-color: #2980b9;
+         }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .emoji {
+                font-size: 3em;
+            }
+
+            .lottie-container {
+                width: 150px;
+                height: 150px;
+            }
+           .search-bar {
+              width: 90%;
+            }
+            .social-share a {
+              font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script>
-     const { useState, useEffect, useRef } = React;
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+    const { useState, useEffect, useRef, useCallback } = React;
 
-
-        const animationData = {
+    const animationData = {
         "v": "4.13.0",
         "fr": 60,
         "ip": 0,
@@ -240,7 +420,7 @@
                         "nm": "Group 1",
                         "hd": false
                     },
-                     {
+                    {
                         "ty": "gr",
                         "it": [
                             {
@@ -287,235 +467,328 @@
                                 "hd": false
                             }
                         ],
-                         "nm": "Group 2",
+                        "nm": "Group 2",
                         "hd": false
-                     },
-                     {
-                        "ty": "gr",
-                         "it": [
-                                    {
-                                        "ty": "sh",
-                                        "ks": {
-                                            "a": 0,
-                                            "k": {
-                                                "i": [
-                                                    [0, 0],
-                                                    [0, 0],
-                                                    [0, 0],
-                                                    [0, 0]
-                                                ],
-                                                "o": [
-                                                    [0, 0],
-                                                    [0, 0],
-                                                    [0, 0],
-                                                    [0, 0]
-                                                ],
-                                                "v": [
-                                                    [168.686, 328.281],
-                                                    [191.979, 308.201],
-                                                    [284.33, 363.439],
-                                                    [265.643, 377.542]
-                                                ],
-                                                "c": true
-                                            },
-                                            "ix": 2
-                                        },
-                                        "nm": "Path 1",
-                                        "mn": "ADBE Vector Shape - Path",
-                                        "hd": false
-                                    },
-                                      {
-                                        "ty": "fl",
-                                        "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 4 },
-                                        "o": { "a": 0, "k": 100, "ix": 5 },
-                                        "nm": "Fill 1",
-                                         "mn": "ADBE Vector Graphic - Fill",
-                                        "hd": false
-                                    }
-                                ],
-                          "nm": "Group 3",
-                         "hd": false
-                        },
-                     {
-                        "ty": "gr",
-                         "it": [
-                                     {
-                                            "ty": "sh",
-                                            "ks": {
-                                                "a": 0,
-                                                "k": {
-                                                    "i": [
-                                                        [0, 0],
-                                                        [0, 0],
-                                                        [0, 0],
-                                                        [0, 0]
-                                                    ],
-                                                    "o": [
-                                                        [0, 0],
-                                                        [0, 0],
-                                                        [0, 0],
-                                                        [0, 0]
-                                                    ],
-                                                    "v": [
-                                                        [159.558, 314.022],
-                                                        [218.582, 299.151],
-                                                        [287.539, 331.894],
-                                                        [246.822, 357.011]
-                                                    ],
-                                                    "c": true
-                                                },
-                                                "ix": 2
-                                            },
-                                            "nm": "Path 1",
-                                            "mn": "ADBE Vector Shape - Path",
-                                            "hd": false
-                                        },
-                                          {
-                                                "ty": "st",
-                                                "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
-                                                "o": { "a": 0, "k": 100, "ix": 4 },
-                                                "w": { "a": 0, "k": 4, "ix": 5 },
-                                                "lc": 1,
-                                                "lj": 1,
-                                                "ml": 10,
-                                                "nm": "Stroke 1",
-                                                "mn": "ADBE Vector Graphic - Stroke",
-                                                "hd": false
-                                            }
-
-                                ],
-                          "nm": "Group 4",
-                         "hd": false
-                        },
-                      {
+                    },
+                    {
                         "ty": "gr",
                         "it": [
-                             {
-                                    "ty": "sh",
-                                    "ks": {
-                                        "a": 0,
-                                        "k": {
-                                            "i": [
-                                                [0, 0],
-                                                [0, 0],
-                                                [0, 0],
-                                                [0, 0]
-                                            ],
-                                            "o": [
-                                                [0, 0],
-                                                [0, 0],
-                                                [0, 0],
-                                                [0, 0]
-                                            ],
-                                            "v": [
-                                               [231.21, 250.321],
-                                                [176.976, 198.267],
-                                                [235.957, 150.944],
-                                                [290.256, 202.983]
-                                            ],
-                                            "c": true
-                                        },
-                                        "ix": 2
+                            {
+                                "ty": "sh",
+                                "ks": {
+                                    "a": 0,
+                                    "k": {
+                                        "i": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "o": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "v": [
+                                            [168.686, 328.281],
+                                            [191.979, 308.201],
+                                            [284.33, 363.439],
+                                            [265.643, 377.542]
+                                        ],
+                                        "c": true
                                     },
-                                    "nm": "Path 1",
-                                    "mn": "ADBE Vector Shape - Path",
-                                     "hd": false
+                                    "ix": 2
                                 },
-                              {
-                                        "ty": "fl",
-                                        "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 4 },
-                                        "o": { "a": 0, "k": 100, "ix": 5 },
-                                        "nm": "Fill 1",
-                                         "mn": "ADBE Vector Graphic - Fill",
-                                        "hd": false
-                                    }
-                                ],
-                          "nm": "Group 5",
-                         "hd": false
-                        },
+                                "nm": "Path 1",
+                                "mn": "ADBE Vector Shape - Path",
+                                "hd": false
+                            },
+                            {
+                                "ty": "fl",
+                                "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 4 },
+                                "o": { "a": 0, "k": 100, "ix": 5 },
+                                "nm": "Fill 1",
+                                "mn": "ADBE Vector Graphic - Fill",
+                                "hd": false
+                            }
+                        ],
+                        "nm": "Group 3",
+                        "hd": false
+                    },
+                    {
+                        "ty": "gr",
+                        "it": [
+                            {
+                                "ty": "sh",
+                                "ks": {
+                                    "a": 0,
+                                    "k": {
+                                        "i": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "o": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "v": [
+                                            [159.558, 314.022],
+                                            [218.582, 299.151],
+                                            [287.539, 331.894],
+                                            [246.822, 357.011]
+                                        ],
+                                        "c": true
+                                    },
+                                    "ix": 2
+                                },
+                                "nm": "Path 1",
+                                "mn": "ADBE Vector Shape - Path",
+                                "hd": false
+                            },
+                            {
+                                "ty": "st",
+                                "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                                "o": { "a": 0, "k": 100, "ix": 4 },
+                                "w": { "a": 0, "k": 4, "ix": 5 },
+                                "lc": 1,
+                                "lj": 1,
+                                "ml": 10,
+                                "nm": "Stroke 1",
+                                "mn": "ADBE Vector Graphic - Stroke",
+                                "hd": false
+                            }
+                        ],
+                        "nm": "Group 4",
+                        "hd": false
+                    },
+                    {
+                        "ty": "gr",
+                        "it": [
+                            {
+                                "ty": "sh",
+                                "ks": {
+                                    "a": 0,
+                                    "k": {
+                                        "i": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "o": [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0]
+                                        ],
+                                        "v": [
+                                            [231.21, 250.321],
+                                            [176.976, 198.267],
+                                            [235.957, 150.944],
+                                            [290.256, 202.983]
+                                        ],
+                                        "c": true
+                                    },
+                                    "ix": 2
+                                },
+                                "nm": "Path 1",
+                                "mn": "ADBE Vector Shape - Path",
+                                "hd": false
+                            },
+                            {
+                                "ty": "fl",
+                                "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 4 },
+                                "o": { "a": 0, "k": 100, "ix": 5 },
+                                "nm": "Fill 1",
+                                "mn": "ADBE Vector Graphic - Fill",
+                                "hd": false
+                            }
+                        ],
+                        "nm": "Group 5",
+                        "hd": false
+                    },
                 ],
                 "hd": false
             }
         ],
         "markers": []
     };
-      function NotFoundPage() {
+
+    function NotFoundPage() {
         const containerRef = useRef(null);
         const animationContainerRef = useRef(null);
         const h1Ref = useRef(null);
         const pRef = useRef(null);
         const aRef = useRef(null);
         const emojiRef = useRef(null);
+         const searchInputRef = useRef(null);
         const [isDarkMode, setIsDarkMode] = useState(false);
         const formRef = useRef(null)
         const [isGameVisible, setIsGameVisible] = useState(false);
+         const [breadcrumbs, setBreadcrumbs] = useState([]);
         const gameRef = useRef(null);
+         const subscriptionRef = useRef(null);
         const toggleDarkMode = () => {
-          setIsDarkMode(!isDarkMode);
-          document.body.classList.toggle('dark-mode', !isDarkMode);
-      };
-    useEffect(() => {
-           gsap.fromTo(emojiRef.current, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" });
-            gsap.fromTo(h1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 });
-            gsap.fromTo(pRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.4 });
-            gsap.fromTo(aRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.6 });
-          const handleParallax = () => {
-              if(containerRef.current){
-                const scrollY = window.scrollY;
-                  containerRef.current.style.backgroundPositionY = `${scrollY * 0.2}px`;
-              }
-          };
-             window.addEventListener('scroll', handleParallax);
-           return () => {
-              window.removeEventListener('scroll', handleParallax);
-            };
-      }, []);
-        useEffect(() => {
-          const anim = lottie.loadAnimation({
-            container: animationContainerRef.current,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            animationData: animationData,
-          });
+            setIsDarkMode(!isDarkMode);
+            document.body.classList.toggle('dark-mode', !isDarkMode);
+        };
 
-          return () => {
-            anim.destroy();
-          };
+        useEffect(() => {
+           
+              gsap.fromTo(emojiRef.current, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" });
+                gsap.fromTo(h1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 });
+                 gsap.fromTo(pRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.4 });
+                  gsap.fromTo(aRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.6 });
+           const handleParallax = () => {
+                if(containerRef.current){
+                    const scrollY = window.scrollY;
+                     containerRef.current.style.backgroundPositionY = `${scrollY * 0.2}px`;
+                 }
+            };
+            window.addEventListener('scroll', handleParallax);
+
+             const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+           const breadcrumbItems = pathSegments.map((segment, index) => ({
+               name: segment,
+               path: `/${pathSegments.slice(0, index + 1).join('/')}`
+           }));
+           setBreadcrumbs(breadcrumbItems);
+
+
+             return () => {
+               window.removeEventListener('scroll', handleParallax);
+            };
+
         }, []);
-       const handleFormSubmit = (event) => {
+
+
+        useEffect(() => {
+            const anim = lottie.loadAnimation({
+                container: animationContainerRef.current,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                animationData: animationData,
+            });
+
+             return () => {
+                anim.destroy();
+            };
+
+        }, []);
+
+
+          const handleSearch = () => {
+            if(searchInputRef.current){
+                const query = searchInputRef.current.value;
+                alert("Anda Mencari :" + query);
+             }
+           };
+        const handleFormSubmit = (event) => {
             event.preventDefault();
             alert("Terimakasih Atas masukan anda!");
-              if (formRef.current){
-                  formRef.current.reset();
-              }
-          };
+            if (formRef.current){
+              formRef.current.reset();
+            }
+         };
+
         const handleGameToggle = () => {
             setIsGameVisible(!isGameVisible);
         };
-      return React.createElement("div", {
-        className: `container ${isDarkMode ? 'dark-mode' : ''}`,
-        style: {background: `url('https://source.unsplash.com/1200x800/?abstract,dark') center / cover fixed`, } ,
-        ref: containerRef, role: "main" },
-         React.createElement("button", { className: `dark-mode-toggle`, onClick: toggleDarkMode }, isDarkMode ? React.createElement("i", { className: "fas fa-sun"}) : React.createElement("i", { className: "fas fa-moon"})),
 
-         React.createElement("div", { className: "lottie-container", ref: animationContainerRef }),
-         React.createElement("span", { className: "emoji", ref: emojiRef  }, "🤔"),
-          React.createElement("h1", { ref: h1Ref }, "OOPS! HALAMAN TIDAK DITEMUKAN"),
-          React.createElement("p", { ref: pRef }, "Sepertinya halaman yang Anda cari tidak ada. Mungkin tautannya salah atau halaman tersebut telah dihapus."),
-          React.createElement("p", {},
-              React.createElement("a", { href: "https://wanzofc.us.kg", ref: aRef }, "kembali ke beranda")
-            ),
-         React.createElement("div", { className: `mini-game-container ${isGameVisible ? 'visible' : ''}`, ref: gameRef}, React.createElement("button", {onClick: handleGameToggle}, isGameVisible ? "TUTUP GAME" : "Mainkan Mini Game")),
+         const handleSubscription = (event) => {
+            event.preventDefault();
+             alert("Terima kasih telah berlangganan!");
+            if (subscriptionRef.current) {
+                subscriptionRef.current.reset();
+            }
+        };
 
-         React.createElement("form", {className: 'feedback-form', ref: formRef, onSubmit: handleFormSubmit},
-             React.createElement("textarea", {placeholder: "BERI KAMI MASUKAN"}),
-               React.createElement("button", {type:"submit"}, "kirim")
+       const renderBreadcrumbs = () => {
+        return (
+            React.createElement("div", {className: "breadcrumbs"},
+                React.createElement("a", { href: "/" }, "Beranda"),
+                breadcrumbs.map((item, index) => (
+                React.createElement(React.Fragment, {key: index},
+                    React.createElement("span", {}, "/"),
+                    React.createElement("a", { href: item.path }, item.name)
+                   )
+                 ))
+           )
+         );
+       };
+
+     const renderMiniGame = () => {
+         return  React.createElement("div", { className: `mini-game-container ${isGameVisible ? 'visible' : ''}`, ref: gameRef},
+            React.createElement("button", {onClick: handleGameToggle}, isGameVisible ? "TUTUP GAME" : "Mainkan Mini Game"),
+            isGameVisible && React.createElement("p", {}, "Ini adalah contoh mini game")
+         )
+        };
+
+         const renderSocialShare = () => {
+          const currentUrl = window.location.href;
+            return React.createElement("div", {className: "social-share"},
+             React.createElement("a", { href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`, target:"_blank", "aria-label": "Share on Facebook"}, React.createElement("i", { className: "fab fa-facebook"})),
+            React.createElement("a", { href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`, target: "_blank", "aria-label": "Share on Twitter"}, React.createElement("i", { className: "fab fa-twitter"})),
+            React.createElement("a", { href: `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(currentUrl)}`, target:"_blank", "aria-label": "Share on Linkedin"}, React.createElement("i", { className: "fab fa-linkedin"}))
+
+         )
+         };
+         const renderSubscriptionForm = () => {
+             return React.createElement("form", {className:"subscription-form", onSubmit: handleSubscription, ref: subscriptionRef},
+                   React.createElement("input", {type: "email", placeholder: "Masukan email anda", required: true}),
+                    React.createElement("button", {type:"submit"}, "berlangganan")
           )
-       );
-      }
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(React.createElement(NotFoundPage));
-    </script>
+         }
+
+        return React.createElement("div", {
+            className: `container ${isDarkMode ? 'dark-mode' : ''}`,
+              style: {background: `url('https://source.unsplash.com/1200x800/?abstract,dark') center / cover fixed`, } ,
+             ref: containerRef, role: "main" },
+            React.createElement("button", { className: `dark-mode-toggle`, onClick: toggleDarkMode, "aria-label": isDarkMode ? "Aktifkan Mode Terang" : "Aktifkan Mode Gelap"  }, isDarkMode ? React.createElement("i", { className: "fas fa-sun"}) : React.createElement("i", { className: "fas fa-moon"})),
+               renderBreadcrumbs(),
+
+          React.createElement("div", { className: "lottie-container", ref: animationContainerRef }),
+          React.createElement("span", { className: "emoji", ref: emojiRef  }, "🤔"),
+            React.createElement("h1", { ref: h1Ref }, "OOPS! HALAMAN TIDAK DITEMUKAN"),
+            React.createElement("p", { ref: pRef }, "Sepertinya halaman yang Anda cari tidak ada. Mungkin tautannya salah atau halaman tersebut telah dihapus."),
+
+             React.createElement("div", {className: "search-bar"},
+               React.createElement("input", {type: "text", placeholder: "Cari sesuatu..", ref: searchInputRef }),
+               React.createElement("button", {onClick: handleSearch},  React.createElement("i", {className: "fas fa-search"})),
+             ),
+             React.createElement("div", { className: 'popular-links' },
+                  React.createElement('h2', {}, 'Halaman Populer'),
+                   React.createElement('ul', {},
+                   React.createElement('li', {}, React.createElement('a', {href: '/'}, 'Beranda')),
+                      React.createElement('li', {}, React.createElement('a', {href: '/blog'}, 'Blog')),
+                    React.createElement('li', {}, React.createElement('a', {href: '/contact'}, 'Kontak')),
+                      React.createElement('li', {}, React.createElement('a', {href: '/about'}, 'Tentang Kami')),
+
+                     )
+             ),
+
+
+            React.createElement("p", {},
+               React.createElement("a", { href: "https://wanzofc.us.kg", ref: aRef }, "kembali ke beranda")
+           ),
+            renderMiniGame(),
+           React.createElement("form", {className: 'feedback-form', ref: formRef, onSubmit: handleFormSubmit},
+               React.createElement("textarea", {placeholder: "BERI KAMI MASUKAN"}),
+               React.createElement("button", {type:"submit"}, "kirim")
+          ),
+            renderSocialShare(),
+          renderSubscriptionForm(),
+
+        );
+                                                                     }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(NotFoundPage));
+</script>
 </body>
 </html>
