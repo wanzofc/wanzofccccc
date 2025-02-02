@@ -13,7 +13,7 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
 app.get('/daftar', (req, res) => {
-    res.sendFile(path.join(__dirname, 'daftar.html'));
+    res.sendFile(path.join(__dirname, 'login.html'));
 });
 app.get('/api/ai/deepseek-chat', async (req, res) => {
     const query = req.query.content || "halo";
@@ -577,7 +577,29 @@ app.get('/api/cf/chat', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari chatbot AI." });
     }
 });
+app.get('/api/ai/qwen257b', async (req, res) => {
+    try {
+        const prompt = req.query.prompt;
+        const text = req.query.text;
+        if (!prompt || !text) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter prompt dan text!" });
 
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/qwen257b?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "Qwen 257B AI Response", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI Qwen 257B." });
+    }
+});
+app.get('/api/ai/qwq-32b-preview', async (req, res) => {
+    try {
+        const content = req.query.content;
+        if (!content) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter content!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/qwq-32b-preview?content=${encodeURIComponent(content)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "QWQ 32B AI Response", data: data });
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI QWQ 32B." });
+    }
+});
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
