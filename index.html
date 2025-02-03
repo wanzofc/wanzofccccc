@@ -8,6 +8,7 @@
     <link rel="icon" href="https://files.catbox.moe/2f05xw.svg" type="image/x-icon">
     <link rel="preload" href="https://files.catbox.moe/2f05xw.svg" as="image">
     <link rel="preload" href="https://files.catbox.moe/a3y4z9.mp3" as="audio">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta property="og:title" content="API WANZOFC TECH" />
     <meta property="og:description" content="Kumpulan API dari WanzoFC Tech" />
     <meta property="og:image" content="https://files.catbox.moe/3cpcye.jpg" />
@@ -272,7 +273,49 @@
         .filtered-item a:hover {
            text-decoration: underline;
         }
-
+    .api-category {
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .category-header {
+             display: flex;
+            justify-content: space-between;
+            align-items: center;
+             cursor: pointer;
+            padding: 10px;
+        }
+         .category-content {
+            max-height: 0;
+            overflow: hidden;
+             transition: max-height 0.3s ease-out;
+         }
+        .category-content.show {
+          max-height: 500px;
+           }
+       .api-item-desc {
+             font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 5px;
+           display: block;
+        }
+       .api-item-status {
+            font-size: 0.8em;
+            padding: 3px 5px;
+             border-radius: 3px;
+             display: inline-block;
+            margin-left: 5px;
+        }
+        .api-item-status.online {
+            background-color: green;
+        }
+         .api-item-status.offline {
+           background-color: red;
+       }
+       .category-header h3 {
+         margin: 0;
+         }
 </style>
 </head>
 <body >
@@ -371,251 +414,89 @@
     </script>
      <script type="text/babel">
        const { useEffect, useState, useRef } = React;
-         <div class="menu">
-    <div class="menu-item">
-        <a href="/api/ai/deepseek-chat?content=halo">🤖 AI - Deepseek Chat</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/ai/image2text">🖼️ AI - Image to Text</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/ai/gemini-pro?content=halo">♊ AI - Gemini Pro</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/ai/meta-llama?content=halo">🦙 AI - Meta Llama</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/ai/dbrx-instruct?content=halo">✨ AI - DBRX Instruct</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/ai/deepseek-r1?content=halo">🧠 AI - Deepseek R1</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/gita?q=halo">📚 AI - Gita</a>
-    </div>
-   <div class="menu-item">
-        <a href="/api/ai/uncovr?content=siapa%20itu%20wanzofc?">🕵️ AI - Uncovr Chat</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/ai/wanzofc?text=belajar%20programming">👨‍💻 AI - wanzofc</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/ai/lepton?text=hai">⚛️ AI - Lepton</a>
-    </div>
-     <div class="menu-item">
-         <a href="/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc">🤖 AI - GPT-3</a>
-    </div>
-      <div class="menu-item">
-          <a href="/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku">🗣️ AI - Qwen 257B</a>
-    </div>
-     <div class="menu-item">
-       <a href="/api/ai/qwq-32b-preview?content=halo%20sayangku">💬 AI - QWQ 32B</a>
-    </div>
-      <div class="menu-item">
-       <a href="/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker">🎨 AI - Stability AI (Image Generation)</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/ai/metaai?query=Halo meta ai sayangku">🌐 AI - Meta AI</a>
-    </div>
-    <div class="menu-item">
-      <a href="/api/ai/ustadz?query=halo pak ustadz">👳 AI - Ustadz AI</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/ai/khodam?content=aabrayy">👻 AI - Cekhodam</a>
-    </div>  
-    <div class="menu-item">
-        <a href="/api/anime/latest">🎬 Anime - Terbaru</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal">🎞️ Anime - Anichin Episode</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/berita/kompas">📰 Berita - Kompas</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/berita/jkt48">🎤 Berita - JKT48</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/berita/cnn">📺 Berita - CNN</a>
-    </div>
-   <div class="menu-item">
-        <a href="/api/berita/cnbcindonesia">📊 Berita - CNBC Indonesia</a>
-   </div>
-    <div class="menu-item">
-        <a href="/api/berita/antara">📰 Berita - Antara</a>
-    </div>
-      <div class="menu-item">
-        <a href="/api/berita/tribunnews">📰 Berita - Tribunnews</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/berita/suara">📢 Berita - Suara</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/berita/merdeka">🇮🇩 Berita - Merdeka</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/berita/sindonews">📰 Berita - Sindonews</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/berita/liputan6">📰 Berita - Liputan6</a>
-     </div>   
-    <div class="menu-item">
-        <a href="/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file">⬇️ Mediafire Downloader</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/r/blue-archive">💙 Random Blue Archive Image</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/r/waifu">🌸 Random - Waifu</a>
-    </div>
-     <div class="menu-item">
-         <a href="/api/r/quotesanime">💬 Random Anime Quotes</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/anime/otakudesu/search?s=demon slayer">🔍 Anime - Otakudesu Search</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC">🎵 TikTok Downloader</a>
-    </div>
-    <div class="menu-item">
-      <a href="/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==">📸 Instagram Downloader</a>
-   </div>
-    <div class="menu-item">
-        <a href="/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U">🍜 SnackVideo Downloader</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic">✂️ CapCut Template Downloader</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB">⬇️ Downloader - SaveFrom</a>
-    </div>
-     <div class="menu-item">
-         <a href="/api/d/github?url=https://github.com/wanzofc/portofolio">💻 Downloader - GitHub Repository</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/stalk/youtube?username=wanzofc">▶️ YouTube Stalker</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/stalk/tiktok?username=wanzofc2">🎶 TikTok Stalker</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/stalk/github?user=wanzbrayy">🐈 GitHub Stalker</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/stalk/npm?packageName=express">📦 Stalk - NPM</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/s/pinterest?query=elaina">📌 Search - Pinterest</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/s/soundcloud?query=yung kai blue">🎵 Search - SoundCloud</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/s/gitagram">🖼️ Search - Gitagram</a>
-    </div>
-      <div class="menu-item">
-        <a href="/api/s/duckduckgo">🦆 Search - DuckDuckGo</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/s/combot">🤖 Search - Combot</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/s/bukalapak">🛒 Search - Bukalapak</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/s/brave">🛡️ Search - Brave</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/s/wikipedia?query=prabowo">📖 Search - Wikipedia</a>
-    </div>
-    <div class="menu-item">
-         <a href="/api/s/spotify?query=Yung KAI blue">🎧 Search - Spotify</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/s/tiktok?query=elaina">🎶 TikTok Search</a>
-    </div>
-     <div class="menu-item">
-       <a href="/api/info/jadwaltv">📺 Informasi - Jadwal TV</a>
-    </div>
-      <div class="menu-item">
-       <a href="/api/info/liburnasional">📅 Informasi - Hari Libur Nasional</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/info/bmkg">🌡️ Informasi - BMKG</a>
-    </div>
-      <div class="menu-item">
-        <a href="/api/info/cuaca">🌤️ Informasi - Cuaca</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/apk/playstore?search=pou">📱 APK - Play Store</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/apk/happymod">😀 APK - HappyMod</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/apk/appstore">🍎 APK - App Store</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/apk/apkpure">📱 APK - APKPure</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/apk/apkmody">📱 APK - APKMody</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/tools/subdomains?domain=wanzofc.us.kg">🌐 Subdomain Scanner</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/tools/text2base64?text=wanzofc">🔤 Text to Base64</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/tools/text2qr?text=wanzofc">🔲 Text to QR Code</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/tools/translate?text=halo&lang=en">🌐 Text Translator</a>
-   </div>
-    <div class="menu-item">
-      <a href="/api/tools/fake-data?type=person&count=5">🎭 Tools - Fake Data</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/cf/sentiment?text=I%20like%20you">❤️ CF - Sentiment Analysis</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/cf/image-classification?imageUrl=https://cataas.com/cat">🖼️ CF - Image Classification</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/cf/embedding?text=Sample%20text">📝 CF - Text Embedding</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc">💬 CF - Chatbot</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998">⚕️ Primbon - Cek Potensi Penyakit</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008">❤️ Primbon - Ramalan Jodoh</a>
-    </div>
-     <div class="menu-item">
-       <a href="/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025">💰 Primbon - Rejeki & Hoki Weton</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025">💼 Primbon - Sifat Usaha & Bisnis</a>
-    </div>
-     <div class="menu-item">
-        <a href="/api/primbon/tafsirmimpi?mimpi=bertemu">💭 Primbon - Tafsir Mimpi</a>
-    </div>
-    <div class="menu-item">
-       <a href="/api/primbon/artinama?nama=Awan">📝 Primbon - Arti Nama</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau">💞 Primbon - Kecocokan Nama Pasangan</a>
-    </div>
-    <div class="menu-item">
-        <a href="/api/primbon/nomorhoki?phoneNumber=62895402567224">🍀 Primbon - Nomor Hoki</a>
-    </div>
-      <div class="menu-item">
-        <a href="/api/primbon/zodiak?zodiak=Pisces">♓ Primbon - Zodiak</a>
-    </div>
-</div>
+         const apiList = [
+            { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
+            { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
+            { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
+             { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online" },
+             { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
+             { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
+             { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
+            { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
+            { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
+    { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
+    { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
+    { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
+    { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
+     { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
+  { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
+   { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
+   { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },           
+    { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
+    { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
+    { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
+    { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
+   { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
+    { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
+    { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
+    { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
+   { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
+    { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
+   { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
+   { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },       
+    { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
+    { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
+    { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
+    { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
+   { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
+    { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
+    { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
+    { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
+    { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
+    { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
+    { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
+    { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+   { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
+    { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
+    { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
+    { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+    { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
+   { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
+    { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
+    { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
+   { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
+    { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
+   { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
+    { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
+  { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
+   { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
+   { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
+   { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
+  { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
+    { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
+   { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
+   { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
+   { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
+    { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
+    { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
+   { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
+    { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
+   { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
+     { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
+  { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
+  { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
+  { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
+    { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
+   { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
+   { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
+    { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
+    { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
+    { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
+    { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
+    { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
+    { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
+    { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
+];
         const fetchData = async (url) => {
            try {
                const response = await fetch(url);
@@ -634,35 +515,64 @@
        function APIList() {
            const [filteredList, setFilteredList] = useState(apiList);
              const searchInput = useRef(null);
+            const [activeCategories, setActiveCategories] = useState({});
             useEffect(() => {
                 gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
              }, []);
+           const handleCategoryToggle = (category) => {
+              setActiveCategories((prevCategories) => ({
+                    ...prevCategories,
+                     [category]: !prevCategories[category],
+                 }));
+            };
            const handleSearch = () => {
                 const searchTerm = searchInput.current.value.toLowerCase();
                 const newList = apiList.filter(api =>
-                  api.name.toLowerCase().includes(searchTerm)
+                    api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
                 );
                setFilteredList(newList);
+                gsap.fromTo(".filtered-item",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
+                 )
+           };
+            const getFilteredList = () => {
+                if (!searchInput.current || !searchInput.current.value) {
+                   return apiList;
+             }
 
-               gsap.fromTo(".filtered-item",
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
-                  )
+              const searchTerm = searchInput.current.value.toLowerCase();
+              return apiList.filter(api =>
+                api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+                );
             };
+           const categories = [...new Set(apiList.map(api => api.category))];
+           const filteredApiList = getFilteredList();
            return (
             <div className="container">
                <h3>LIST ENDPOINT:</h3>
-                 {filteredList.length === 0 ? (
-                     <p>Tidak ada hasil yang ditemukan.</p>
-                 ) : (
-                  filteredList.map((api, index) => (
-                   <div key={index} className="api-item">
-                       <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
-                         <a href={api.url} target="_blank" className="try-button" aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                <div id="search-container">
+                  <input type="text" id="search-input" placeholder="Cari API..." ref={searchInput} />
+                   <button id="search-button" onClick={handleSearch}>Cari</button>
+                 </div>
+                  {categories.map((category, index) => (
+                    <div key={index} className="api-category">
+                         <div className="category-header" onClick={() => handleCategoryToggle(category)}>
+                            <h3>{category}</h3>
+                              <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
+                        </div>
+                          <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
+                              {filteredApiList.filter(api => api.category === category).map((api, i) => (
+                                <div key={i} className="api-item">
+                                  <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                                   <span className="api-item-desc">{api.desc}</span>
+                                     <span className={`api-item-status ${api.status}`}> {api.status} </span>
+                                       <a href={api.url} target="_blank" className="try-button" aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                                </div>
+                           ))}
+                        </div>
                     </div>
-                  ))
-                 )}
-
+                 ))}
             </div>
             );
         }
@@ -838,6 +748,6 @@
 }(window, document, 'script', 'A692F5C5-D50F-4108-8BAA-336E9271FC8B', 'hLvKyQ4n-o6ybblJyZT09', {
   apiHost: 'https://api-cf-us-3.sendbird.com',
 });
-</script> 
+</script>
 </body>
 </html>
