@@ -290,10 +290,12 @@
             max-height: 0;
             overflow: hidden;
              transition: max-height 0.3s ease-out;
-         }
+           
+        }
         .category-content.show {
           max-height: 500px;
-           }
+             overflow-y: auto;
+         }
        .api-item-desc {
              font-size: 0.9em;
             color: #ccc;
@@ -487,7 +489,7 @@
   { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
   { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
     { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
-   { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
+ { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
    { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
     { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
     { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
