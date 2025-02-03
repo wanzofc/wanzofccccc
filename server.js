@@ -36,9 +36,15 @@ app.get('/api/ai/gemini-pro', async (req, res) => {
     const query = req.query.content || "hai";
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/gemini-pro?content=${encodeURIComponent(query)}`);
-        res.json({ creator: "WANZOFC TECH", result: true, message: "Gemini Pro AI", data: formatParagraph(data?.data) });
+        res.json
+           ({ creator: "WANZOFC TECH",
+             result: true, message: "Gemini Pro AI",
+             data: formatParagraph(data?.data) });
     } catch {
-        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gemini Pro bermasalah." });
+        res.status(500).json
+            ({ creator: "WANZOFC TECH",
+              result: false, 
+              message: "Gemini Pro bermasalah." });
     }
 });
 app.get('/api/ai/meta-llama', async (req, res) => {
