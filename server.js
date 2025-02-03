@@ -815,6 +815,26 @@ app.get('/api/ai/khodam', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Khodam AI." });
     }
 });
+app.get('/api/ai/wanzofc-you', async (req, res) => {
+    try {
+        const q = req.query.q;
+        if (!q) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter q!" });
+        const { data } = await axios.get(`https://api.neoxr.eu/api/you?q=${encodeURIComponent(q)}&apikey=PJaLJu`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc You." });
+    }
+});
+app.get('/api/ai/wanzofc-llama', async (req, res) => {
+    try {
+        const q = req.query.q;
+        if (!q) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter q!" });
+        const { data } = await axios.get(`https://api.neoxr.eu/api/llama?q=${encodeURIComponent(q)}&apikey=PJaLJu`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc Llama." });
+    }
+});
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
