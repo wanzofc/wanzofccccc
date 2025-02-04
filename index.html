@@ -22,7 +22,7 @@
             "description": "Kumpulan API dari WanzoFC Tech"
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.css">
     <style>
         :root {
             --primary-color: #00ff99;
@@ -32,7 +32,6 @@
             --font-family: Arial, sans-serif;
             --border-radius: 10px;
             --hover-color: rgba(255, 204, 0, 0.2);
-             --scrollbar-color: var(--primary-color);
         }
         body {
             font-family: var(--font-family);
@@ -48,7 +47,7 @@
             overflow-x: hidden;
             transition: background-color 0.3s ease;
         }
-         body.dark-mode {
+        body.dark-mode {
             background-color: #121212;
             color: #e0e0e0;
             background-image: none;
@@ -58,7 +57,7 @@
             z-index: 1;
             position: relative;
         }
-         .container {
+        .container {
             max-width: 700px;
             margin: auto;
             background-color: var(--background-color);
@@ -71,10 +70,10 @@
             transition: background-color 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-         .container:hover {
+        .container:hover {
            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-         .chart-container {
+        .chart-container {
             max-width: 700px;
             margin: auto;
             background: var(--background-color);
@@ -86,7 +85,7 @@
             justify-content: center;
             z-index: 1;
         }
-         .api-item {
+        .api-item {
            display: flex;
              justify-content: space-between;
              align-items: center;
@@ -100,20 +99,20 @@
            border-bottom: none;
             padding-bottom: 0;
         }
-         .api-item:hover {
+        .api-item:hover {
            background-color: var(--hover-color);
            transform: translateY(-2px);
         }
-         .api-item a {
+        .api-item a {
             color: var(--primary-color);
             text-decoration: none;
            margin-right: 10px;
            transition: color 0.3s ease;
        }
-       .api-item a:hover {
+        .api-item a:hover {
             text-decoration: underline;
         }
-         .try-button {
+        .try-button {
             background-color: var(--secondary-color);
             color: #121212;
             border: none;
@@ -124,11 +123,11 @@
             font-size: 12px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
         }
-          .try-button:hover, .try-button:focus {
+         .try-button:hover, .try-button:focus {
             background-color: #ffbb00;
              transform: scale(1.1);
         }
-         #lottie-container {
+        #lottie-container {
             width: 100px;
            height: 100px;
              position: fixed;
@@ -139,22 +138,23 @@
         canvas {
            display: none;
            }
-       ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
           width: 8px;
         }
         ::-webkit-scrollbar-thumb {
-         background-color: var(--scrollbar-color);
+         background-color: var(--primary-color);
          border-radius: 4px;
        }
         ::-webkit-scrollbar-track {
             background: #444;
         }
-        .loading-skeleton {
+       .loading-skeleton {
           background: #444;
            height: 20px;
             margin-bottom: 10px;
           animation: skeleton-loading 1.5s linear infinite alternate;
       }
+
       @keyframes skeleton-loading {
          0% {
             background-color: #444;
@@ -172,7 +172,7 @@
             align-items: center;
             gap: 10px;
         }
-         #music-controls button {
+        #music-controls button {
             background-color: var(--secondary-color);
             color: #121212;
             border: none;
@@ -233,6 +233,7 @@
             position: relative;
            z-index: 1;
         }
+
         #search-input {
             flex-grow: 1;
             padding: 10px;
@@ -255,7 +256,7 @@
          #search-button:hover {
              background-color: #ffbb00;
          }
-         .filtered-item {
+        .filtered-item {
             display: flex;
               justify-content: space-between;
              align-items: center;
@@ -275,10 +276,10 @@
            margin-right: 10px;
            transition: color 0.3s ease;
        }
-       .filtered-item a:hover {
+        .filtered-item a:hover {
             text-decoration: underline;
         }
-         .api-category {
+        .api-category {
             margin-bottom: 20px;
             border: 1px solid #555;
             border-radius: 10px;
@@ -302,9 +303,13 @@
             transition: max-height 0.3s ease-out;
 
         }
-       .category-content.show {
+        .category-content.show {
            max-height: 500px;
              overflow-y: auto;
+             display: flex; /* Add this */
+            flex-direction: row; /* Add this */
+            overflow-x: auto; /* Add this */
+            white-space: nowrap; /* Add this */
         }
        .api-item-desc {
             font-size: 0.9em;
@@ -325,10 +330,10 @@
         .api-item-status.offline {
            background-color: red;
        }
-      .category-header h3 {
+       .category-header h3 {
          margin: 0;
          }
-         .json-preview-overlay {
+       .json-preview-overlay {
            position: fixed;
           top: 0;
             left: 0;
@@ -340,7 +345,7 @@
             align-items: center;
            z-index: 1000;
        }
-        .json-preview-box {
+       .json-preview-box {
           background: #333;
             padding: 20px;
              border-radius: 10px;
@@ -349,7 +354,7 @@
             overflow: auto;
              position: relative;
        }
-        .json-preview-close {
+       .json-preview-close {
            position: absolute;
            top: 10px;
             right: 10px;
@@ -360,10 +365,10 @@
         .json-preview-close:hover {
          color: var(--secondary-color);
         }
-        .syntax-highlight {
-          white-space: pre-wrap;
+       .syntax-highlight {
+         white-space: pre-wrap;
        }
-        footer {
+       footer {
            text-align: center;
           margin-top: 30px;
          padding: 15px;
@@ -373,17 +378,17 @@
              position: relative;
            z-index: 1;
        }
-      footer a {
+       footer a {
            color: var(--primary-color);
           text-decoration: none;
        }
-        footer a:hover {
+       footer a:hover {
          text-decoration: underline;
         }
-         footer .social-icons {
+        footer .social-icons {
           margin-top: 10px;
         }
-         footer .social-icons a {
+        footer .social-icons a {
             margin: 0 5px;
             font-size: 20px;
             display: inline-block;
@@ -398,847 +403,538 @@
            font-size: 12px;
             transition: background-color 0.3s ease;
        }
-         .api-item .preview-button:hover {
+       .api-item .preview-button:hover {
            background-color: #777;
         }
-        .api-item .try-button.clicked {
+                .api-item .try-button.clicked {
              animation: clickAnimation 0.3s ease-in-out;
          }
-       @keyframes clickAnimation {
-           0% {
+    @keyframes clickAnimation {
+     0% {
             transform: scale(1);
-           }
-           50% {
+        }
+    50% {
             transform: scale(1.2);
-            }
-          100% {
+        }
+         100% {
             transform: scale(1);
-           }
        }
-         #category-filter {
-           margin-bottom: 15px;
-            display: flex;
-           justify-content: flex-start;
-            align-items: center;
+    }
+    #category-filter {
+      margin-bottom: 15px;
+        display: flex;
+         justify-content: flex-start;
+          align-items: center;
            gap: 10px;
-        }
-      #category-filter label {
-          color: #fff;
-           font-size: 14px;
-       }
-        #category-filter select {
+    }
+    #category-filter label {
+      color: #fff;
+       font-size: 14px;
+   }
+    #category-filter select {
          padding: 8px;
-          border: 1px solid #555;
-          border-radius: 5px;
-          background-color: #444;
-         color: #fff;
-          font-size: 14px;
-       }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 5px;
-           z-index: 1;
-       }
-       .pagination button {
-           background-color: var(--secondary-color);
-           color: #121212;
-            border: none;
-          padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-           font-size: 12px;
-            transition: background-color 0.3s ease;
-       }
-       .pagination button:hover {
-          background-color: #ffbb00;
-        }
-       .pagination button.active {
-          background-color: #ffbb00;
-        }
-       .api-item .copy-url-button {
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #444;
+       color: #fff;
+         font-size: 14px;
+   }
+   .api-item .copy-button {
             background-color: #555;
             color: #fff;
-           border: none;
-             padding: 5px 10px;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
-           font-size: 12px;
+            font-size: 12px;
             transition: background-color 0.3s ease;
-             margin-left: 5px;
-       }
-       .api-item .copy-url-button:hover {
+        }
+
+        .api-item .copy-button:hover {
             background-color: #777;
         }
-       .tooltip {
-        position: relative;
-        display: inline-block;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-           padding: 5px 0;
-           position: absolute;
-           z-index: 1;
-             bottom: 125%;
-          left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-          transition: opacity 0.3s;
-       }
-       .tooltip:hover .tooltiptext {
-          visibility: visible;
-             opacity: 1;
-       }
-       #loading-indicator {
-          display: none;
-            position: fixed;
-            top: 50%;
-          left: 50%;
-           transform: translate(-50%, -50%);
-            z-index: 9999;
-           font-size: 24px;
-            color: var(--primary-color);
-       }
-       #loading-indicator.show {
-           display: block;
-       }
-        .api-item-status.maintenance {
-            background-color: orange;
-       }
-       .view-mode-toggle {
-            margin-bottom: 15px;
-           display: flex;
-           justify-content: flex-end;
-           gap: 10px;
-            z-index: 1;
-           position: relative;
-       }
-       .view-mode-toggle button {
-          background-color: var(--secondary-color);
-           color: #121212;
-          border: none;
-           padding: 8px 12px;
-           border-radius: 5px;
-           cursor: pointer;
-         font-size: 12px;
-            transition: background-color 0.3s ease;
-       }
-       .view-mode-toggle button:hover {
-            background-color: #ffbb00;
-       }
-        .api-item-details {
-           display: none;
-             padding: 10px;
-           border-top: 1px solid #555;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-       .api-item-details.show {
-          display: block;
-       }
-        .api-item-details h4 {
-           margin-bottom: 5px;
-        }
-       .api-item-details .request-response {
-            margin-top: 10px;
-             background-color: #444;
-           padding: 10px;
-           border-radius: 5px;
+        .category-content {
             overflow-x: auto;
+            white-space: nowrap; /* Prevent content from wrapping */
+            display: flex; /* Add this */
+            flex-direction: row; /* Add this */
         }
-        .api-item-details .request-response pre {
-          white-space: pre-wrap;
-           word-wrap: break-word;
+         .category-content .api-item {
+            display: inline-flex; /* Display items horizontally */
+             margin-right: 10px;
+             width: auto;
+            border-bottom: none;
         }
-      .api-item .show-details-button {
-           background-color: #555;
-           color: #fff;
-          border: none;
-          padding: 5px 10px;
-           border-radius: 5px;
-          cursor: pointer;
-          font-size: 12px;
-           transition: background-color 0.3s ease;
-        }
-      .api-item .show-details-button:hover {
-          background-color: #777;
-       }
-        .breadcrumb {
-          margin-bottom: 10px;
-          text-align: left;
-         font-size: 0.8em;
-          color: #ccc;
-           z-index: 1;
-           position: relative;
-       }
-        .breadcrumb a {
-           color: var(--primary-color);
-           text-decoration: none;
-        }
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-      .faq-section {
-           margin-bottom: 20px;
-           border: 1px solid #555;
-          border-radius: 10px;
-         padding: 10px;
-      }
-        .faq-header {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           cursor: pointer;
-           padding: 10px;
-           transition: background-color 0.3s ease, transform 0.2s ease;
-       }
-       .faq-header:hover {
-          background-color: var(--hover-color);
-         transform: scale(1.02);
-        }
-        .faq-content {
-           max-height: 0;
-          overflow: hidden;
-           transition: max-height 0.3s ease-out;
-      }
-        .faq-content.show {
-          max-height: 500px;
-           overflow-y: auto;
-      }
-      .faq-header h3 {
-        margin: 0;
-     }
-      .contact-support {
-            text-align: left;
-             margin-bottom: 20px;
-            border: 1px solid #555;
-           border-radius: 10px;
-            padding: 10px;
-            z-index: 1;
-            position: relative;
-      }
-       .contact-support h3 {
-           margin-bottom: 10px;
-       }
-       .contact-support p {
-          margin-bottom: 5px;
-      }
-       .contact-support a {
-            color: var(--primary-color);
-            text-decoration: none;
-       }
-       .contact-support a:hover {
-          text-decoration: underline;
-       }
-       .api-item .favorite-button {
-         background-color: transparent;
-           color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-           margin-left: 5px;
-          transition: color 0.3s ease, transform 0.2s ease;
-       }
-       .api-item .favorite-button.favorited {
-          color: var(--secondary-color);
-       }
-      .api-item .favorite-button:hover {
-           transform: scale(1.2);
-       }
-       .grid-view {
-         display: flex;
-           flex-wrap: wrap;
-           justify-content: flex-start;
-            gap: 15px;
-            align-items: flex-start;
-       }
-        .grid-view .api-item {
-          width: calc(33.33% - 15px);
-           margin: 0;
-            border: 1px solid #555;
-            border-radius: 10px;
-           padding: 10px;
-           box-sizing: border-box;
-             flex-direction: column;
-          align-items: flex-start;
-       }
-       .grid-view .api-item:hover {
-           transform: scale(1.02);
-       }
-        .grid-view .api-item .api-item-desc {
-             margin-bottom: 10px;
-        }
-         .grid-view .api-item a,
-         .grid-view .api-item .try-button{
-         margin-bottom: 10px;
-       }
-       .grid-view .api-item .api-item-desc{
-        margin-bottom: 10px;
-       }
-       .list-view {
-         display: block;
-      }
-      .list-view .api-item {
-          display: flex;
-           justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
-            border-bottom: 1px solid #555;
-             padding-bottom: 5px;
-           opacity: 0;
-           transition: opacity 0.5s ease, transform 0.3s ease, background-color 0.3s ease;
-       }
-       .list-view .api-item:last-child {
-        border-bottom: none;
-            padding-bottom: 0;
-       }
     </style>
 </head>
 <body >
-    <header>
+   <header>
        <div id="music-controls">
         <button id="play-pause-button">Play</button>
          <button id="dark-mode-toggle">Dark Mode</button>
         </div>
       </header>
-     <audio id="background-music" loop>
-         <source src="https://files.catbox.moe/a3y4z9.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
+    <audio id="background-music" loop>
+        <source src="https://files.catbox.moe/a3y4z9.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
     </audio>
      <audio id="click-sound">
-         <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg">
+       Your browser does not support the audio element.
+   </audio>
     <div id="lottie-container"></div>
      <div id="search-container">
-       <input type="text" id="search-input" placeholder="Cari API...">
+      <input type="text" id="search-input" placeholder="Cari API...">
        <button id="search-button">Cari</button>
     </div>
     <h1>API WANZOFC TECH</h1>
     <main>
-        <div class="breadcrumb">
-          <a href="#">Home</a>
-        </div>
     <div id="root"></div>
     <div id="vue-app"></div>
     <div id="chart-container"></div>
-    <div id="loading-indicator">Loading...</div>
     </main>
-    <section class="contact-support">
-        <h3>Kontak & Support</h3>
-        <p>Jika ada pertanyaan, jangan ragu untuk menghubungi kami:</p>
-         <p>Email: <a href="mailto:wanzofc.tech@gmail.com">wanzofc.tech@gmail.com</a></p>
-        <p>Whatsapp: <a href="https://wa.me/62895402567224">0895-4025-67224</a></p>
-    </section>
-     <section class="faq-section">
-        <div class="faq-header" onclick="toggleFAQ('faq1')">
-            <h3>FAQ</h3>
-             <i class="fas fa-plus"></i>
-       </div>
-         <div class="faq-content" id="faq1">
-             <p><b>Q: Bagaimana cara menggunakan API ini?</b></p>
-            <p>A: Anda bisa menggunakan API ini dengan mengirimkan permintaan ke endpoint yang tersedia.</p>
-             <p><b>Q: Apakah API ini gratis?</b></p>
-             <p>A: Ya, API ini gratis untuk digunakan.</p>
-             <p><b>Q: Bagaimana jika ada masalah dengan API?</b></p>
-              <p>A: Anda bisa menghubungi kami melalui email atau whatsapp.</p>
-         </div>
-    </section>
     <footer>
-       <p>© 2025 WANZOFC TECH. <a href="#">Tentang Kami</a> | <a href="#">Kebijakan Privasi</a></p>
+        <p>© 2025 WANZOFC TECH. <a href="#">Tentang Kami</a> | <a href="#">Kebijakan Privasi</a></p>
         <div class="social-icons">
           <a href="https://wa.me/62895402567224">
-              <img src="https://files.catbox.moe/7rtv82.jpg" alt="WhatsApp" width="20" height="20">
-            </a>
-            <a href="https://files.catbox.moe/0ebbyi.jpg">
-            <img src="https://files.catbox.moe/7zoep9.jpg" alt="Dana" width="20" height="20">
-           </a>
-            <a href="https://instagram.com/wanz_brayy" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-             <a href="https://github.com/wanzbrayy" aria-label="GitHub"><i class="fab fa-github"></i></a>
+  <img src="https://files.catbox.moe/7rtv82.jpg" alt="WhatsApp" width="20" height="20">
+</a>
+<a href="https://files.catbox.moe/0ebbyi.jpg">
+  <img src="https://files.catbox.moe/7zoep9.jpg" alt="Dana" width="20" height="20">
+</a>
+          <a href="https://instagram.com/wanz_brayy" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/wanzbrayy" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <p>Last Updated: 2025</p>
     </footer>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-       <script>
-        const animationContainer = document.getElementById('lottie-container');
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script>
+         const animationContainer = document.getElementById('lottie-container');
          const animationData = {
             "v": "5.10.2",
             "fr": 60,
             "ip": 0,
-             "op": 120,
+            "op": 120,
             "w": 100,
             "h": 100,
             "nm": "Animation",
             "ddd": 0,
-           "assets": [],
-           "layers": [{
+            "assets": [],
+            "layers": [{
                 "ddd": 0,
                 "ind": 1,
-               "ty": 4,
+                "ty": 4,
                  "nm": "Shape Layer 1",
                 "sr": 1,
-                 "ks": {
+                "ks": {
                     "o": { "a": 0, "k": 100, "ix": 11 },
                     "r": { "a": 0, "k": 0, "ix": 10 },
-                     "s": { "a": 0, "k": [ 100, 100 ], "ix": 6 },
-                   "p": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
-                   "a": { "a": 0, "k": [ 50, 50 ], "ix": 1 }
-               },
+                    "s": { "a": 0, "k": [ 100, 100 ], "ix": 6 },
+                    "p": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                    "a": { "a": 0, "k": [ 50, 50 ], "ix": 1 }
+                },
                 "ao": 0,
-                "shapes": [{
+                 "shapes": [{
                     "ty": "gr",
-                     "it": [{
+                    "it": [{
                         "ty": "rc",
                          "d": 1,
-                       "s": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
-                         "p": { "a": 0, "k": [ 0, 0 ], "ix": 3 },
+                        "s": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                        "p": { "a": 0, "k": [ 0, 0 ], "ix": 3 },
                          "r": { "a": 0, "k": 0, "ix": 4 },
-                        "nm": "Rectangle Path 1",
+                       "nm": "Rectangle Path 1",
                          "hd": false
                     }, {
                         "ty": "fl",
-                        "c": { "a": 0, "k": [ 0.0196078431372549, 1, 0.596078431372549, 1 ], "ix": 4 },
+                       "c": { "a": 0, "k": [ 0.0196078431372549, 1, 0.596078431372549, 1 ], "ix": 4 },
                         "o": { "a": 0, "k": 100, "ix": 5 },
                         "nm": "Fill 1",
-                         "hd": false
-                   }],
+                       "hd": false
+                    }],
                    "nm": "Group 1",
                     "hd": false
-               }],
-               "ip": 0,
-                 "op": 120,
+                }],
+                 "ip": 0,
+                "op": 120,
                 "st": 0,
-                "bm": 0
-           }],
+                 "bm": 0
+            }],
            "markers": []
         };
         lottie.loadAnimation({
              container: animationContainer,
-             renderer: 'svg',
-            loop: true,
+            renderer: 'svg',
+             loop: true,
             autoplay: true,
-           animationData: animationData,
+             animationData: animationData,
         });
     </script>
     <script type="text/babel">
-       const { useEffect, useState, useRef } = React;
+        const { useEffect, useState, useRef } = React;
           const apiList = [
-            { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online",  requestExample: `GET /api/ai/deepseek-chat?content=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo, bagaimana saya bisa membantu Anda hari ini?"}}` },
-            { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online", requestExample: `POST /api/ai/image2text \n Content-Type: multipart/form-data \n  form-data: { "image": <file> }`, responseExample: `{"status": 200, "message": "OK", "data": {"text": "Deskripsi teks dari gambar"}}` },
-            { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online", requestExample: `GET /api/ai/gemini-pro?content=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo! Ada yang bisa saya bantu?"}}` },
-            { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online", requestExample: `GET /api/ai/meta-llama?content=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo, apa yang bisa saya bantu?"}}` },
-            { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online", requestExample: `GET /api/ai/dbrx-instruct?content=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo, ada yang bisa saya bantu?"}}` },
-             { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online", requestExample: `GET /api/ai/deepseek-r1?content=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo! Apa yang ingin Anda diskusikan?"}}` },
-              { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online", requestExample: `GET /api/gita?q=halo`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo! Ini dari Gita"}}` },
-            { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online", requestExample: `GET /api/ai/uncovr?content=siapa%20itu%20wanzofc?`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "wanzofc adalah seorang developer."}}` },
-             { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online", requestExample: `GET /api/ai/wanzofc?text=belajar%20programming`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Tentu, mari kita belajar programming bersama!"}}` },
-             { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online", requestExample: `GET /api/ai/lepton?text=hai`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Hai juga!"}}` },
-             { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online", requestExample: `GET /api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Hai! Maaf kalau saya terkesan egois."}}` },
-             { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online", requestExample: `GET /api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo bos, senang bertemu dengan Anda!"}}` },
-              { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online", requestExample: `GET /api/ai/qwq-32b-preview?content=halo%20sayangku`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo sayangku, apa kabar?"}}` },
-             { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online", requestExample: `GET /api/ai/stabilityai?prompt=buatkan%20gambar%20hacker`, responseExample: `{"status": 200, "message": "OK", "data": {"imageUrl": "URL gambar hacker"}}` },
-              { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online", requestExample: `GET /api/ai/metaai?query=Halo meta ai sayangku`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo, ada yang bisa saya bantu?"}}` },
-              { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online", requestExample: `GET /api/ai/ustadz?query=halo pak ustadz`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Assalamualaikum, ada yang bisa saya bantu?"}}` },
-            { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online", requestExample: `GET /api/ai/khodam?content=aabrayy`, responseExample: `{"status": 200, "message": "OK", "data": {"khodam": "Khodam Anda adalah..."}}` },
-             { category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model  Llama ai.", status: "online", requestExample: `GET /api/ai/wanzofc-llama?q=halo sayang`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Halo sayang, ada apa?"}}` },
-              { category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online", requestExample: `GET /api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Tanggal sekarang adalah..."}}` },
-             { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online", requestExample: `GET /api/anime/latest`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Anime 1", "url": "url-anime1"}, {"title": "Judul Anime 2", "url": "url-anime2"}]}` },
-             { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online", requestExample: `GET /api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal`, responseExample: `{"status": 200, "message": "OK", "data": [{"episode": "Episode 1", "url": "url-episode1"}, {"episode": "Episode 2", "url": "url-episode2"}]}` },
-             { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online", requestExample: `GET /api/berita/kompas`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita 1", "url": "url-berita1"}, {"title": "Judul Berita 2", "url": "url-berita2"}]}` },
-              { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online", requestExample: `GET /api/berita/jkt48`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita JKT48 1", "url": "url-berita-jkt48-1"}, {"title": "Judul Berita JKT48 2", "url": "url-berita-jkt48-2"}]}` },
-             { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online", requestExample: `GET /api/berita/cnn`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita CNN 1", "url": "url-berita-cnn-1"}, {"title": "Judul Berita CNN 2", "url": "url-berita-cnn-2"}]}` },
-              { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online", requestExample: `GET /api/berita/cnbcindonesia`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita CNBC 1", "url": "url-berita-cnbc-1"}, {"title": "Judul Berita CNBC 2", "url": "url-berita-cnbc-2"}]}` },
-              { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online", requestExample: `GET /api/berita/antara`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Antara 1", "url": "url-berita-antara-1"}, {"title": "Judul Berita Antara 2", "url": "url-berita-antara-2"}]}` },
-            { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online", requestExample: `GET /api/berita/tribunnews`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Tribun 1", "url": "url-berita-tribun-1"}, {"title": "Judul Berita Tribun 2", "url": "url-berita-tribun-2"}]}` },
-              { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online", requestExample: `GET /api/berita/suara`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Suara 1", "url": "url-berita-suara-1"}, {"title": "Judul Berita Suara 2", "url": "url-berita-suara-2"}]}` },
-              { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online", requestExample: `GET /api/berita/merdeka`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Merdeka 1", "url": "url-berita-merdeka-1"}, {"title": "Judul Berita Merdeka 2", "url": "url-berita-merdeka-2"}]}` },
-             { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online", requestExample: `GET /api/berita/sindonews`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Sindonews 1", "url": "url-berita-sindonews-1"}, {"title": "Judul Berita Sindonews 2", "url": "url-berita-sindonews-2"}]}` },
-             { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online", requestExample: `GET /api/berita/liputan6`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Berita Liputan6 1", "url": "url-berita-liputan6-1"}, {"title": "Judul Berita Liputan6 2", "url": "url-berita-liputan6-2"}]}` },
-             { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online", requestExample: `GET /api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download"}}` },
-            { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online", requestExample: `GET /api/r/blue-archive`, responseExample: `{"status": 200, "message": "OK", "data": {"imageUrl": "url-gambar"}}` },
-             { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online", requestExample: `GET /api/r/waifu`, responseExample: `{"status": 200, "message": "OK", "data": {"imageUrl": "url-gambar-waifu"}}` },
-              { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online", requestExample: `GET /api/r/quotesanime`, responseExample: `{"status": 200, "message": "OK", "data": [{"quote": "Quotes 1", "character": "Karakter 1", "anime": "Anime 1"}, {"quote": "Quotes 2", "character": "Karakter 2", "anime": "Anime 2"}]}` },
-              { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online", requestExample: `GET /api/anime/otakudesu/search?s=demon slayer`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Anime 1", "url": "url-anime-otakudesu-1"}, {"title": "Judul Anime 2", "url": "url-anime-otakudesu-2"}]}` },
-            { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online", requestExample: `GET /api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-tiktok"}}` },
-             { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online", requestExample: `GET /api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-ig"}}` },
-              { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online", requestExample: `GET /api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-snackvideo"}}` },
-              { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online", requestExample: `GET /api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-capcut"}}` },
-              { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online", requestExample: `GET /api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-savefrom"}}` },
-             { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online", requestExample: `GET /api/d/github?url=https://github.com/wanzofc/portofolio`, responseExample: `{"status": 200, "message": "OK", "data": {"downloadUrl": "url-download-github"}}` },
-            { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online", requestExample: `GET /api/stalk/youtube?username=wanzofc`, responseExample: `{"status": 200, "message": "OK", "data": {"channelName": "wanzofc", "subscribers": "1000", "videos": "10"}}` },
-             { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online", requestExample: `GET /api/stalk/tiktok?username=wanzofc2`, responseExample: `{"status": 200, "message": "OK", "data": {"username": "wanzofc2", "followers": "10000", "following": "100"}}` },
-            { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online", requestExample: `GET /api/stalk/github?user=wanzbrayy`, responseExample: `{"status": 200, "message": "OK", "data": {"username": "wanzbrayy", "repos": "10", "followers": "20"}}` },
-             { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online", requestExample: `GET /api/stalk/npm?packageName=express`, responseExample: `{"status": 200, "message": "OK", "data": {"packageName": "express", "version": "4.18.2", "downloads": "100000"}}` },
-             { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online", requestExample: `GET /api/s/pinterest?query=elaina`, responseExample: `{"status": 200, "message": "OK", "data": [{"imageUrl": "url-gambar-pinterest-1"}, {"imageUrl": "url-gambar-pinterest-2"}]}` },
-            { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online", requestExample: `GET /api/s/soundcloud?query=yung kai blue`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Judul Lagu 1", "url": "url-lagu-1"}, {"title": "Judul Lagu 2", "url": "url-lagu-2"}]}` },
-              { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online", requestExample: `GET /api/s/gitagram`, responseExample: `{"status": 200, "message": "OK", "data": [{"imageUrl": "url-gambar-gitagram-1"}, {"imageUrl": "url-gambar-gitagram-2"}]}` },
-                         { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online", requestExample: `GET /api/s/duckduckgo`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Hasil Pencarian 1", "url": "url-hasil-1"}, {"title": "Hasil Pencarian 2", "url": "url-hasil-2"}]}` },
-              { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online", requestExample: `GET /api/s/combot`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Hasil Combot 1", "url": "url-combot-1"}, {"title": "Hasil Combot 2", "url": "url-combot-2"}]}` },
-             { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online", requestExample: `GET /api/s/bukalapak`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Produk 1", "url": "url-produk-1", "price": "Rp.10000"}, {"title": "Produk 2", "url": "url-produk-2", "price": "Rp.20000"}]}` },
-              { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online", requestExample: `GET /api/s/brave`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Hasil Brave 1", "url": "url-brave-1"}, {"title": "Hasil Brave 2", "url": "url-brave-2"}]}` },
-             { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online", requestExample: `GET /api/s/wikipedia?query=prabowo`, responseExample: `{"status": 200, "message": "OK", "data": {"title": "Prabowo Subianto", "content": "Informasi tentang Prabowo"}}` },
-              { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online", requestExample: `GET /api/s/spotify?query=Yung KAI blue`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Lagu 1", "artist": "Yung KAI", "url": "url-spotify-1"}, {"title": "Lagu 2", "artist": "Yung KAI", "url": "url-spotify-2"}]}` },
-           { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online", requestExample: `GET /api/s/tiktok?query=elaina`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Video 1", "url": "url-video-tiktok-1"}, {"title": "Video 2", "url": "url-video-tiktok-2"}]}` },
-            { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online", requestExample: `GET /api/info/jadwaltv`, responseExample: `{"status": 200, "message": "OK", "data": [{"channel": "RCTI", "schedule": [{"time": "10:00", "program": "Acara 1"}, {"time": "12:00", "program": "Acara 2"}]}]}` },
-              { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online", requestExample: `GET /api/info/liburnasional`, responseExample: `{"status": 200, "message": "OK", "data": [{"date": "2024-01-01", "name": "Tahun Baru"}, {"date": "2024-12-25", "name": "Natal"}]}` },
-              { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online", requestExample: `GET /api/info/bmkg`, responseExample: `{"status": 200, "message": "OK", "data": {"location": "Jakarta", "weather": "Cerah", "temperature": "30C"}}` },
-              { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online", requestExample: `GET /api/info/cuaca`, responseExample: `{"status": 200, "message": "OK", "data": {"location": "Jakarta", "weather": "Cerah", "temperature": "30C"}}` },
-              { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online", requestExample: `GET /api/apk/playstore?search=pou`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Pou", "developer": "Zakeh", "url": "url-pou"}]}` },
-              { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online", requestExample: `GET /api/apk/happymod`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Pou Mod", "url": "url-pou-mod"}]}` },
-             { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online", requestExample: `GET /api/apk/appstore`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Pou", "developer": "Zakeh", "url": "url-pou-appstore"}]}` },
-             { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online", requestExample: `GET /api/apk/apkpure`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Pou", "url": "url-pou-apkpure"}]}` },
-              { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online", requestExample: `GET /api/apk/apkmody`, responseExample: `{"status": 200, "message": "OK", "data": [{"title": "Pou Mod", "url": "url-pou-apkmody"}]}` },
-             { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online", requestExample: `GET /api/tools/subdomains?domain=wanzofc.us.kg`, responseExample: `{"status": 200, "message": "OK", "data": ["sub1.wanzofc.us.kg", "sub2.wanzofc.us.kg"]}` },
-            { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online", requestExample: `GET /api/tools/text2base64?text=wanzofc`, responseExample: `{"status": 200, "message": "OK", "data": {"base64": "d2Fuem9mYw=="}}` },
-             { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online", requestExample: `GET /api/tools/text2qr?text=wanzofc`, responseExample: `{"status": 200, "message": "OK", "data": {"qrCodeUrl": "url-qr-code"}}` },
-            { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online", requestExample: `GET /api/tools/translate?text=halo&lang=en`, responseExample: `{"status": 200, "message": "OK", "data": {"translatedText": "hello"}}` },
-               { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online", requestExample: `GET /api/tools/fake-data?type=person&count=5`, responseExample: `{"status": 200, "message": "OK", "data": [{"name": "Fake Name 1", "email": "email1@example.com"}, {"name": "Fake Name 2", "email": "email2@example.com"}]}` },
-             { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online", requestExample: `GET /api/cf/sentiment?text=I%20like%20you`, responseExample: `{"status": 200, "message": "OK", "data": {"sentiment": "positive"}}` },
-            { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online", requestExample: `GET /api/cf/image-classification?imageUrl=https://cataas.com/cat`, responseExample: `{"status": 200, "message": "OK", "data": {"classification": "cat"}}` },
-            { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online", requestExample: `GET /api/cf/embedding?text=Sample%20text`, responseExample: `{"status": 200, "message": "OK", "data": {"embedding": [0.1, 0.2, 0.3, ...]}}` },
-             { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online", requestExample: `GET /api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc`, responseExample: `{"status": 200, "message": "OK", "data": {"response": "Hai, nama saya wanzofc."}}` },
-            { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online", requestExample: `GET /api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998`, responseExample: `{"status": 200, "message": "OK", "data": {"penyakit": "Potensi penyakit: ..."}}` },
-              { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online", requestExample: `GET /api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008`, responseExample: `{"status": 200, "message": "OK", "data": {"ramalan": "Ramalan jodoh: ..."}}` },
-            { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online", requestExample: `GET /api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025`, responseExample: `{"status": 200, "message": "OK", "data": {"rejeki": "Rejeki: ...", "hoki": "Hoki: ..."}}` },
-            { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online", requestExample: `GET /api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025`, responseExample: `{"status": 200, "message": "OK", "data": {"sifat": "Sifat usaha: ..."}}` },
-              { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online", requestExample: `GET /api/primbon/tafsirmimpi?mimpi=bertemu`, responseExample: `{"status": 200, "message": "OK", "data": {"tafsir": "Tafsir mimpi: ..."}}` },
-             { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online", requestExample: `GET /api/primbon/artinama?nama=Awan`, responseExample: `{"status": 200, "message": "OK", "data": {"arti": "Arti nama Awan: ..."}}` },
-            { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online", requestExample: `GET /api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau`, responseExample: `{"status": 200, "message": "OK", "data": {"kecocokan": "Kecocokan nama: ..."}}` },
-             { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online", requestExample: `GET /api/primbon/nomorhoki?phoneNumber=62895402567224`, responseExample: `{"status": 200, "message": "OK", "data": {"nomorHoki": "Nomor hoki: ..."}}` },
-             { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online", requestExample: `GET /api/primbon/zodiak?zodiak=Pisces`, responseExample: `{"status": 200, "message": "OK", "data": {"zodiak": "Informasi zodiak Pisces: ..."}}` }
+             { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
+            { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
+            { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
+            { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online" },
+            { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
+             { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
+              { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
+            { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
+            { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
+             { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
+             { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
+             { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
+              { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
+             { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
+              { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
+              { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
+            { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },
+             { category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model  Llama ai.", status: "online" },
+              { category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online" },
+             { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
+             { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
+             { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
+              { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
+             { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
+              { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
+              { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
+            { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
+              { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
+              { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
+             { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
+             { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },
+             { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
+            { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
+             { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
+              { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
+              { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
+            { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
+             { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
+              { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
+              { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
+              { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
+             { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
+            { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+             { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
+            { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
+             { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
+             { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+            { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
+              { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
+                         { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
+              { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
+             { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
+              { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
+             { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
+              { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
+           { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
+            { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
+              { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
+              { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
+             { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
+              { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
+              { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
+             { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
+             { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
+              { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
+             { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
+            { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
+             { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
+            { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
+               { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
+             { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
+            { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
+            { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
+             { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
+            { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
+              { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
+            { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
+            { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
+              { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
+             { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
+            { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
+             { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
+             { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
         ];
-         const fetchData = async (url) => {
+        const fetchData = async (url) => {
            try {
-               const loadingIndicator = document.getElementById('loading-indicator');
-                loadingIndicator.classList.add('show');
-                const response = await fetch(url);
-                 if (!response.ok) {
+               const response = await fetch(url);
+                if (!response.ok) {
                     const errorData = await response.json();
                      throw new Error(`HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'}`);
-                 }
-                const data = await response.json();
-                loadingIndicator.classList.remove('show');
-                return data;
-            } catch (error) {
+                }
+                return await response.json();
+             } catch (error) {
                 console.error('Error fetching data:', error);
                  const chartContainer = document.getElementById('chart-container');
-                 chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
-                  const loadingIndicator = document.getElementById('loading-indicator');
-                  loadingIndicator.classList.remove('show');
+                chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
                 return null;
             }
         };
-         function APIList() {
+
+         // Fungsi untuk mengecek status API
+         const checkApiStatus = async (url) => {
+             try {
+               const response = await fetch(url, { method: 'HEAD' });
+                return response.ok ? 'online' : 'offline';
+            } catch (error) {
+                 return 'offline';
+            }
+        };
+        function APIList() {
             const [filteredList, setFilteredList] = useState(apiList);
             const searchInput = useRef(null);
             const [activeCategories, setActiveCategories] = useState({});
-             const [selectedCategory, setSelectedCategory] = useState('');
-             const clickSound = useRef(null);
-             const [currentPage, setCurrentPage] = useState(1);
-            const [itemsPerPage, ] = useState(10);
-              const [viewMode, setViewMode] = useState('list');
-             const [favoriteApis, setFavoriteApis] = useState(() => {
-                 try {
-                     const savedFavorites = localStorage.getItem('favoriteApis');
-                      return savedFavorites ? JSON.parse(savedFavorites) : [];
-                } catch (error) {
-                    console.error('Failed to load favorite APIs', error);
-                    return [];
-                 }
-              });
-            useEffect(() => {
+            const [selectedCategory, setSelectedCategory] = useState('');
+            const clickSound = useRef(null);
+            const [apiStatuses, setApiStatuses] = useState({});
+
+           useEffect(() => {
                 gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
-             }, []);
-             const handleCategoryToggle = (category) => {
+            }, []);
+
+            useEffect(() => {
+                const fetchStatuses = async () => {
+                    const statuses = {};
+                     for (const api of apiList) {
+                         statuses[api.url] = await checkApiStatus(api.url);
+                    }
+                     setApiStatuses(statuses);
+                };
+
+                fetchStatuses();
+                 const intervalId = setInterval(fetchStatuses, 60000); // Check status every minute
+                return () => clearInterval(intervalId);
+            }, []);
+
+            const handleCategoryToggle = (category) => {
                 setActiveCategories((prevCategories) => ({
-                    ...prevCategories,
+                     ...prevCategories,
                     [category]: !prevCategories[category],
-                }));
+                 }));
              };
            const handleCategoryFilterChange = (event) => {
              setSelectedCategory(event.target.value);
            };
             const handleSearch = () => {
-                 setCurrentPage(1);
                 const searchTerm = searchInput.current.value.toLowerCase();
                const newList = apiList.filter(api =>
                      api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
                  );
-                setFilteredList(newList);
-                gsap.fromTo(".filtered-item",
-                 { opacity: 0, y: 20 },
-                  { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
+                 setFilteredList(newList);
+                 gsap.fromTo(".filtered-item",
+                { opacity: 0, y: 20 },
+                 { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
                  )
-            };
+             };
             const getFilteredList = () => {
-                 let filtered = apiList;
-                 if(selectedCategory) {
+                let filtered = apiList;
+               if(selectedCategory) {
                     filtered = filtered.filter(api => api.category === selectedCategory);
-                 }
-                if (!searchInput.current || !searchInput.current.value) {
+               }
+               if (!searchInput.current || !searchInput.current.value) {
                     return filtered;
-                }
-                const searchTerm = searchInput.current.value.toLowerCase();
-              return filtered.filter(api =>
-                   api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
-               );
+               }
+              const searchTerm = searchInput.current.value.toLowerCase();
+             return filtered.filter(api =>
+                     api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+                );
             };
             const playClickSound = () => {
-                 if(clickSound.current) {
-                    clickSound.current.play();
-                }
-            };
-          const handleTryClick = (event) => {
-               playClickSound();
-                event.currentTarget.classList.add('clicked');
-                  setTimeout(() => {
-                  event.currentTarget.classList.remove('clicked');
-               }, 300)
+              if(clickSound.current) {
+                   clickSound.current.play();
+              }
            };
+           const handleTryClick = (event) => {
+            playClickSound();
+              event.currentTarget.classList.add('clicked');
+                setTimeout(() => {
+                 event.currentTarget.classList.remove('clicked');
+            }, 300)
+            };
+
           const [previewData, setPreviewData] = useState(null);
            const [showPreview, setShowPreview] = useState(false);
            const handlePreviewClick = async (url) => {
             try {
-                 const data = await fetchData(url);
-                    setPreviewData(JSON.stringify(data, null, 2));
-                    setShowPreview(true);
-             } catch (error) {
-                 console.error("Error fetching JSON:", error);
-                 setPreviewData(`Error loading JSON: ${error.message}`);
+                const data = await fetchData(url);
+                   setPreviewData(JSON.stringify(data, null, 2));
                 setShowPreview(true);
+             } catch (error) {
+                console.error("Error fetching JSON:", error);
+                 setPreviewData(`Error loading JSON: ${error.message}`);
+                 setShowPreview(true);
            }
          };
-           const closePreview = () => {
+         const closePreview = () => {
                 setShowPreview(false);
-                setPreviewData(null)
-            };
-            useEffect(() => {
-               if(showPreview) {
-                   document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = 'auto';
-                }
-            }, [showPreview])
-             const categories = [...new Set(apiList.map(api => api.category))];
-            const filteredApiList = getFilteredList();
-            const indexOfLastItem = currentPage * itemsPerPage;
-            const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-           const currentItems = filteredApiList.slice(indexOfFirstItem, indexOfLastItem);
-           const totalPages = Math.ceil(filteredApiList.length / itemsPerPage);
-           const paginate = (pageNumber) => setCurrentPage(pageNumber);
-           const handleCopyUrl = (url, event) => {
-             navigator.clipboard.writeText(url).then(() => {
-                  const target = event.currentTarget;
-                  const originalText = target.textContent;
-                 target.textContent = 'Copied!';
-                 setTimeout(() => {
-                     target.textContent = originalText;
-                 }, 1000);
-             }).catch(err => {
-                 console.error('Failed to copy URL: ', err);
+             setPreviewData(null)
+         };
+          const handleCopyClick = (url) => {
+            new ClipboardJS('.copy-button', {
+                 text: () => url
              });
-            };
-            const toggleViewMode = (mode) => {
-               setViewMode(mode);
-             };
-           const [expandedApi, setExpandedApi] = useState(null);
-           const toggleApiDetails = (index) => {
-              setExpandedApi(expandedApi === index ? null : index);
-           };
-            const handleFavorite = (apiName) => {
-                let newFavorites;
-               if (favoriteApis.includes(apiName)) {
-                    newFavorites = favoriteApis.filter(name => name !== apiName);
-                } else {
-                   newFavorites = [...favoriteApis, apiName];
-                }
-                 setFavoriteApis(newFavorites);
-                localStorage.setItem('favoriteApis', JSON.stringify(newFavorites));
-             };
-             const isFavorite = (apiName) => favoriteApis.includes(apiName);
-            return (
-                 <div className="container">
-                 <div className="view-mode-toggle">
-                     <button onClick={() => toggleViewMode('list')}>List View</button>
-                     <button onClick={() => toggleViewMode('grid')}>Grid View</button>
-                   </div>
-                    <h3>LIST ENDPOINT:</h3>
-                    <div id="search-container">
-                        <input type="text" id="search-input" placeholder="Cari API..." ref={searchInput} />
-                         <button id="search-button" onClick={handleSearch}>Cari</button>
-                     </div>
-                   <div id="category-filter">
-                         <label htmlFor="category-select">Filter Kategori:</label>
-                         <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
-                            <option value="">Semua</option>
-                            {categories.map((category, index) => (
-                                  <option key={index} value={category}>{category}</option>
-                            ))}
-                        </select>
-                    </div>
-                     <div className={viewMode === 'grid' ? 'grid-view' : 'list-view'}>
+             playClickSound();
+         };
+         useEffect(() => {
+           if(showPreview) {
+                document.body.style.overflow = 'hidden';
+           } else {
+               document.body.style.overflow = 'auto';
+           }
+         }, [showPreview])
+         const categories = [...new Set(apiList.map(api => api.category))];
+         const filteredApiList = getFilteredList();
+         return (
+            <div className="container">
+                <h3>LIST ENDPOINT:</h3>
+                 <div id="search-container">
+                   <input type="text" id="search-input" placeholder="Cari API..." ref={searchInput} />
+                    <button id="search-button" onClick={handleSearch}>Cari</button>
+                </div>
+               <div id="category-filter">
+                  <label htmlFor="category-select">Filter Kategori:</label>
+                  <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
+                     <option value="">Semua</option>
                       {categories.map((category, index) => (
-                           <div key={index} className="api-category">
-                              <div className="category-header" onClick={() => handleCategoryToggle(category)}>
-                                 <h3>{category}</h3>
-                                 <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
-                             </div>
-                             <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
-                                {currentItems.filter(api => api.category === category).map((api, i) => (
-                                  <div key={i} className="api-item">
-                                     <span className="tooltip">
-                                    <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
-                                   <span className="tooltiptext">{api.desc}</span>
-                                        </span>
-                                        <span className="api-item-desc">{api.desc}</span>
-                                      <span className={`api-item-status ${api.status}`}>{api.status}</span>
-                                        <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
-                                       <a href={api.url} target="_blank" className="try-button" onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
-                                         <button className="copy-url-button" onClick={(event) => handleCopyUrl(api.url, event)}>Copy URL</button>
-                                         <button className={`favorite-button ${isFavorite(api.name) ? 'favorited' : ''}`} onClick={() => handleFavorite(api.name)}>
-                                         <i className={`fas ${isFavorite(api.name) ? 'fa-heart' : 'fa-heart-o'}`}></i>
-                                          </button>
-                                          <button className="show-details-button" onClick={() => toggleApiDetails(i)}>
-                                              {expandedApi === i ? 'Hide Details' : 'Show Details'}
-                                          </button>
-                                          <div className={`api-item-details ${expandedApi === i ? 'show' : ''}`}>
-                                            <h4>Request Example:</h4>
-                                            <div className="request-response">
-                                                 <pre><code className="syntax-highlight">{api.requestExample}</code></pre>
-                                              </div>
-                                           <h4>Response Example:</h4>
-                                              <div className="request-response">
-                                                   <pre><code className="syntax-highlight json">{api.responseExample}</code></pre>
-                                             </div>
-                                        </div>
-                                    </div>
-                                   ))}
-                             </div>
-                         </div>
-                      ))}
-                     </div>
-                    <div className="pagination">
-                         {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
-                             <button key={number} onClick={() => paginate(number)} className={currentPage === number ? 'active' : ''}>{number}</button>
-                           ))}
-                    </div>
-                    {showPreview && (
-                        <div className="json-preview-overlay">
-                           <div className="json-preview-box">
-                                 <span className="json-preview-close" onClick={closePreview}>×</span>
-                             <pre><code className="syntax-highlight json">{previewData}</code></pre>
-                             </div>
+                          <option key={index} value={category}>{category}</option>
+                       ))}
+                   </select>
+               </div>
+                  {categories.map((category, index) => (
+                     <div key={index} className="api-category">
+                         <div className="category-header" onClick={() => handleCategoryToggle(category)}>
+                            <h3>{category}</h3>
+                             <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
                         </div>
-                     )}
-                <audio ref={clickSound} id="click-sound">
-                      <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                    </audio>
-              </div>
+                         <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
+                            {filteredApiList.filter(api => api.category === category).map((api, i) => (
+                                <div key={i} className="api-item">
+                                     <a  href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                                  <span className="api-item-desc">{api.desc}</span>
+                                  <span className={`api-item-status ${apiStatuses[api.url] || 'loading'}`}>{apiStatuses[api.url] || 'loading'}</span>
+                                     <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
+                                      <a href={api.url} target="_blank" className="try-button"  onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                                         <button className="copy-button" data-clipboard-text={api.url} onClick={() => handleCopyClick(api.url)} >Copy</button>
+                                </div>
+                             ))}
+                        </div>
+                     </div>
+                 ))}
+                 {showPreview && (
+                     <div className="json-preview-overlay">
+                         <div className="json-preview-box">
+                              <span className="json-preview-close" onClick={closePreview}>×</span>
+                           <pre><code className="syntax-highlight json">{previewData}</code></pre>
+                         </div>
+                     </div>
+                 )}
+               <audio ref={clickSound} id="click-sound">
+                    <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
             );
         }
         ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
             document.getElementById('search-button').addEventListener('click', () => {
-               ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
+                ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
             });
              document.getElementById('search-input').addEventListener('keypress', (event) => {
                 if (event.key === 'Enter') {
-                  ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
-                 }
+                    ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
+                }
             });
         hljs.highlightAll();
-     </script>
+    </script>
      <script>
         const { createApp, ref, onMounted } = Vue;
-         createApp({
+        createApp({
             setup() {
-                 const vueApiList = ref(apiList);
-                 onMounted(() => {
-                    gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+               const vueApiList = ref(apiList);
+                onMounted(() => {
+                     gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
                  });
                 return {
                   vueApiList,
-                };
-           },
+                 };
+            },
             template: `
                 <div class="container">
                     <h3>TEST:</h3>
                     <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
                         <a :href="api.url" target="_blank" :aria-label="'Link to ' + api.name + ' API Endpoint'">{{ api.name }}</a>
-                         <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
+                        <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
                     </div>
-               </div>
+                </div>
             `,
         }).mount('#vue-app');
     </script>
-     <script>
+    <script>
         const chartContainer = document.getElementById('chart-container');
         const renderChart = async () => {
             const loadingSkeleton = document.createElement('div');
              loadingSkeleton.className = 'loading-skeleton';
              chartContainer.appendChild(loadingSkeleton);
-           const data = await fetchData('/api/r/quotesanime');
-           chartContainer.innerHTML = '';
+
+            const data = await fetchData('/api/r/quotesanime');
+            chartContainer.innerHTML = '';
             if(data && data.length > 0) {
-              const quotes = data.map((quote) => quote.quote);
+               const quotes = data.map((quote) => quote.quote);
                  const ctx = document.createElement('canvas');
                chartContainer.appendChild(ctx);
-                 new Chart(ctx, {
+               new Chart(ctx, {
                     type: 'bar',
-                    data: {
+                   data: {
                         labels: quotes.map((_, index) => `Quote ${index + 1}`),
-                         datasets: [{
-                             label: 'Anime Quotes',
-                             data: quotes.map(() => 1),
-                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        datasets: [{
+                            label: 'Anime Quotes',
+                            data: quotes.map(() => 1),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
-                           borderWidth: 1
+                            borderWidth: 1
                         }]
-                    },
+                   },
                     options: {
                        responsive: true,
                         scales: {
-                            y: {
-                                beginAtZero: true,
-                                 ticks: {
-                                     display: false
-                                 }
-                            },
-                            x: {
+                          y: {
+                               beginAtZero: true,
                                 ticks: {
                                     display: false
-                                 }
+                                }
+                            },
+                            x: {
+                              ticks: {
+                                   display: false
+                               }
                             }
-                       },
+                        },
                          plugins: {
-                           legend: {
+                            legend: {
                                 display: false
                             },
                              title: {
                                 display: true,
-                                text: 'Jumlah Quote'
+                               text: 'Jumlah Quote'
                             }
                         }
                    }
                 });
-           } else {
-                chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
-           }
-       };
+            } else {
+                 chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
+            }
+        };
          renderChart();
     </script>
     <script>
@@ -1248,85 +944,76 @@
         const body = document.body;
         let musicStarted = false;
         let currentTrackTime = 0;
-          let isDarkMode = localStorage.getItem('darkMode') === 'true';
-          if (isDarkMode) {
-             body.classList.add('dark-mode');
+         let isDarkMode = localStorage.getItem('darkMode') === 'true';
+         if (isDarkMode) {
+            body.classList.add('dark-mode');
         }
          function toggleDarkMode() {
             isDarkMode = !isDarkMode;
-             body.classList.toggle('dark-mode', isDarkMode);
+            body.classList.toggle('dark-mode', isDarkMode);
             localStorage.setItem('darkMode', isDarkMode);
-       }
-         function playMusic() {
-             if (!musicStarted) {
+        }
+        function playMusic() {
+           if (!musicStarted) {
                 backgroundMusic.play();
-                 musicStarted = true;
+               musicStarted = true;
                 playPauseButton.textContent = 'Pause';
-            } else {
-                backgroundMusic.currentTime = currentTrackTime;
-                backgroundMusic.play();
+           } else {
+               backgroundMusic.currentTime = currentTrackTime;
+               backgroundMusic.play();
                 playPauseButton.textContent = 'Pause';
-            }
-       }
+           }
+        }
         function pauseMusic() {
             currentTrackTime = backgroundMusic.currentTime;
             backgroundMusic.pause();
             playPauseButton.textContent = 'Play';
-        }
+         }
         playPauseButton.addEventListener('click', () => {
             if (backgroundMusic.paused) {
-                playMusic();
+               playMusic();
             } else {
-               pauseMusic();
-           }
-       });
-       darkModeToggle.addEventListener('click', toggleDarkMode);
-       window.addEventListener('focus', playMusic);
-        window.addEventListener('blur', pauseMusic);
-         playMusic();
-   </script>
-    <script>
-       function lazyLoadImages() {
-          const images = document.querySelectorAll('img[data-src]');
-            const observer = new IntersectionObserver((entries, observer) => {
-             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                   img.removeAttribute('data-src');
-                     observer.unobserve(img);
-                 }
-            });
-       });
-       images.forEach(img => {
-             observer.observe(img);
+                pauseMusic();
+            }
         });
-     }
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        window.addEventListener('focus', playMusic);
+       window.addEventListener('blur', pauseMusic);
+        playMusic();
+    </script>
+    <script>
+     function lazyLoadImages() {
+      const images = document.querySelectorAll('img[data-src]');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+           if (entry.isIntersecting) {
+             const img = entry.target;
+             img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+               observer.unobserve(img);
+            }
+         });
+     });
+     images.forEach(img => {
+         observer.observe(img);
+       });
+    }
     lazyLoadImages();
      </script>
    <script>
-        function toggleFAQ(id) {
-           const faqContent = document.getElementById(id);
-            faqContent.classList.toggle('show');
-            const icon = faqContent.parentElement.querySelector('.fas');
-            icon.classList.toggle('fa-plus');
-             icon.classList.toggle('fa-minus');
-       }
-    </script>
-  <script>
 !function(w, d, s, ...args){
- var div = d.createElement('div');
- div.id = 'aichatbot';
- d.body.appendChild(div);
- w.chatbotConfig = args;
- var f = d.getElementsByTagName(s)[0],
- j = d.createElement(s);
- j.defer = true;
- j.type = 'module';
- j.src = 'https://aichatbot.sendbird.com/index.js';
- f.parentNode.insertBefore(j, f);
+  var div = d.createElement('div');
+  div.id = 'aichatbot';
+  d.body.appendChild(div);
+  w.chatbotConfig = args;
+  var f = d.getElementsByTagName(s)[0],
+  j = d.createElement(s);
+  j.defer = true;
+  j.type = 'module';
+  j.src = 'https://aichatbot.sendbird.com/index.js';
+  f.parentNode.insertBefore(j, f);
 }(window, document, 'script', 'A692F5C5-D50F-4108-8BAA-336E9271FC8B', 'hLvKyQ4n-o6ybblJyZT09', {
- apiHost: 'https://api-cf-us-3.sendbird.com',
+  apiHost: 'https://api-cf-us-3.sendbird.com',
 });
 </script>
 </body>
