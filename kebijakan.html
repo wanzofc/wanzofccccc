@@ -340,13 +340,12 @@ console.log(greet("World"));
         console.log("Angka yang digandakan:", doubledNumbers);
 
         const markdownText = `
-        ## contoh true endpoint kami
-        {
+{
   "creator": "WANZOFC TECH",
   "result": true,
   "message": "Deepseek R1",
   "data": "</think>\n\nHello! How can I assist you today? 😊"
-}
+        }
         `;
         document.getElementById('markdown-content').innerHTML = marked.parse(markdownText);
         hljs.highlightAll();
@@ -367,7 +366,6 @@ console.log(greet("World"));
             cube.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
-
         animate();
         let myCanvas;
         function setup() {
