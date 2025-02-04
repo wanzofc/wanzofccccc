@@ -22,7 +22,6 @@
             "description": "Kumpulan API dari WanzoFC Tech"
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.css">
     <style>
         :root {
             --primary-color: #00ff99;
@@ -306,10 +305,6 @@
         .category-content.show {
            max-height: 500px;
              overflow-y: auto;
-             display: flex; /* Add this */
-            flex-direction: row; /* Add this */
-            overflow-x: auto; /* Add this */
-            white-space: nowrap; /* Add this */
         }
        .api-item-desc {
             font-size: 0.9em;
@@ -406,7 +401,7 @@
        .api-item .preview-button:hover {
            background-color: #777;
         }
-                .api-item .try-button.clicked {
+        .api-item .try-button.clicked {
              animation: clickAnimation 0.3s ease-in-out;
          }
     @keyframes clickAnimation {
@@ -439,33 +434,25 @@
        color: #fff;
          font-size: 14px;
    }
-   .api-item .copy-button {
-            background-color: #555;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: background-color 0.3s ease;
-        }
-
-        .api-item .copy-button:hover {
-            background-color: #777;
-        }
-        .category-content {
-            overflow-x: auto;
-            white-space: nowrap; /* Prevent content from wrapping */
-            display: flex; /* Add this */
-            flex-direction: row; /* Add this */
-        }
-         .category-content .api-item {
-            display: inline-flex; /* Display items horizontally */
-             margin-right: 10px;
-             width: auto;
-            border-bottom: none;
-        }
-    </style>
+   #live-chat-button {
+       position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--secondary-color);
+       color: #121212;
+        border: none;
+         padding: 10px 15px;
+         border-radius: 5px;
+        cursor: pointer;
+         font-size: 12px;
+       transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 4;
+   }
+    #live-chat-button:hover, #live-chat-button:focus {
+      background-color: #ffbb00;
+       transform: scale(1.1);
+    }
+</style>
 </head>
 <body >
    <header>
@@ -493,6 +480,7 @@
     <div id="vue-app"></div>
     <div id="chart-container"></div>
     </main>
+     <button id="live-chat-button" onclick="toggleChat()">Live Chat</button>
     <footer>
         <p>© 2025 WANZOFC TECH. <a href="#">Tentang Kami</a> | <a href="#">Kebijakan Privasi</a></p>
         <div class="social-icons">
@@ -517,7 +505,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <script>
          const animationContainer = document.getElementById('lottie-container');
          const animationData = {
@@ -582,6 +569,11 @@
     <script type="text/babel">
         const { useEffect, useState, useRef } = React;
           const apiList = [
+            { category: "Framework Backend", name: "Nest.js Documentation", url: "https://docs.nestjs.com/", desc: "Official documentation for Nest.js.", status: "online" },
+             { category: "Framework Backend", name: "LoopBack Documentation", url: "https://loopback.io/doc/", desc: "Official documentation for LoopBack.", status: "online" },
+            { category: "Framework Backend", name: "Hapi Documentation", url: "https://hapi.dev/", desc: "Official documentation for Hapi.js.", status: "online" },
+            { category: "Framework Backend", name: "Sails.js Documentation", url: "https://sailsjs.com/documentation", desc: "Official documentation for Sails.js.", status: "online" },
+            { category: "Framework Backend", name: "Feathers.js Documentation", url: "https://feathersjs.com/api/", desc: "Official documentation for Feathers.js.", status: "online" },
              { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
             { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
             { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
@@ -621,7 +613,7 @@
             { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
              { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
               { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
-              { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
+                            { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
               { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
              { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
             { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
@@ -681,42 +673,15 @@
                 return null;
             }
         };
-
-         // Fungsi untuk mengecek status API
-         const checkApiStatus = async (url) => {
-             try {
-               const response = await fetch(url, { method: 'HEAD' });
-                return response.ok ? 'online' : 'offline';
-            } catch (error) {
-                 return 'offline';
-            }
-        };
         function APIList() {
             const [filteredList, setFilteredList] = useState(apiList);
             const searchInput = useRef(null);
             const [activeCategories, setActiveCategories] = useState({});
             const [selectedCategory, setSelectedCategory] = useState('');
             const clickSound = useRef(null);
-            const [apiStatuses, setApiStatuses] = useState({});
-
-           useEffect(() => {
+            useEffect(() => {
                 gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
             }, []);
-
-            useEffect(() => {
-                const fetchStatuses = async () => {
-                    const statuses = {};
-                     for (const api of apiList) {
-                         statuses[api.url] = await checkApiStatus(api.url);
-                    }
-                     setApiStatuses(statuses);
-                };
-
-                fetchStatuses();
-                 const intervalId = setInterval(fetchStatuses, 60000); // Check status every minute
-                return () => clearInterval(intervalId);
-            }, []);
-
             const handleCategoryToggle = (category) => {
                 setActiveCategories((prevCategories) => ({
                      ...prevCategories,
@@ -780,12 +745,6 @@
                 setShowPreview(false);
              setPreviewData(null)
          };
-          const handleCopyClick = (url) => {
-            new ClipboardJS('.copy-button', {
-                 text: () => url
-             });
-             playClickSound();
-         };
          useEffect(() => {
            if(showPreview) {
                 document.body.style.overflow = 'hidden';
@@ -820,12 +779,11 @@
                          <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
                             {filteredApiList.filter(api => api.category === category).map((api, i) => (
                                 <div key={i} className="api-item">
-                                     <a  href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                                     <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
                                   <span className="api-item-desc">{api.desc}</span>
-                                  <span className={`api-item-status ${apiStatuses[api.url] || 'loading'}`}>{apiStatuses[api.url] || 'loading'}</span>
+                                     <span className={`api-item-status ${api.status}`}> {api.status} </span>
                                      <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
                                       <a href={api.url} target="_blank" className="try-button"  onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
-                                         <button className="copy-button" data-clipboard-text={api.url} onClick={() => handleCopyClick(api.url)} >Copy</button>
                                 </div>
                              ))}
                         </div>
@@ -999,22 +957,7 @@
        });
     }
     lazyLoadImages();
-     </script>
-   <script>
-!function(w, d, s, ...args){
-  var div = d.createElement('div');
-  div.id = 'aichatbot';
-  d.body.appendChild(div);
-  w.chatbotConfig = args;
-  var f = d.getElementsByTagName(s)[0],
-  j = d.createElement(s);
-  j.defer = true;
-  j.type = 'module';
-  j.src = 'https://aichatbot.sendbird.com/index.js';
-  f.parentNode.insertBefore(j, f);
-}(window, document, 'script', 'A692F5C5-D50F-4108-8BAA-336E9271FC8B', 'hLvKyQ4n-o6ybblJyZT09', {
-  apiHost: 'https://api-cf-us-3.sendbird.com',
-});
-</script>
+    </script>
+<button id="live-chat-button" onclick="toggleChat()">Live Chat</button>
 </body>
 </html>
