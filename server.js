@@ -1,5 +1,7 @@
 const express = require('express');
 const axios = require('axios');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -16,7 +18,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3000', // Ganti dengan URL server Anda jika perlu
+                url: 'https://wanzofc.us.kg', // Ganti dengan URL server Anda jika perlu
                 description: 'Development server',
             },
         ],
