@@ -1,129 +1,23 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-const TelegramBot = require('node-telegram-bot-api'); // Tambahkan ini
 const app = express();
 const PORT = process.env.PORT || 8080;
 app.use(express.json());
-app.use(express.static(__dirname));
-
-// *** KONFIGURASI BOT TELEGRAM ***
-const TOKEN = '7891724607:AAHdI4bUZLZRKZpulXILjNmbkkclRKLSU1g'; // Ganti dengan token bot Telegram-mu
-const bot = new TelegramBot(TOKEN, { polling: true }); // Aktifkan polling
-// *** AKHIR KONFIGURASI BOT TELEGRAM ***
-
+app.use(express.static(__dirname)); 
 const formatParagraph = (text) => text ? text.replace(/\.\s+/g, ".\n\n") : "Tidak ada jawaban.";
-
-// *** FUNGSI UNTUK MEMANGGIL API (PENTING!) ***
-async function callApi(endpoint, params = {}) {
-    try {
-        const url = `https://wanzofc.us.kg${endpoint}`; // Base URL website
-        const response = await axios.get(url, { params }); // Kirim permintaan GET
-        return response.data; // Kembalikan data dari API
-    } catch (error) {
-        console.error(`Error calling API ${endpoint}:`, error);
-        return { creator: "WANZOFC TECH", result: false, message: `API ${endpoint} bermasalah.` }; // Kembalikan pesan error
-    }
-}
-// *** AKHIR FUNGSI UNTUK MEMANGGIL API ***
-
-// *** HANDLER UNTUK BOT TELEGRAM ***
-bot.on('message', async (msg) => {
-    const chatId = msg.chat.id;
-    const text = msg.text;
-
-    // *** CONTOH PENGGUNAAN API /api/ai/deepseek-chat ***
-    if (text.startsWith('/deepseek')) {
-        const query = text.substring(9).trim(); // Ambil query setelah /deepseek
-        if (!query) {
-            bot.sendMessage(chatId, "Tolong tambahkan query setelah /deepseek.");
-            return;
-        }
-
-        const apiResponse = await callApi('/api/ai/deepseek-chat', { content: query }); // Panggil API
-
-        if (apiResponse.result) {
-            bot.sendMessage(chatId, apiResponse.data); // Kirim hasil ke pengguna
-        } else {
-            bot.sendMessage(chatId, apiResponse.message); // Kirim pesan error
-        }
-    }
-        
-    if (text.startsWith('/khodam')) {
-        const content = text.substring(9).trim(); // Ambil query setelah /deepseek
-        if (!content) {
-            bot.sendMessage(chatId, "Tolong tambahkan query setelah /khodam.");
-            return;
-        }
-
-        const apiResponse = await callApi('/api/ai/khodam', { content: content }); // Panggil API
-
-        if (apiResponse.result) {
-            bot.sendMessage(chatId, apiResponse.data); // Kirim hasil ke pengguna
-        } else {
-            bot.sendMessage(chatId, apiResponse.message); // Kirim pesan error
-        }
-    }
-    // *** CONTOH PENGGUNAAN API /api/anime/otakudesu/search ***
-    else if (text.startsWith('/otakudesu')) {
-        const query = text.substring(11).trim();
-        if (!query) {
-            bot.sendMessage(chatId, "Tolong tambahkan query setelah /otakudesu.");
-            return;
-        }
-
-        const apiResponse = await callApi('/api/anime/otakudesu/search', { s: query });
-
-        if (apiResponse.result) {
-            bot.sendMessage(chatId, JSON.stringify(apiResponse.data, null, 2)); // Ubah data jadi string JSON agar mudah dibaca
-        } else {
-            bot.sendMessage(chatId, apiResponse.message);
-        }
-    }
-
-    // *** CONTOH PENGGUNAAN API /api/primbon/artinama ***
-    else if (text.startsWith('/artinama')) {
-        const nama = text.substring(9).trim();
-        if (!nama) {
-            bot.sendMessage(chatId, "Tolong tambahkan nama setelah /artinama.");
-            return;
-        }
-
-        const apiResponse = await callApi('/api/primbon/artinama', { nama: nama });
-
-        if (apiResponse.result) {
-            bot.sendMessage(chatId, JSON.stringify(apiResponse.data, null, 2));
-        } else {
-            bot.sendMessage(chatId, apiResponse.message);
-        }
-    }
-
-    // *** TAMBAHKAN HANDLER UNTUK API LAINNYA DI SINI! ***
-    // Contoh: else if (text.startsWith('/perintah_lain')) { ... }
-
-    else {
-        bot.sendMessage(chatId, "Perintah tidak dikenal.  Gunakan /deepseek [query], /otakudesu [query], /artinama [nama], dll.");
-    }
-});
-// *** AKHIR HANDLER UNTUK BOT TELEGRAM ***
-
-// *** ROUTE WEBSITE (TIDAK BERUBAH) ***
 app.get("/kebijakan", (req, res) => {
     res.sendFile(path.join(__dirname, "kebijakan.html"));
 });
-
 app.get("/docs", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
-
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
-
 app.get('/daftar', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
-
 app.get('/api/ai/deepseek-chat', async (req, res) => {
     const query = req.query.content || "halo";
     try {
@@ -133,7 +27,6 @@ app.get('/api/ai/deepseek-chat', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Deepseek Chat bermasalah." });
     }
 });
-
 app.get('/api/ai/image2text', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/ai/image2text?url=https://cataas.com/cat");
@@ -142,7 +35,6 @@ app.get('/api/ai/image2text', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Image to Text bermasalah." });
     }
 });
-
 app.get('/api/ai/gemini-pro', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -154,11 +46,10 @@ app.get('/api/ai/gemini-pro', async (req, res) => {
     } catch {
         res.status(500).json
             ({ creator: "WANZOFC TECH",
-              result: false,
+              result: false, 
               message: "Gemini Pro bermasalah." });
     }
 });
-
 app.get('/api/ai/meta-llama', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -168,7 +59,6 @@ app.get('/api/ai/meta-llama', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Meta Llama bermasalah." });
     }
 });
-
 app.get('/api/ai/dbrx-instruct', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -178,7 +68,6 @@ app.get('/api/ai/dbrx-instruct', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "DBRX Instruct bermasalah." });
     }
 });
-
 app.get('/api/ai/deepseek-r1', async (req, res) => {
     const query = req.query.content || "hai";
     try {
@@ -188,7 +77,6 @@ app.get('/api/ai/deepseek-r1', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Deepseek R1 bermasalah." });
     }
 });
-
 app.get('/api/gita', async (req, res) => {
     const query = req.query.q || "hai";
     try {
@@ -198,7 +86,6 @@ app.get('/api/gita', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gita AI bermasalah." });
     }
 });
-
 app.get('/api/anime/latest', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/anime/latest");
@@ -207,7 +94,6 @@ app.get('/api/anime/latest', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anime Terbaru bermasalah." });
     }
 });
-
 app.get('/api/anime/anichin-episode', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Tolong tambahkan parameter 'url'." });
@@ -219,7 +105,6 @@ app.get('/api/anime/anichin-episode', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anichin Episode bermasalah." });
     }
 });
-
 app.get('/api/d/mediafire', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Tambahkan parameter 'url'." });
@@ -231,7 +116,6 @@ app.get('/api/d/mediafire', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "MediaFire Downloader bermasalah." });
     }
 });
-
 app.get('/api/r/blue-archive', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/blue-archive");
@@ -240,7 +124,6 @@ app.get('/api/r/blue-archive', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil gambar Blue Archive." });
     }
 });
-
 app.get('/api/r/quotesanime', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/quotesanime");
@@ -249,7 +132,6 @@ app.get('/api/r/quotesanime', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil quote anime." });
     }
 });
-
 app.get('/api/d/tiktok', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -261,7 +143,6 @@ app.get('/api/d/tiktok', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Downloader bermasalah." });
     }
 });
-
 app.get('/api/d/igdl', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -273,7 +154,6 @@ app.get('/api/d/igdl', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Instagram Downloader bermasalah." });
     }
 });
-
 app.get('/api/d/snackvideo', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -285,7 +165,6 @@ app.get('/api/d/snackvideo', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "SnackVideo Downloader bermasalah." });
     }
 });
-
 app.get('/api/d/capcut', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -297,7 +176,6 @@ app.get('/api/d/capcut', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "CapCut Template Downloader bermasalah." });
     }
 });
-
 app.get('/api/stalk/youtube', async (req, res) => {
     const username = req.query.username;
     if (!username) return res.status(400).json({ result: false, message: "Tambahkan parameter 'username'." });
@@ -309,7 +187,6 @@ app.get('/api/stalk/youtube', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "YouTube Stalker bermasalah." });
     }
 });
-
 app.get('/api/stalk/tiktok', async (req, res) => {
     const username = req.query.username;
     if (!username) return res.status(400).json({ result: false, message: "Tambahkan parameter 'username'." });
@@ -321,7 +198,6 @@ app.get('/api/stalk/tiktok', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Stalker bermasalah." });
     }
 });
-
 app.get('/api/stalk/github', async (req, res) => {
     const user = req.query.user;
     if (!user) return res.status(400).json({ result: false, message: "Tambahkan parameter 'user'." });
@@ -333,7 +209,6 @@ app.get('/api/stalk/github', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "GitHub Stalker bermasalah." });
     }
 });
-
 app.get('/api/s/tiktok', async (req, res) => {
     const query = req.query.query;
     if (!query) return res.status(400).json({ result: false, message: "Tambahkan parameter 'query'." });
@@ -345,7 +220,6 @@ app.get('/api/s/tiktok', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "TikTok Search bermasalah." });
     }
 });
-
 app.get('/api/ai/uncovr', async (req, res) => {
     const content = req.query.content;
     if (!content) return res.status(400).json({ result: false, message: "Tambahkan parameter 'content'." });
@@ -357,7 +231,6 @@ app.get('/api/ai/uncovr', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - Uncovr Chat bermasalah." });
     }
 });
-
 app.get('/api/ai/wanzofc', async (req, res) => {
     const text = req.query.text;
     if (!text) return res.status(400).json({ result: false, message: "Tambahkan parameter 'text'." });
@@ -369,7 +242,6 @@ app.get('/api/ai/wanzofc', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "AI - wanzofc bermasalah." });
     }
 });
-
 app.get('/api/anime/otakudesu/search', async (req, res) => {
     const s = req.query.s;
     if (!s) return res.status(400).json({ result: false, message: "Tambahkan parameter 's'." });
@@ -381,7 +253,6 @@ app.get('/api/anime/otakudesu/search', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Anime - Otakudesu Search bermasalah." });
     }
 });
-
 app.get('/api/d/savefrom', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -392,7 +263,6 @@ app.get('/api/d/savefrom', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Downloader - SaveFrom bermasalah." });
     }
 });
-
 app.get('/api/d/github', async (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ result: false, message: "Tambahkan parameter 'url'." });
@@ -403,7 +273,6 @@ app.get('/api/d/github', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Downloader - GitHub Repository bermasalah." });
     }
 });
-
 app.get('/api/info/jadwaltv', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/info/jadwaltv`);
@@ -412,7 +281,6 @@ app.get('/api/info/jadwaltv', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Jadwal TV bermasalah." });
     }
 });
-
 app.get('/api/info/liburnasional', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/info/liburnasional`);
@@ -421,7 +289,6 @@ app.get('/api/info/liburnasional', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Hari Libur Nasional bermasalah." });
     }
 });
-
 app.get('/api/info/bmkg', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/info/bmkg`);
@@ -430,7 +297,6 @@ app.get('/api/info/bmkg', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - BMKG bermasalah." });
     }
 });
-
 app.get('/api/info/cuaca', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/info/cuaca`);
@@ -439,7 +305,6 @@ app.get('/api/info/cuaca', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Informasi - Cuaca bermasalah." });
     }
 });
-
 app.get('/api/s/gitagram', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/gitagram`);
@@ -448,7 +313,6 @@ app.get('/api/s/gitagram', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Gitagram bermasalah." });
     }
 });
-
 app.get('/api/s/duckduckgo', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/duckduckgo`);
@@ -457,7 +321,6 @@ app.get('/api/s/duckduckgo', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - DuckDuckGo bermasalah." });
     }
 });
-
 app.get('/api/s/combot', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/combot`);
@@ -466,7 +329,6 @@ app.get('/api/s/combot', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Combot bermasalah." });
     }
 });
-
 app.get('/api/s/bukalapak', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/bukalapak`);
@@ -475,7 +337,6 @@ app.get('/api/s/bukalapak', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Bukalapak bermasalah." });
     }
 });
-
 app.get('/api/s/brave', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/brave`);
@@ -484,7 +345,6 @@ app.get('/api/s/brave', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Search - Brave bermasalah." });
     }
 });
-
 app.get('/api/berita/kompas', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/kompas`);
@@ -493,7 +353,6 @@ app.get('/api/berita/kompas', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Kompas bermasalah." });
     }
 });
-
 app.get('/api/berita/jkt48', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/jkt48`);
@@ -502,7 +361,6 @@ app.get('/api/berita/jkt48', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - JKT48 bermasalah." });
     }
 });
-
 app.get('/api/berita/cnn', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/cnn`);
@@ -511,7 +369,6 @@ app.get('/api/berita/cnn', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - CNN bermasalah." });
     }
 });
-
 app.get('/api/berita/cnbcindonesia', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/cnbcindonesia`);
@@ -520,7 +377,6 @@ app.get('/api/berita/cnbcindonesia', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - CNBC Indonesia bermasalah." });
     }
 });
-
 app.get('/api/berita/antara', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/antara`);
@@ -529,7 +385,6 @@ app.get('/api/berita/antara', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Antara bermasalah." });
     }
 });
-
 app.get('/api/berita/tribunnews', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/tribunnews`);
@@ -538,7 +393,6 @@ app.get('/api/berita/tribunnews', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Tribunnews bermasalah." });
     }
 });
-
 app.get('/api/berita/suara', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/suara`);
@@ -547,7 +401,6 @@ app.get('/api/berita/suara', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Suara bermasalah." });
     }
 });
-
 app.get('/api/berita/merdeka', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/merdeka`);
@@ -556,7 +409,6 @@ app.get('/api/berita/merdeka', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Merdeka bermasalah." });
     }
 });
-
 app.get('/api/berita/sindonews', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/sindonews`);
@@ -565,7 +417,6 @@ app.get('/api/berita/sindonews', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Sindonews bermasalah." });
     }
 });
-
 app.get('/api/berita/liputan6', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/liputan6`);
@@ -574,7 +425,6 @@ app.get('/api/berita/liputan6', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Berita - Liputan6 bermasalah." });
     }
 });
-
 app.get('/api/apk/playstore', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/playstore`);
@@ -583,7 +433,6 @@ app.get('/api/apk/playstore', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari Play Store." });
     }
 });
-
 app.get('/api/apk/happymod', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/happymod`);
@@ -592,7 +441,6 @@ app.get('/api/apk/happymod', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari HappyMod." });
     }
 });
-
 app.get('/api/apk/appstore', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/appstore`);
@@ -601,7 +449,6 @@ app.get('/api/apk/appstore', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari App Store." });
     }
 });
-
 app.get('/api/apk/apkpure', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/apkpure`);
@@ -610,7 +457,6 @@ app.get('/api/apk/apkpure', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari APKPure." });
     }
 });
-
 app.get('/api/apk/apkmody', async (req, res) => {
     try {
         const { data } = await axios.get(`https://api.siputzx.my.id/api/apk/apkmody`);
@@ -619,7 +465,6 @@ app.get('/api/apk/apkmody', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data dari APKMody." });
     }
 });
-
 app.get('/api/tools/subdomains', async (req, res) => {
     try {
         const domain = req.query.domain;
@@ -631,7 +476,6 @@ app.get('/api/tools/subdomains', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan data subdomain." });
     }
 });
-
 app.get('/api/tools/text2base64', async (req, res) => {
     try {
         const text = req.query.text;
@@ -643,7 +487,6 @@ app.get('/api/tools/text2base64', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke Base64." });
     }
 });
-
 app.get('/api/tools/text2qr', async (req, res) => {
     try {
         const text = req.query.text;
@@ -655,7 +498,6 @@ app.get('/api/tools/text2qr', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke QR Code." });
     }
 });
-
 app.get('/api/tools/translate', async (req, res) => {
     try {
         const text = req.query.text;
@@ -668,7 +510,6 @@ app.get('/api/tools/translate', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal menerjemahkan teks." });
     }
 });
-
 app.get('/api/ai/lepton', async (req, res) => {
     try {
         const text = req.query.text;
@@ -680,7 +521,6 @@ app.get('/api/ai/lepton', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari Lepton AI." });
     }
 });
-
 app.get('/api/ai/gpt3', async (req, res) => {
     try {
         const prompt = req.query.prompt;
@@ -693,7 +533,6 @@ app.get('/api/ai/gpt3', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari GPT-3 AI." });
     }
 });
-
 app.get('/api/r/waifu', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/waifu");
@@ -702,7 +541,6 @@ app.get('/api/r/waifu', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan waifu random." });
     }
 });
-
 app.get('/api/cf/sentiment', async (req, res) => {
     try {
         const text = req.query.text;
@@ -714,7 +552,6 @@ app.get('/api/cf/sentiment', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil analisis sentimen." });
     }
 });
-
 app.get('/api/cf/image-classification', async (req, res) => {
     try {
         const imageUrl = req.query.imageUrl;
@@ -726,7 +563,6 @@ app.get('/api/cf/image-classification', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengklasifikasikan gambar." });
     }
 });
-
 app.get('/api/cf/embedding', async (req, res) => {
     try {
         const text = req.query.text;
@@ -738,7 +574,6 @@ app.get('/api/cf/embedding', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan embedding teks." });
     }
 });
-
 app.get('/api/cf/chat', async (req, res) => {
     try {
         const prompt = req.query.prompt;
@@ -751,7 +586,6 @@ app.get('/api/cf/chat', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari chatbot AI." });
     }
 });
-
 app.get('/api/ai/qwen257b', async (req, res) => {
     try {
         const prompt = req.query.prompt;
@@ -764,7 +598,6 @@ app.get('/api/ai/qwen257b', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI Qwen 257B." });
     }
 });
-
 app.get('/api/ai/qwq-32b-preview', async (req, res) => {
     try {
         const content = req.query.content;
@@ -776,7 +609,6 @@ app.get('/api/ai/qwq-32b-preview', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI QWQ 32B." });
     }
 });
-
 app.get('/api/s/pinterest', async (req, res) => {
     try {
         const query = req.query.query;
@@ -788,7 +620,6 @@ app.get('/api/s/pinterest', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil dari Pinterest." });
     }
 });
-
 app.get('/api/s/soundcloud', async (req, res) => {
     try {
         const query = req.query.query;
@@ -800,7 +631,6 @@ app.get('/api/s/soundcloud', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil dari SoundCloud." });
     }
 });
-
 app.get('/api/stalk/npm', async (req, res) => {
     try {
         const packageName = req.query.packageName;
@@ -812,7 +642,6 @@ app.get('/api/stalk/npm', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan informasi dari NPM." });
     }
 });
-
 app.get('/api/ai/stabilityai', async (req, res) => {
     try {
         const prompt = req.query.prompt;
@@ -824,7 +653,6 @@ app.get('/api/ai/stabilityai', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan gambar dari Stability AI." });
     }
 });
-
 app.get('/api/s/wikipedia', async (req, res) => {
     try {
         const query = req.query.query;
@@ -836,7 +664,6 @@ app.get('/api/s/wikipedia', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Wikipedia." });
     }
 });
-
 app.get('/api/s/spotify', async (req, res) => {
     try {
         const query = req.query.query;
@@ -848,7 +675,6 @@ app.get('/api/s/spotify', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Spotify." });
     }
 });
-
 app.get('/api/tools/fake-data', async (req, res) => {
     try {
         const type = req.query.type || "person";
@@ -860,7 +686,6 @@ app.get('/api/tools/fake-data', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil fake data." });
     }
 });
-
 app.get('/api/primbon/cek_potensi_penyakit', async (req, res) => {
     try {
         const { tgl, bln, thn } = req.query;
@@ -872,7 +697,6 @@ app.get('/api/primbon/cek_potensi_penyakit', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Primbon Penyakit." });
     }
 });
-
 app.get('/api/primbon/ramalanjodoh', async (req, res) => {
     try {
         const { nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2 } = req.query;
@@ -885,7 +709,6 @@ app.get('/api/primbon/ramalanjodoh', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Ramalan Jodoh." });
     }
 });
-
 app.get('/api/primbon/rejeki_hoki_weton', async (req, res) => {
     try {
         const { tgl, bln, thn } = req.query;
@@ -897,7 +720,6 @@ app.get('/api/primbon/rejeki_hoki_weton', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Rejeki Weton." });
     }
 });
-
 app.get('/api/primbon/sifat_usaha_bisnis', async (req, res) => {
     try {
         const { tgl, bln, thn } = req.query;
@@ -909,7 +731,6 @@ app.get('/api/primbon/sifat_usaha_bisnis', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Sifat Usaha." });
     }
 });
-
 app.get('/api/primbon/tafsirmimpi', async (req, res) => {
     try {
         const mimpi = req.query.mimpi;
@@ -921,7 +742,6 @@ app.get('/api/primbon/tafsirmimpi', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Tafsir Mimpi." });
     }
 });
-
 app.get('/api/primbon/artinama', async (req, res) => {
     try {
         const nama = req.query.nama;
@@ -969,7 +789,6 @@ app.get('/api/primbon/zodiak', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Zodiak." });
     }
 });
-
 app.get('/api/ai/metaai', async (req, res) => {
     try {
         const query = req.query.query;
@@ -1005,7 +824,6 @@ app.get('/api/ai/khodam', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Khodam AI." });
     }
 });
-
 app.get('/api/ai/wanzofc-you', async (req, res) => {
     try {
         const q = req.query.q;
@@ -1016,7 +834,6 @@ app.get('/api/ai/wanzofc-you', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc You." });
     }
 });
-
 app.get('/api/ai/wanzofc-llama', async (req, res) => {
     try {
         const q = req.query.q;
@@ -1027,7 +844,6 @@ app.get('/api/ai/wanzofc-llama', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc Llama." });
     }
 });
-
 app.get('/api/ai/meta-llama', async (req, res) => {
     try {
         const content = req.query.content;
@@ -1039,14 +855,13 @@ app.get('/api/ai/meta-llama', async (req, res) => {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari Meta LLaMA." });
     }
 });
-
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
-
 app.use((req, res) => {
- res.status(500).json(path.join(__dirname, '404.html'));
+  res.status(500).json(path.join(__dirname, '404.html'));
 });
+        
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
 });
