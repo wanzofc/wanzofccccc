@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.static(__dirname)); 
 const formatParagraph = (text) => text ? text.replace(/\.\s+/g, ".\n\n") : "Tidak ada jawaban.";
-app.get('/kebijakan', (req, res) => {
-    res.sendFile(path.join(__dirname, 'kebijakan.html'));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "kebijakan.html"));
 });
 app.get("/docs", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
@@ -842,6 +842,17 @@ app.get('/api/ai/wanzofc-llama', async (req, res) => {
         res.json(data);
     } catch {
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc Llama." });
+    }
+});
+app.get('/api/ai/meta-llama', async (req, res) => {
+    try {
+        const content = req.query.content;
+        if (!content) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter content!" });
+
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/meta-llama-33-70B-instruct-turbo?content=${encodeURIComponent(content)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari Meta LLaMA." });
     }
 });
 app.use((req, res) => {
