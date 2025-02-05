@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // *** KONFIGURASI BOT TELEGRAM ***
-const TOKEN = 'YOUR_BOT_TOKEN'; // Ganti dengan token bot Telegram-mu
+const TOKEN = '7891724607:AAHdI4bUZLZRKZpulXILjNmbkkclRKLSU1g'; // Ganti dengan token bot Telegram-mu
 const bot = new TelegramBot(TOKEN, { polling: true }); // Aktifkan polling
 // *** AKHIR KONFIGURASI BOT TELEGRAM ***
 
