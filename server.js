@@ -48,7 +48,22 @@ bot.on('message', async (msg) => {
             bot.sendMessage(chatId, apiResponse.message); // Kirim pesan error
         }
     }
+        
+    if (text.startsWith('/khodam')) {
+        const content = text.substring(9).trim(); // Ambil query setelah /deepseek
+        if (!content) {
+            bot.sendMessage(chatId, "Tolong tambahkan query setelah /khodam.");
+            return;
+        }
 
+        const apiResponse = await callApi('/api/ai/khodam', { content: content }); // Panggil API
+
+        if (apiResponse.result) {
+            bot.sendMessage(chatId, apiResponse.data); // Kirim hasil ke pengguna
+        } else {
+            bot.sendMessage(chatId, apiResponse.message); // Kirim pesan error
+        }
+    }
     // *** CONTOH PENGGUNAAN API /api/anime/otakudesu/search ***
     else if (text.startsWith('/otakudesu')) {
         const query = text.substring(11).trim();
