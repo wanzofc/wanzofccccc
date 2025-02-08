@@ -23,6 +23,341 @@
         }
     </script>
     <style>
+        /* From Uiverse.io by Lakshay-art */
+        .grid {
+            height: 800px;
+            width: 800px;
+            background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
+            linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
+            background-size: 1rem 1rem;
+            background-position: center center;
+            position: absolute;
+            z-index: -1;
+            filter: blur(1px);
+        }
+        .white,
+        .border,
+        .darkBorderBg,
+        .glow {
+            max-height: 70px;
+            max-width: 314px;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            z-index: -1;
+            /* Border Radius */
+            border-radius: 12px;
+            filter: blur(3px);
+        }
+        .input {
+            background-color: #010201;
+            border: none;
+            /* padding:7px; */
+            width: 301px;
+            height: 56px;
+            border-radius: 10px;
+            color: white;
+            padding-inline: 59px;
+            font-size: 18px;
+        }
+        #poda {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+        .input::placeholder {
+            color: #c0b9c0;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        #main:focus-within > #input-mask {
+            display: none;
+        }
+
+        #input-mask {
+            pointer-events: none;
+            width: 100px;
+            height: 20px;
+            position: absolute;
+            background: linear-gradient(90deg, transparent, black);
+            top: 18px;
+            left: 70px;
+        }
+        #pink-mask {
+            pointer-events: none;
+            width: 30px;
+            height: 20px;
+            position: absolute;
+            background: #cf30aa;
+            top: 10px;
+            left: 5px;
+            filter: blur(20px);
+            opacity: 0.8;
+            //animation:leftright 4s ease-in infinite;
+            transition: all 2s;
+        }
+        #main:hover > #pink-mask {
+            //animation: rotate 4s linear infinite;
+            opacity: 0;
+        }
+
+        .white {
+            max-height: 63px;
+            max-width: 307px;
+            border-radius: 10px;
+            filter: blur(2px);
+        }
+
+        .white::before {
+            content: "";
+            z-index: -2;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(83deg);
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            filter: brightness(1.4);
+            background-image: conic-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            #a099d8,
+            rgba(0, 0, 0, 0) 8%,
+            rgba(0, 0, 0, 0) 50%,
+            #dfa2da,
+            rgba(0, 0, 0, 0) 58%
+            );
+            //  animation: rotate 4s linear infinite;
+            transition: all 2s;
+        }
+        .border {
+            max-height: 59px;
+            max-width: 303px;
+            border-radius: 11px;
+            filter: blur(0.5px);
+        }
+        .border::before {
+            content: "";
+            z-index: -2;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(70deg);
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            filter: brightness(1.3);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-image: conic-gradient(
+            #1c191c,
+            #402fb5 5%,
+            #1c191c 14%,
+            #1c191c 50%,
+            #cf30aa 60%,
+            #1c191c 64%
+            );
+            // animation: rotate 4s 0.1s linear infinite;
+            transition: all 2s;
+        }
+        .darkBorderBg {
+            max-height: 65px;
+            max-width: 312px;
+        }
+        .darkBorderBg::before {
+            content: "";
+            z-index: -2;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(82deg);
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-image: conic-gradient(
+            rgba(0, 0, 0, 0),
+            #18116a,
+            rgba(0, 0, 0, 0) 10%,
+            rgba(0, 0, 0, 0) 50%,
+            #6e1b60,
+            rgba(0, 0, 0, 0) 60%
+            );
+            transition: all 2s;
+        }
+        #poda:hover > .darkBorderBg::before {
+            transform: translate(-50%, -50%) rotate(262deg);
+        }
+        #poda:hover > .glow::before {
+            transform: translate(-50%, -50%) rotate(240deg);
+        }
+        #poda:hover > .white::before {
+            transform: translate(-50%, -50%) rotate(263deg);
+        }
+        #poda:hover > .border::before {
+            transform: translate(-50%, -50%) rotate(250deg);
+        }
+
+        #poda:hover > .darkBorderBg::before {
+            transform: translate(-50%, -50%) rotate(-98deg);
+        }
+        #poda:hover > .glow::before {
+            transform: translate(-50%, -50%) rotate(-120deg);
+        }
+        #poda:hover > .white::before {
+            transform: translate(-50%, -50%) rotate(-97deg);
+        }
+        #poda:hover > .border::before {
+            transform: translate(-50%, -50%) rotate(-110deg);
+        }
+
+        #poda:focus-within > .darkBorderBg::before {
+            transform: translate(-50%, -50%) rotate(442deg);
+            transition: all 4s;
+        }
+        #poda:focus-within > .glow::before {
+            transform: translate(-50%, -50%) rotate(420deg);
+            transition: all 4s;
+        }
+        #poda:focus-within > .white::before {
+            transform: translate(-50%, -50%) rotate(443deg);
+            transition: all 4s;
+        }
+        #poda:focus-within > .border::before {
+            transform: translate(-50%, -50%) rotate(430deg);
+            transition: all 4s;
+        }
+
+        .glow {
+            overflow: hidden;
+            filter: blur(30px);
+            opacity: 0.4;
+            max-height: 130px;
+            max-width: 354px;
+        }
+        .glow:before {
+            content: "";
+            z-index: -2;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(60deg);
+            position: absolute;
+            width: 999px;
+            height: 999px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            /*border color, change middle color*/
+            background-image: conic-gradient(
+            #000,
+            #402fb5 5%,
+            #000 38%,
+            #000 50%,
+            #cf30aa 60%,
+            #000 87%
+            );
+            /* change speed here */
+            //animation: rotate 4s 0.3s linear infinite;
+            transition: all 2s;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: translate(-50%, -50%) rotate(450deg);
+            }
+        }
+        @keyframes leftright {
+            0% {
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+
+            49% {
+                transform: translate(250px, 0px);
+                opacity: 0;
+            }
+            80% {
+                transform: translate(-40px, 0px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+        }
+
+        #filter-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            max-height: 40px;
+            max-width: 38px;
+            height: 100%;
+            width: 100%;
+
+            isolation: isolate;
+            overflow: hidden;
+            /* Border Radius */
+            border-radius: 10px;
+            background: linear-gradient(180deg, #161329, black, #1d1b4b);
+            border: 1px solid transparent;
+        }
+        .filterBorder {
+            height: 42px;
+            width: 40px;
+            position: absolute;
+            overflow: hidden;
+            top: 7px;
+            right: 7px;
+            border-radius: 10px;
+        }
+
+        .filterBorder::before {
+            content: "";
+
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            filter: brightness(1.35);
+            background-image: conic-gradient(
+            rgba(0, 0, 0, 0),
+            #3d3a4f,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0) 50%,
+            #3d3a4f,
+            rgba(0, 0, 0, 0) 100%
+            );
+            animation: rotate 4s linear infinite;
+        }
+        #main {
+            position: relative;
+        }
+        #search-icon {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+        }
+
         :root {
             --primary-color: #00ff99;
             --secondary-color: #ffcc00;
@@ -70,7 +405,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .container:hover {
-           box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .chart-container {
             max-width: 700px;
@@ -85,29 +420,29 @@
             z-index: 1;
         }
         .api-item {
-           display: flex;
-             justify-content: space-between;
-             align-items: center;
-           margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
             opacity: 0;
-           transition: opacity 0.5s ease, transform 0.3s ease, background-color 0.3s ease;
-           border-bottom: 1px solid #555;
+            transition: opacity 0.5s ease, transform 0.3s ease, background-color 0.3s ease;
+            border-bottom: 1px solid #555;
             padding-bottom: 5px;
         }
         .api-item:last-child {
-           border-bottom: none;
+            border-bottom: none;
             padding-bottom: 0;
         }
         .api-item:hover {
-           background-color: var(--hover-color);
-           transform: translateY(-2px);
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
         }
         .api-item a {
             color: var(--primary-color);
             text-decoration: none;
-           margin-right: 10px;
-           transition: color 0.3s ease;
-       }
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
         .api-item a:hover {
             text-decoration: underline;
         }
@@ -115,53 +450,53 @@
             background-color: var(--secondary-color);
             color: #121212;
             border: none;
-           padding: 5px 10px;
+            padding: 5px 10px;
             border-radius: 5px;
-           cursor: pointer;
+            cursor: pointer;
             text-decoration: none;
             font-size: 12px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
         }
-         .try-button:hover, .try-button:focus {
+        .try-button:hover, .try-button:focus {
             background-color: #ffbb00;
-             transform: scale(1.1);
+            transform: scale(1.1);
         }
         #lottie-container {
             width: 100px;
-           height: 100px;
-             position: fixed;
+            height: 100px;
+            position: fixed;
             top: 20px;
-             left: 20px;
+            left: 20px;
             z-index: 2;
         }
         canvas {
-           display: none;
-           }
+            display: none;
+        }
         ::-webkit-scrollbar {
-          width: 8px;
+            width: 8px;
         }
         ::-webkit-scrollbar-thumb {
-         background-color: var(--primary-color);
-         border-radius: 4px;
-       }
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
         ::-webkit-scrollbar-track {
             background: #444;
         }
-       .loading-skeleton {
-          background: #444;
-           height: 20px;
+        .loading-skeleton {
+            background: #444;
+            height: 20px;
             margin-bottom: 10px;
-          animation: skeleton-loading 1.5s linear infinite alternate;
-      }
-
-      @keyframes skeleton-loading {
-         0% {
-            background-color: #444;
+            animation: skeleton-loading 1.5s linear infinite alternate;
         }
-        100% {
-           background-color: #555;
-       }
-      }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-color: #444;
+            }
+            100% {
+                background-color: #555;
+            }
+        }
         #music-controls {
             position: fixed;
             top: 20px;
@@ -182,7 +517,7 @@
             transition: background-color 0.3s ease;
         }
         #music-controls button:hover {
-           background-color: #ffbb00;
+            background-color: #ffbb00;
         }
         #dark-mode-toggle {
             background-color: var(--secondary-color);
@@ -195,20 +530,20 @@
             transition: background-color 0.3s ease;
         }
         #dark-mode-toggle:hover {
-          background-color: #ffbb00;
-       }
+            background-color: #ffbb00;
+        }
         @media (max-width: 768px) {
             .container, .chart-container {
                 max-width: 95%;
-           }
-           #music-controls {
-              top: 10px;
-               right: 10px;
+            }
+            #music-controls {
+                top: 10px;
+                right: 10px;
             }
         }
-       body::before {
+        body::before {
             content: "";
-           position: fixed;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -217,10 +552,10 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-attachment: fixed;
+            background-attachment: fixed;
             z-index: -1;
-           filter: blur(3px);
-       }
+            filter: blur(3px);
+        }
         #search-container {
             margin: 20px auto;
             max-width: 700px;
@@ -230,7 +565,7 @@
             border-radius: var(--border-radius);
             align-items: center;
             position: relative;
-           z-index: 1;
+            z-index: 1;
         }
 
         #search-input {
@@ -242,39 +577,39 @@
             background-color: #444;
             color: var(--text-color);
         }
-       #search-button {
-           background-color: var(--secondary-color);
+        #search-button {
+            background-color: var(--secondary-color);
             color: #121212;
             border: none;
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-             transition: background-color 0.3s ease;
-           font-size: 12px;
-         }
-         #search-button:hover {
-             background-color: #ffbb00;
-         }
+            transition: background-color 0.3s ease;
+            font-size: 12px;
+        }
+        #search-button:hover {
+            background-color: #ffbb00;
+        }
         .filtered-item {
             display: flex;
-              justify-content: space-between;
-             align-items: center;
-           margin: 10px 0;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
             opacity: 0;
             transition: opacity 0.5s ease, transform 0.3s ease;
-           border-bottom: 1px solid #555;
+            border-bottom: 1px solid #555;
             padding-bottom: 5px;
         }
         .filtered-item:last-child {
-           border-bottom: none;
+            border-bottom: none;
             padding-bottom: 0;
         }
         .filtered-item a {
             color: var(--primary-color);
             text-decoration: none;
-           margin-right: 10px;
-           transition: color 0.3s ease;
-       }
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
         .filtered-item a:hover {
             text-decoration: underline;
         }
@@ -285,34 +620,34 @@
             padding: 10px;
         }
         .category-header {
-             display: flex;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-             cursor: pointer;
+            cursor: pointer;
             padding: 10px;
-             transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .category-header:hover {
-             background-color: var(--hover-color);
-             transform: scale(1.02);
-         }
-         .category-content {
+            background-color: var(--hover-color);
+            transform: scale(1.02);
+        }
+        .category-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
 
         }
         .category-content.show {
-           max-height: 500px;
-             overflow-y: auto;
+            max-height: 500px;
+            overflow-y: auto;
         }
-       .api-item-desc {
+        .api-item-desc {
             font-size: 0.9em;
             color: #ccc;
             margin-bottom: 5px;
-           display: block;
+            display: block;
         }
-       .api-item-status {
+        .api-item-status {
             font-size: 0.8em;
             padding: 3px 5px;
             border-radius: 3px;
@@ -323,65 +658,65 @@
             background-color: green;
         }
         .api-item-status.offline {
-           background-color: red;
-       }
-       .category-header h3 {
-         margin: 0;
-         }
-       .json-preview-overlay {
-           position: fixed;
-          top: 0;
+            background-color: red;
+        }
+        .category-header h3 {
+            margin: 0;
+        }
+        .json-preview-overlay {
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-           height: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
-             display: flex;
+            display: flex;
             justify-content: center;
             align-items: center;
-           z-index: 1000;
-       }
-       .json-preview-box {
-          background: #333;
+            z-index: 1000;
+        }
+        .json-preview-box {
+            background: #333;
             padding: 20px;
-             border-radius: 10px;
+            border-radius: 10px;
             max-width: 80%;
-           max-height: 80%;
+            max-height: 80%;
             overflow: auto;
-             position: relative;
-       }
-       .json-preview-close {
-           position: absolute;
-           top: 10px;
+            position: relative;
+        }
+        .json-preview-close {
+            position: absolute;
+            top: 10px;
             right: 10px;
-           cursor: pointer;
-           font-size: 20px;
+            cursor: pointer;
+            font-size: 20px;
             color: #fff;
         }
         .json-preview-close:hover {
-         color: var(--secondary-color);
+            color: var(--secondary-color);
         }
-       .syntax-highlight {
-         white-space: pre-wrap;
-       }
-       footer {
-           text-align: center;
-          margin-top: 30px;
-         padding: 15px;
+        .syntax-highlight {
+            white-space: pre-wrap;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
             background-color: var(--background-color);
-           border-top: 1px solid #555;
-             color: #ccc;
-             position: relative;
-           z-index: 1;
-       }
-       footer a {
-           color: var(--primary-color);
-          text-decoration: none;
-       }
-       footer a:hover {
-         text-decoration: underline;
+            border-top: 1px solid #555;
+            color: #ccc;
+            position: relative;
+            z-index: 1;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
         footer .social-icons {
-          margin-top: 10px;
+            margin-top: 10px;
         }
         footer .social-icons a {
             margin: 0 5px;
@@ -391,576 +726,644 @@
         .api-item .preview-button {
             background-color: #555;
             color: #fff;
-           border: none;
-             padding: 5px 10px;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
-           font-size: 12px;
+            font-size: 12px;
             transition: background-color 0.3s ease;
-       }
-       .api-item .preview-button:hover {
-           background-color: #777;
+        }
+        .api-item .preview-button:hover {
+            background-color: #777;
         }
         .api-item .try-button.clicked {
-             animation: clickAnimation 0.3s ease-in-out;
-         }
-    @keyframes clickAnimation {
-     0% {
-            transform: scale(1);
+            animation: clickAnimation 0.3s ease-in-out;
         }
-    50% {
-            transform: scale(1.2);
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
-         100% {
-            transform: scale(1);
-       }
-    }
-    #category-filter {
-      margin-bottom: 15px;
-        display: flex;
-         justify-content: flex-start;
-          align-items: center;
-           gap: 10px;
-    }
-    #category-filter label {
-      color: #fff;
-       font-size: 14px;
-   }
-    #category-filter select {
-         padding: 8px;
-        border: 1px solid #555;
-        border-radius: 5px;
-        background-color: #444;
-       color: #fff;
-         font-size: 14px;
-   }
-   #live-chat-button {
-       position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: var(--secondary-color);
-       color: #121212;
-        border: none;
-         padding: 10px 15px;
-         border-radius: 5px;
-        cursor: pointer;
-         font-size: 12px;
-       transition: background-color 0.3s ease, transform 0.2s ease;
-      z-index: 4;
-   }
-    #live-chat-button:hover, #live-chat-button:focus {
-      background-color: #ffbb00;
-       transform: scale(1.1);
-    }
-</style>
+        #category-filter {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+        #category-filter label {
+            color: #fff;
+            font-size: 14px;
+        }
+        #category-filter select {
+            padding: 8px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            font-size: 14px;
+        }
+        #live-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: #121212;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 4;
+        }
+        #live-chat-button:hover, #live-chat-button:focus {
+            background-color: #ffbb00;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body >
-   <header>
-       <div id="music-controls">
+<header>
+    <div id="music-controls">
         <button id="play-pause-button">Play</button>
-         <button id="dark-mode-toggle">Dark Mode</button>
-        </div>
-      </header>
-    <audio id="background-music" loop>
-        <source src="https://files.catbox.moe/a3y4z9.mp3" type="audio/mpeg">
-         Your browser does not support the audio element.
-    </audio>
-     <audio id="click-sound">
-        <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg">
-       Your browser does not support the audio element.
-   </audio>
-    <div id="lottie-container"></div>
-     <div id="search-container">
-      <input type="text" id="search-input" placeholder="Cari API...">
-       <button id="search-button">Cari</button>
+        <button id="dark-mode-toggle">Dark Mode</button>
     </div>
-    <h1>API WANZOFC TECH</h1>
-    <main>
+</header>
+<audio id="background-music" loop>
+    <source src="https://files.catbox.moe/a3y4z9.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="click-sound">
+    <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<div id="lottie-container"></div>
+
+<h1>API WANZOFC TECH</h1>
+<main>
     <div id="root"></div>
     <div id="vue-app"></div>
     <div id="chart-container"></div>
-    </main>
-     <button id="live-chat-button" onclick="toggleChat()">Live Chat</button>
-    <footer>
-        <p>© 2025 WANZOFC TECH. <a href="/kebijakan">Tentang Kami</a> | <a href="/kebijakan">Kebijakan Privasi</a></p>
-        <div class="social-icons">
-          <a href="https://wa.me/62895402567224">
-  <img src="https://files.catbox.moe/7rtv82.jpg" alt="WhatsApp" width="20" height="20">
-</a>
-<a href="https://files.catbox.moe/0ebbyi.jpg">
-  <img src="https://files.catbox.moe/7zoep9.jpg" alt="Dana" width="20" height="20">
-</a>
-          <a href="https://instagram.com/wanz_brayy" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://github.com/wanzbrayy" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       
-        <p>Last Updated: 2025</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script>
-         const animationContainer = document.getElementById('lottie-container');
-         const animationData = {
-            "v": "5.10.2",
-            "fr": 60,
-            "ip": 0,
-            "op": 120,
-            "w": 100,
-            "h": 100,
-            "nm": "Animation",
+</main>
+<button id="live-chat-button" onclick="toggleChat()">Live Chat</button>
+<footer>
+    <p>© 2025 WANZOFC TECH. <a href="/kebijakan">Tentang Kami</a> | <a href="/kebijakan">Kebijakan Privasi</a></p>
+    <div class="social-icons">
+        <a href="https://wa.me/62895402567224">
+            <img src="https://files.catbox.moe/7rtv82.jpg" alt="WhatsApp" width="20" height="20">
+        </a>
+        <a href="https://files.catbox.moe/0ebbyi.jpg">
+            <img src="https://files.catbox.moe/7zoep9.jpg" alt="Dana" width="20" height="20">
+        </a>
+        <a href="https://instagram.com/wanz_brayy" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/wanzbrayy" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+
+    <p>Last Updated: 2025</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script>
+    const animationContainer = document.getElementById('lottie-container');
+    const animationData = {
+        "v": "5.10.2",
+        "fr": 60,
+        "ip": 0,
+        "op": 120,
+        "w": 100,
+        "h": 100,
+        "nm": "Animation",
+        "ddd": 0,
+        "assets": [],
+        "layers": [{
             "ddd": 0,
-            "assets": [],
-            "layers": [{
-                "ddd": 0,
-                "ind": 1,
-                "ty": 4,
-                 "nm": "Shape Layer 1",
-                "sr": 1,
-                "ks": {
-                    "o": { "a": 0, "k": 100, "ix": 11 },
-                    "r": { "a": 0, "k": 0, "ix": 10 },
-                    "s": { "a": 0, "k": [ 100, 100 ], "ix": 6 },
-                    "p": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
-                    "a": { "a": 0, "k": [ 50, 50 ], "ix": 1 }
-                },
-                "ao": 0,
-                 "shapes": [{
-                    "ty": "gr",
-                    "it": [{
-                        "ty": "rc",
-                         "d": 1,
-                        "s": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
-                        "p": { "a": 0, "k": [ 0, 0 ], "ix": 3 },
-                         "r": { "a": 0, "k": 0, "ix": 4 },
-                       "nm": "Rectangle Path 1",
-                         "hd": false
-                    }, {
-                        "ty": "fl",
-                       "c": { "a": 0, "k": [ 0.0196078431372549, 1, 0.596078431372549, 1 ], "ix": 4 },
-                        "o": { "a": 0, "k": 100, "ix": 5 },
-                        "nm": "Fill 1",
-                       "hd": false
-                    }],
-                   "nm": "Group 1",
+            "ind": 1,
+            "ty": 4,
+            "nm": "Shape Layer 1",
+            "sr": 1,
+            "ks": {
+                "o": { "a": 0, "k": 100, "ix": 11 },
+                "r": { "a": 0, "k": 0, "ix": 10 },
+                "s": { "a": 0, "k": [ 100, 100 ], "ix": 6 },
+                "p": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                "a": { "a": 0, "k": [ 50, 50 ], "ix": 1 }
+            },
+            "ao": 0,
+            "shapes": [{
+                "ty": "gr",
+                "it": [{
+                    "ty": "rc",
+                    "d": 1,
+                    "s": { "a": 0, "k": [ 50, 50 ], "ix": 2 },
+                    "p": { "a": 0, "k": [ 0, 0 ], "ix": 3 },
+                    "r": { "a": 0, "k": 0, "ix": 4 },
+                    "nm": "Rectangle Path 1",
+                    "hd": false
+                }, {
+                    "ty": "fl",
+                    "c": { "a": 0, "k": [ 0.0196078431372549, 1, 0.596078431372549, 1 ], "ix": 4 },
+                    "o": { "a": 0, "k": 100, "ix": 5 },
+                    "nm": "Fill 1",
                     "hd": false
                 }],
-                 "ip": 0,
-                "op": 120,
-                "st": 0,
-                 "bm": 0
+                "nm": "Group 1",
+                "hd": false
             }],
-           "markers": []
+            "ip": 0,
+            "op": 120,
+            "st": 0,
+            "bm": 0
+        }],
+        "markers": []
+    };
+    lottie.loadAnimation({
+        container: animationContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+    });
+</script>
+<script type="text/babel">
+    const { useEffect, useState, useRef } = React;
+    const apiList = [
+        { category: "Framework Backend", name: "Nest.js Documentation", url: "https://docs.nestjs.com/", desc: "Official documentation for Nest.js.", status: "online" },
+        { category: "Framework Backend", name: "LoopBack Documentation", url: "https://loopback.io/doc/", desc: "Official documentation for LoopBack.", status: "online" },
+        { category: "Framework Backend", name: "Hapi Documentation", url: "https://hapi.dev/", desc: "Official documentation for Hapi.js.", status: "online" },
+        { category: "Framework Backend", name: "Sails.js Documentation", url: "https://sailsjs.com/documentation", desc: "Official documentation for Sails.js.", status: "online" },
+        { category: "Framework Backend", name: "Feathers.js Documentation", url: "https://feathersjs.com/api/", desc: "Official documentation for Feathers.js.", status: "online" },
+        { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
+        { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
+        { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
+        { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online" },
+        { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
+        { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
+        { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
+        { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
+        { category: "AI", name: "AI - meta llama 33 Chat", url: "/api/ai/meta-llama?content=siapa%20itu%20prabowo?", desc: "Menghasilkan teks dengan model META LLAMA 33.", status: "online" },
+        { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
+        { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
+        { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
+        { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
+        { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
+        { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
+        { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
+        { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
+        { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },
+        { category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model  Llama ai.", status: "online" },
+        { category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online" },
+        { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
+        { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
+        { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
+        { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
+        { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
+        { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
+        { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
+        { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
+        { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
+        { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
+        { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
+        { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },
+        { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
+        { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
+        { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
+        { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
+        { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
+        { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
+        { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
+        { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
+        { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
+        { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
+        { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
+        { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+        { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
+        { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
+        { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
+        { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+        { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
+        { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
+        { category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari  bokep.", status: "online" },
+        { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
+        { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
+        { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
+        { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
+        { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
+        { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
+        { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
+        { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
+        { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
+        { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
+        { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
+        { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
+        { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
+        { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
+        { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
+        { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
+        { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
+        { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
+        { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
+        { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
+        { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
+        { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
+        { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
+        { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
+        { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
+        { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
+        { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
+        { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
+        { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
+        { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
+        { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
+    ];
+    const fetchData = async (url) => {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            const chartContainer = document.getElementById('chart-container');
+            chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
+            return null;
+        }
+    };
+    function APIList() {
+        const [filteredList, setFilteredList] = useState(apiList);
+        const searchInput = useRef(null);
+        const [activeCategories, setActiveCategories] = useState({});
+        const [selectedCategory, setSelectedCategory] = useState('');
+        const clickSound = useRef(null);
+
+        useEffect(() => {
+            gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+        }, []);
+
+        const handleCategoryToggle = (category) => {
+            setActiveCategories((prevCategories) => ({
+                ...prevCategories,
+                [category]: !prevCategories[category],
+            }));
         };
-        lottie.loadAnimation({
-             container: animationContainer,
-            renderer: 'svg',
-             loop: true,
-            autoplay: true,
-             animationData: animationData,
-        });
-    </script>
-    <script type="text/babel">
-        const { useEffect, useState, useRef } = React;
-          const apiList = [
-            { category: "Framework Backend", name: "Nest.js Documentation", url: "https://docs.nestjs.com/", desc: "Official documentation for Nest.js.", status: "online" },
-             { category: "Framework Backend", name: "LoopBack Documentation", url: "https://loopback.io/doc/", desc: "Official documentation for LoopBack.", status: "online" },
-            { category: "Framework Backend", name: "Hapi Documentation", url: "https://hapi.dev/", desc: "Official documentation for Hapi.js.", status: "online" },
-            { category: "Framework Backend", name: "Sails.js Documentation", url: "https://sailsjs.com/documentation", desc: "Official documentation for Sails.js.", status: "online" },
-            { category: "Framework Backend", name: "Feathers.js Documentation", url: "https://feathersjs.com/api/", desc: "Official documentation for Feathers.js.", status: "online" },
-             { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
-            { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
-            { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
-            { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online" },
-            { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
-             { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
-              { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
-            { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
-            { category: "AI", name: "AI - meta llama 33 Chat", url: "/api/ai/meta-llama?content=siapa%20itu%20prabowo?", desc: "Menghasilkan teks dengan model META LLAMA 33.", status: "online" },
-              { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
-             { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
-             { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
-             { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
-              { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
-             { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
-              { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
-              { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
-            { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },
-             { category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model  Llama ai.", status: "online" },
-              { category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online" },
-             { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
-             { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
-             { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
-              { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
-             { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
-              { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
-              { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
-            { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
-              { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
-              { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
-             { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
-             { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },
-             { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
-            { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
-             { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
-              { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
-              { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
-            { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
-             { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
-              { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
-                            { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
-              { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
-             { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
-            { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
-             { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
-            { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
-             { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
-             { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
-            { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
-              { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
-             { category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari  bokep.", status: "online" },           
-              { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
-              { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
-             { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
-              { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
-             { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
-              { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
-           { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
-            { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
-              { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
-              { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
-             { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
-              { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
-              { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
-             { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
-             { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
-              { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
-             { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
-            { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
-             { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
-            { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
-               { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
-             { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
-            { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
-            { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
-             { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
-            { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
-              { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
-            { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
-            { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
-              { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
-             { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
-            { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
-             { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
-             { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
-        ];
-        const fetchData = async (url) => {
-           try {
-               const response = await fetch(url);
-                if (!response.ok) {
-                    const errorData = await response.json();
-                     throw new Error(`HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'}`);
-                }
-                return await response.json();
-             } catch (error) {
-                console.error('Error fetching data:', error);
-                 const chartContainer = document.getElementById('chart-container');
-                chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
-                return null;
+
+        const handleCategoryFilterChange = (event) => {
+            setSelectedCategory(event.target.value);
+        };
+
+        const handleSearch = () => {
+            const searchTerm = searchInput.current.value.toLowerCase();
+            const newList = apiList.filter(api =>
+                api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+            );
+            setFilteredList(newList);
+            gsap.fromTo(".filtered-item",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
+            )
+        };
+
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                handleSearch();
             }
         };
-        function APIList() {
-            const [filteredList, setFilteredList] = useState(apiList);
-            const searchInput = useRef(null);
-            const [activeCategories, setActiveCategories] = useState({});
-            const [selectedCategory, setSelectedCategory] = useState('');
-            const clickSound = useRef(null);
-            useEffect(() => {
-                gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
-            }, []);
-            const handleCategoryToggle = (category) => {
-                setActiveCategories((prevCategories) => ({
-                     ...prevCategories,
-                    [category]: !prevCategories[category],
-                 }));
-             };
-           const handleCategoryFilterChange = (event) => {
-             setSelectedCategory(event.target.value);
-           };
-            const handleSearch = () => {
-                const searchTerm = searchInput.current.value.toLowerCase();
-               const newList = apiList.filter(api =>
-                     api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
-                 );
-                 setFilteredList(newList);
-                 gsap.fromTo(".filtered-item",
-                { opacity: 0, y: 20 },
-                 { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
-                 )
-             };
-            const getFilteredList = () => {
-                let filtered = apiList;
-               if(selectedCategory) {
-                    filtered = filtered.filter(api => api.category === selectedCategory);
-               }
-               if (!searchInput.current || !searchInput.current.value) {
-                    return filtered;
-               }
-              const searchTerm = searchInput.current.value.toLowerCase();
-             return filtered.filter(api =>
-                     api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
-                );
-            };
-            const playClickSound = () => {
-              if(clickSound.current) {
-                   clickSound.current.play();
-              }
-           };
-           const handleTryClick = (event) => {
-            playClickSound();
-              event.currentTarget.classList.add('clicked');
-                setTimeout(() => {
-                 event.currentTarget.classList.remove('clicked');
-            }, 300)
-            };
 
-          const [previewData, setPreviewData] = useState(null);
-           const [showPreview, setShowPreview] = useState(false);
-           const handlePreviewClick = async (url) => {
+        const getFilteredList = () => {
+            let filtered = apiList;
+            if(selectedCategory) {
+                filtered = filtered.filter(api => api.category === selectedCategory);
+            }
+            if (!searchInput.current || !searchInput.current.value) {
+                return filtered;
+            }
+            const searchTerm = searchInput.current.value.toLowerCase();
+            return filtered.filter(api =>
+                api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+            );
+        };
+
+        const playClickSound = () => {
+            if(clickSound.current) {
+                clickSound.current.play();
+            }
+        };
+
+        const handleTryClick = (event) => {
+            playClickSound();
+            event.currentTarget.classList.add('clicked');
+            setTimeout(() => {
+                event.currentTarget.classList.remove('clicked');
+            }, 300)
+        };
+
+        const [previewData, setPreviewData] = useState(null);
+        const [showPreview, setShowPreview] = useState(false);
+        const handlePreviewClick = async (url) => {
             try {
                 const data = await fetchData(url);
-                   setPreviewData(JSON.stringify(data, null, 2));
+                setPreviewData(JSON.stringify(data, null, 2));
                 setShowPreview(true);
-             } catch (error) {
+            } catch (error) {
                 console.error("Error fetching JSON:", error);
-                 setPreviewData(`Error loading JSON: ${error.message}`);
-                 setShowPreview(true);
-           }
-         };
-         const closePreview = () => {
-                setShowPreview(false);
-             setPreviewData(null)
-         };
-         useEffect(() => {
-           if(showPreview) {
+                setPreviewData(`Error loading JSON: ${error.message}`);
+                setShowPreview(true);
+            }
+        };
+        const closePreview = () => {
+            setShowPreview(false);
+            setPreviewData(null)
+        };
+
+        useEffect(() => {
+            if(showPreview) {
                 document.body.style.overflow = 'hidden';
-           } else {
-               document.body.style.overflow = 'auto';
-           }
-         }, [showPreview])
-         const categories = [...new Set(apiList.map(api => api.category))];
-         const filteredApiList = getFilteredList();
-         return (
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }, [showPreview])
+
+        const categories = [...new Set(apiList.map(api => api.category))];
+        const filteredApiList = getFilteredList();
+
+        return (
             <div className="container">
                 <h3>LIST ENDPOINT:</h3>
-                 <div id="search-container">
-                   <input type="text" id="search-input" placeholder="Cari API..." ref={searchInput} />
-                    <button id="search-button" onClick={handleSearch}>Cari</button>
+                  <div id="poda">
+                    <div class="glow"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="white"></div>
+                    <div class="border"></div>
+                      <div id="main">
+                        <input placeholder="Search..." type="text" name="text" class="input" id="search-input" ref={searchInput} onKeyPress={handleKeyPress} />
+                         <div id="input-mask"></div>
+                        <div id="pink-mask"></div>
+                         <div class="filterBorder"></div>
+                           <div id="filter-icon">
+                             <svg
+                                   preserveAspectRatio="none"
+                                  height="27"
+                                   width="27"
+                                   viewBox="4.8 4.56 14.832 15.408"
+                                    fill="none"
+                                  >
+                                 <path
+                                        d="M8.16 6.65002H15.83C16.47 6.65002 16.99 7.17002 16.99 7.81002V9.09002C16.99 9.56002 16.7 10.14 16.41 10.43L13.91 12.64C13.56 12.93 13.33 13.51 13.33 13.98V16.48C13.33 16.83 13.1 17.29 12.81 17.47L12 17.98C11.24 18.45 10.2 17.92 10.2 16.99V13.91C10.2 13.5 9.97 12.98 9.73 12.69L7.52 10.36C7.23 10.08 7 9.55002 7 9.20002V7.87002C7 7.17002 7.52 6.65002 8.16 6.65002Z"
+                                        stroke="#d6d6e6"
+                                        stroke-width="1"
+                                        stroke-miterlimit="10"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                       ></path>
+                                   </svg>
+                                </div>
+                                 <div id="search-icon">
+                                     <svg
+                                       xmlns="http://www.w3.org/2000/svg"
+                                         width="24"
+                                          viewBox="0 0 24 24"
+                                           stroke-width="2"
+                                        stroke-linejoin="round"
+                                          stroke-linecap="round"
+                                           height="24"
+                                          fill="none"
+                                         class="feather feather-search"
+                                     >
+                                      <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
+                                       <line
+                                            stroke="url(#searchl)"
+                                            y2="16.65"
+                                             y1="22"
+                                            x2="16.65"
+                                            x1="22"
+                                        ></line>
+                                      <defs>
+                                        <linearGradient gradientTransform="rotate(50)" id="search">
+                                            <stop stop-color="#f8e7f8" offset="0%"></stop>
+                                               <stop stop-color="#b6a9b7" offset="50%"></stop>
+                                            </linearGradient>
+                                            <linearGradient id="searchl">
+                                                  <stop stop-color="#b6a9b7" offset="0%"></stop>
+                                                  <stop stop-color="#837484" offset="50%"></stop>
+                                               </linearGradient>
+                                        </defs>
+                                    </svg>
+                                 </div>
+                                   <button id="search-button" onClick={handleSearch} style={{ position: 'absolute', top: '10px', right: '60px', background: 'none', border: 'none', cursor: 'pointer' }}>
+                                  </button>
+                                </div>
+                            </div>
+                <div id="category-filter">
+                    <label htmlFor="category-select">Filter Kategori:</label>
+                    <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
+                        <option value="">Semua</option>
+                        {categories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                        ))}
+                    </select>
                 </div>
-               <div id="category-filter">
-                  <label htmlFor="category-select">Filter Kategori:</label>
-                  <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
-                     <option value="">Semua</option>
-                      {categories.map((category, index) => (
-                          <option key={index} value={category}>{category}</option>
-                       ))}
-                   </select>
-               </div>
-                  {categories.map((category, index) => (
-                     <div key={index} className="api-category">
-                         <div className="category-header" onClick={() => handleCategoryToggle(category)}>
+                {categories.map((category, index) => (
+                    <div key={index} className="api-category">
+                        <div className="category-header" onClick={() => handleCategoryToggle(category)}>
                             <h3>{category}</h3>
-                             <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
+                            <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
                         </div>
-                         <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
+                        <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
                             {filteredApiList.filter(api => api.category === category).map((api, i) => (
                                 <div key={i} className="api-item">
-                                     <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
-                                  <span className="api-item-desc">{api.desc}</span>
-                                     <span className={`api-item-status ${api.status}`}> {api.status} </span>
-                                     <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
-                                      <a href={api.url} target="_blank" className="try-button"  onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                                    <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                                    <span className="api-item-desc">{api.desc}</span>
+                                    <span className={`api-item-status ${api.status}`}> {api.status} </span>
+                                    <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
+                                    <a href={api.url} target="_blank" className="try-button"  onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
                                 </div>
-                             ))}
+                            ))}
                         </div>
-                     </div>
-                 ))}
-                 {showPreview && (
-                     <div className="json-preview-overlay">
-                         <div className="json-preview-box">
-                              <span className="json-preview-close" onClick={closePreview}>×</span>
-                           <pre><code className="syntax-highlight json">{previewData}</code></pre>
-                         </div>
-                     </div>
-                 )}
-               <audio ref={clickSound} id="click-sound">
+                    </div>
+                ))}
+                {showPreview && (
+                    <div className="json-preview-overlay">
+                        <div className="json-preview-box">
+                            <span className="json-preview-close" onClick={closePreview}>×</span>
+                            <pre><code className="syntax-highlight json">{previewData}</code></pre>
+                        </div>
+                    </div>
+                )}
+                <audio ref={clickSound} id="click-sound">
                     <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg" />
                     Your browser does not support the audio element.
                 </audio>
             </div>
-            );
-        }
-        ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
-            document.getElementById('search-button').addEventListener('click', () => {
-                ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
-            });
-             document.getElementById('search-input').addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    ReactDOM.createRoot(document.getElementById("root")).render(<APIList />)
-                }
-            });
-        hljs.highlightAll();
-    </script>
-     <script>
-        const { createApp, ref, onMounted } = Vue;
-        createApp({
-            setup() {
-               const vueApiList = ref(apiList);
-                onMounted(() => {
-                     gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
-                 });
-                return {
-                  vueApiList,
-                 };
-            },
-            template: `
-                <div class="container">
-                    <h3>TEST:</h3>
-                    <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
-                        <a :href="api.url" target="_blank" :aria-label="'Link to ' + api.name + ' API Endpoint'">{{ api.name }}</a>
-                        <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
-                    </div>
-                </div>
-            `,
-        }).mount('#vue-app');
-    </script>
-    <script>
-        const chartContainer = document.getElementById('chart-container');
-        const renderChart = async () => {
-            const loadingSkeleton = document.createElement('div');
-             loadingSkeleton.className = 'loading-skeleton';
-             chartContainer.appendChild(loadingSkeleton);
+        );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
 
-            const data = await fetchData('/api/r/quotesanime');
-            chartContainer.innerHTML = '';
-            if(data && data.length > 0) {
-               const quotes = data.map((quote) => quote.quote);
-                 const ctx = document.createElement('canvas');
-               chartContainer.appendChild(ctx);
-               new Chart(ctx, {
-                    type: 'bar',
-                   data: {
-                        labels: quotes.map((_, index) => `Quote ${index + 1}`),
-                        datasets: [{
-                            label: 'Anime Quotes',
-                            data: quotes.map(() => 1),
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                   },
-                    options: {
-                       responsive: true,
-                        scales: {
-                          y: {
-                               beginAtZero: true,
-                                ticks: {
-                                    display: false
-                                }
-                            },
-                            x: {
-                              ticks: {
-                                   display: false
-                               }
+    hljs.highlightAll();
+</script>
+<script>
+    const { createApp, ref, onMounted } = Vue;
+    createApp({
+        setup() {
+            const vueApiList = ref(apiList);
+            onMounted(() => {
+                gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+            });
+            return {
+                vueApiList,
+            };
+        },
+        template: `
+            <div class="container">
+                <h3>TEST:</h3>
+                <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
+                    <a :href="api.url" target="_blank" :aria-label="'Link to ' + api.name + ' API Endpoint'">{{ api.name }}</a>
+                    <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
+                </div>
+            </div>
+        `,
+    }).mount('#vue-app');
+</script>
+<script>
+    const chartContainer = document.getElementById('chart-container');
+    const renderChart = async () => {
+        const loadingSkeleton = document.createElement('div');
+        loadingSkeleton.className = 'loading-skeleton';
+        chartContainer.appendChild(loadingSkeleton);
+
+        const data = await fetchData('/api/r/quotesanime');
+        chartContainer.innerHTML = '';
+        if(data && data.length > 0) {
+            const quotes = data.map((quote) => quote.quote);
+            const ctx = document.createElement('canvas');
+            chartContainer.appendChild(ctx);
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: quotes.map((_, index) => `Quote ${index + 1}`),
+                    datasets: [{
+                        label: 'Anime Quotes',
+                        data: quotes.map(() => 1),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                display: false
                             }
                         },
-                         plugins: {
-                            legend: {
+                        x: {
+                            ticks: {
                                 display: false
-                            },
-                             title: {
-                                display: true,
-                               text: 'Jumlah Quote'
                             }
                         }
-                   }
-                });
-            } else {
-                 chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
-            }
-        };
-         renderChart();
-    </script>
-    <script>
-        const backgroundMusic = document.getElementById('background-music');
-       const playPauseButton = document.getElementById('play-pause-button');
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const body = document.body;
-        let musicStarted = false;
-        let currentTrackTime = 0;
-         let isDarkMode = localStorage.getItem('darkMode') === 'true';
-         if (isDarkMode) {
-            body.classList.add('dark-mode');
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Quote'
+                        }
+                    }
+                }
+            });
+        } else {
+            chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
         }
-         function toggleDarkMode() {
-            isDarkMode = !isDarkMode;
-            body.classList.toggle('dark-mode', isDarkMode);
-            localStorage.setItem('darkMode', isDarkMode);
+    };
+    renderChart();
+</script>
+<script>
+    const backgroundMusic = document.getElementById('background-music');
+    const playPauseButton = document.getElementById('play-pause-button');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    let musicStarted = false;
+    let currentTrackTime = 0;
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+    }
+    function toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        body.classList.toggle('dark-mode', isDarkMode);
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+    function playMusic() {
+        if (!musicStarted) {
+            backgroundMusic.play();
+            musicStarted = true;
+            playPauseButton.textContent = 'Pause';
+        } else {
+            backgroundMusic.currentTime = currentTrackTime;
+            backgroundMusic.play();
+            playPauseButton.textContent = 'Pause';
         }
-        function playMusic() {
-           if (!musicStarted) {
-                backgroundMusic.play();
-               musicStarted = true;
-                playPauseButton.textContent = 'Pause';
-           } else {
-               backgroundMusic.currentTime = currentTrackTime;
-               backgroundMusic.play();
-                playPauseButton.textContent = 'Pause';
-           }
+    }
+    function pauseMusic() {
+        currentTrackTime = backgroundMusic.currentTime;
+        backgroundMusic.pause();
+        playPauseButton.textContent = 'Play';
+    }
+    playPauseButton.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            playMusic();
+        } else {
+            pauseMusic();
         }
-        function pauseMusic() {
-            currentTrackTime = backgroundMusic.currentTime;
-            backgroundMusic.pause();
-            playPauseButton.textContent = 'Play';
-         }
-        playPauseButton.addEventListener('click', () => {
-            if (backgroundMusic.paused) {
-               playMusic();
-            } else {
-                pauseMusic();
-            }
+    });
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+    window.addEventListener('focus', playMusic);
+    window.addEventListener('blur', pauseMusic);
+    playMusic();
+</script>
+<script>
+    function lazyLoadImages() {
+        const images = document.querySelectorAll('img[data-src]');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
         });
-        darkModeToggle.addEventListener('click', toggleDarkMode);
-        window.addEventListener('focus', playMusic);
-       window.addEventListener('blur', pauseMusic);
-        playMusic();
-    </script>
-    <script>
-     function lazyLoadImages() {
-      const images = document.querySelectorAll('img[data-src]');
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-           if (entry.isIntersecting) {
-             const img = entry.target;
-             img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-               observer.unobserve(img);
-            }
-         });
-     });
-     images.forEach(img => {
-         observer.observe(img);
-       });
+        images.forEach(img => {
+            observer.observe(img);
+        });
     }
     lazyLoadImages();
-    </script>
-<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="Boost_Referralbot" data-size="large" data-auth-url="https://wanzofc.us.kg" data-request-access="write"></script>    
+</script>
+<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="Boost_Referralbot" data-size="large" data-auth-url="https://wanzofc.us.kg" data-request-access="write"></script>
 </body>
 </html>
