@@ -1091,6 +1091,156 @@
                 transform: scaleY(0.1);
             }
         }
+
+        /* Gaya Tombol "Try" yang Baru */
+        .button {
+          position: relative;
+          text-decoration: none;
+          color: #fff;
+          background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+          padding: 14px 25px;
+          border-radius: 10px;
+          font-size: 1.25em;
+          cursor: pointer;
+          border: none; /* Tambahkan ini untuk menghilangkan border default */
+          display: inline-block; /* Tambahkan ini agar tombol berperilaku seperti inline element */
+        }
+
+        .button span {
+          position: relative;
+          z-index: 1;
+        }
+
+        .button::before {
+          content: "";
+          position: absolute;
+          inset: 1px;
+          background: #272727;
+          border-radius: 9px;
+          transition: 0.5s;
+        }
+
+        .button:hover::before {
+          opacity: 0.7;
+        }
+
+        .button::after {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+          border-radius: 9px;
+          transition: 0.5s;
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        .button:hover:after {
+          opacity: 1;
+        }
+
+        /* From Uiverse.io by KSAplay */
+        .loader {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        .loading-text {
+          color: white;
+          font-size: 14pt;
+          font-weight: 600;
+          margin-left: 10px;
+        }
+
+        .dot {
+          margin-left: 3px;
+          animation: blink 1.5s infinite;
+        }
+        .dot:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+
+        .dot:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+
+        .loading-bar-background {
+          --height: 30px;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 5px;
+          width: 200px;
+          height: var(--height);
+          background-color: #212121 /*change this*/;
+          box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+          border-radius: calc(var(--height) / 2);
+        }
+
+        .loading-bar {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          --height: 20px;
+          width: 0%;
+          height: var(--height);
+          overflow: hidden;
+          background: rgb(222, 74, 15);
+          background: linear-gradient(
+            0deg,
+            rgba(222, 74, 15, 1) 0%,
+            rgba(249, 199, 79, 1) 100%
+          );
+          border-radius: calc(var(--height) / 2);
+          animation: loading 4s ease-out infinite;
+        }
+
+        .white-bars-container {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+        }
+
+        .white-bar {
+          background: rgb(255, 255, 255);
+          background: linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 70%
+          );
+          width: 10px;
+          height: 45px;
+          opacity: 0.3;
+          rotate: 45deg;
+        }
+
+        @keyframes loading {
+          0% {
+            width: 0;
+          }
+          80% {
+            width: 100%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+
+        @keyframes blink {
+          0%,
+          100% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+
     </style>
 </head>
 <body >
@@ -1304,7 +1454,7 @@
         { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
         { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
         { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
-        { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+                { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
         { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
         { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
         { category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari  bokep.", status: "online" },
@@ -1364,6 +1514,7 @@
         const [activeCategories, setActiveCategories] = useState({});
         const [selectedCategory, setSelectedCategory] = useState('');
         const clickSound = useRef(null);
+        const [isLoading, setIsLoading] = useState(false);
 
         useEffect(() => {
             gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
@@ -1418,8 +1569,14 @@
             }
         };
 
-        const handleTryClick = (event) => {
+       const handleTryClick = (event) => {
             playClickSound();
+            setIsLoading(true); // Set state loading menjadi true saat tombol diklik
+            event.currentTarget.disabled = true;  // Disable tombol
+            setTimeout(() => {
+                setIsLoading(false); // Setelah 3 detik, set state loading menjadi false
+                event.currentTarget.disabled = false; // Enable tombol
+            }, 3000); // 3000 milidetik = 3 detik
             event.currentTarget.classList.add('clicked');
             setTimeout(() => {
                 event.currentTarget.classList.remove('clicked');
@@ -1546,7 +1703,35 @@
                                     <span className="api-item-desc">{api.desc}</span>
                                     <span className={`api-item-status ${api.status}`}> {api.status} </span> 
                                     <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
-                                    <a href={api.url} target="_blank" className="try-button"  onClick={handleTryClick} aria-label={`Try ${api.name} API Endpoint`}>try</a>
+                                     <a href={api.url} target="_blank"  aria-label={`Try ${api.name} API Endpoint`}>
+                                        <button className="button" onClick={handleTryClick} disabled={isLoading}>
+                                            {isLoading ? (
+                                                <div className="loader">
+                                                    <div className="loading-text">
+                                                        Loading<span className="dot">.</span><span className="dot">.</span><span className="dot">.</span>
+                                                    </div>
+                                                    <div className="loading-bar-background">
+                                                        <div className="loading-bar">
+                                                            <div className="white-bars-container">
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <span>Try</span>
+                                            )}
+                                        </button>
+                                     </a>
                                 </div>
                             ))}
                         </div>
