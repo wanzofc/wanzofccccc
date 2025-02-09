@@ -428,6 +428,25 @@
             transition: opacity 0.5s ease, transform 0.3s ease, background-color 0.3s ease;
             border-bottom: 1px solid #555;
             padding-bottom: 5px;
+            flex-wrap: nowrap; /* Tambahkan ini agar elemen tidak turun ke baris baru */
+            overflow-x: auto; /* Tambahkan ini untuk memungkinkan horizontal scrolling */
+            white-space: nowrap; /* Tambahkan ini untuk mencegah teks di dalam item wrap */
+        }
+        
+        .api-item > * { /* Mengatur flex-shrink untuk semua elemen anak langsung */
+            flex-shrink: 0;
+        }
+
+        .api-item .api-item-status {
+            /* Gaya yang sudah ada */
+            margin-left: auto; /* Mendorong status ke kanan */
+            margin-right: 5px;
+        }
+
+        .api-item .preview-button,
+        .api-item .button {
+            /* Gaya yang sudah ada */
+            margin-left: 5px; /* Beri jarak antara tombol */
         }
         .api-item:last-child {
             border-bottom: none;
@@ -922,7 +941,7 @@
             align-items: center;
         }
 
-        .title-1 {
+                .title-1 {
             color: white;
             font-size: 25px;
             font-weight: bolder;
@@ -1450,11 +1469,11 @@
         { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
         { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
         { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
-        { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+                { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
         { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
         { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
         { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
-                { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+        { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
         { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
         { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
         { category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari  bokep.", status: "online" },
