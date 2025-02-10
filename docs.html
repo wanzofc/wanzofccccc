@@ -807,6 +807,357 @@
             transform: scale(1.1);
         }
 
+        /* From Uiverse.io by aadium */
+        .card {
+          width: 250px;
+          height: 300px;
+          background: #15001f;
+          border: 1px solid #c042ff;
+          font-size: 14px;
+          font-family: monospace;
+          overflow: auto;
+        }
+
+        .titlebar {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-size: 21px;
+          font-weight: 450;
+          background-color: #2e0043;
+          width: 100%;
+          text-align: right;
+        }
+
+        .card button {
+          width: 40px;
+          height: 35px;
+          margin-left: -5px;
+          border: 0;
+          outline: 0;
+          background: transparent;
+          transition: 0.2s;
+        }
+
+        button svg path,
+        button svg rect,
+        button svg polygon {
+          fill: #ffffff;
+        }
+
+        button svg {
+          width: 10px;
+          height: 10px;
+        }
+
+        .close:hover {
+          background-color: #e81123;
+        }
+
+        .maximize:hover {
+          background-color: #c042ff2e;
+        }
+
+        .minimize:hover {
+          background-color: #c042ff2e;
+        }
+
+        #pre {
+          overflow: auto;
+          width: 100%;
+          padding: 10px;
+          height: auto;
+          color: #bafff8;
+        }
+
+        .curlies {
+          color: #ff0000;
+        }
+
+        .sc {
+          color: #e600ff;
+        }
+
+        .rounds {
+          color: #ffffff;
+        }
+
+        .operator {
+          color: #ffff00;
+        }
+
+        .s1 {
+          color: #22ff00;
+        }
+
+        .s2 {
+          color: #4281ff;
+        }
+
+        .s3 {
+          color: #ff4284;
+        }
+
+        .s4 {
+          color: #ffae00;
+        }
+
+        .s5 {
+          color: #ffffff;
+        }
+
+        .s6 {
+          color: #ffff00;
+        }
+
+        /* From Uiverse.io by csozidev */
+        /* Spotify music card made by: csozi | Website: www.csozi.hu*/
+
+        .card-musik { /* Ubah nama class agar tidak bentrok */
+            position: relative;
+            width: 250px;
+            height: 120px;
+            background: #191414;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 0 auto 20px; /* Tambahkan margin bawah agar ada jarak */
+        }
+
+        .top {
+            position: relative;
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }
+
+        .pfp {
+            position: relative;
+            top: 5px;
+            left: 5px;
+            height: 40px;
+            width: 40px;
+            background-color: #d2d2d2;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+                .title-1 {
+            color: white;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        .title-2 {
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .time {
+            width: 90%;
+            background-color: #5e5e5e;
+            height: 6px;
+            border-radius: 3px;
+            position: absolute;
+            left: 5%;
+            bottom: 22px;
+        }
+
+        .elapsed {
+            width: 42%;
+            background-color: #1db954;
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .controls {
+            color: white;
+            display: flex;
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .volume {
+            height: 100%;
+            width: 48px;
+        }
+
+        .air {
+            height: 100%;
+            width: 48px;
+        }
+
+        .controls svg {
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .controls svg:hover {
+            color: #1db954;
+        }
+
+        .volume {
+            opacity: 0;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .volume .slider {
+            height: 4px;
+            background-color: #5e5e5e;
+            width: 80%;
+            border-radius: 2px;
+            margin-top: 8px;
+            margin-left: 10%;
+        }
+
+        .volume .slider .green {
+            background-color: #1db954;
+            height: 100%;
+            width: 80%;
+            border-radius: 3px;
+        }
+
+        .volume .circle {
+            background-color: white;
+            height: 6px;
+            width: 6px;
+            border-radius: 3px;
+            position: absolute;
+            right: 20%;
+            top: 60%;
+        }
+
+        .volume_button:hover ~ .volume {
+            opacity: 1;
+        }
+
+        .timetext {
+            color: white;
+            font-size: 8px;
+            position: absolute;
+        }
+
+        .time_now {
+            bottom: 11px;
+            left: 10px;
+        }
+
+        .time_full {
+            bottom: 11px;
+            right: 10px;
+        }
+
+        .playing {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            gap: 1px;
+            width: 30px;
+            height: 20px;
+        }
+
+        .greenline {
+            background-color: #1db954;
+            height: 20px;
+            width: 2px;
+            position: relative;
+            transform-origin: bottom;
+        }
+
+        .line-1 {
+            animation: infinite playing 1s ease-in-out;
+            animation-delay: 0.2s;
+        }
+
+        .line-2 {
+            animation: infinite playing 1s ease-in-out;
+            animation-delay: 0.5s;
+        }
+
+        .line-3 {
+            animation: infinite playing 1s ease-in-out;
+            animation-delay: 0.6s;
+        }
+
+        .line-4 {
+            animation: infinite playing 1s ease-in-out;
+            animation-delay: 0s;
+        }
+
+        .line-5 {
+            animation: infinite playing 1s ease-in-out;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes playing {
+            0% {
+                transform: scaleY(0.1);
+            }
+
+            33% {
+                transform: scaleY(0.6);
+            }
+
+            66% {
+                transform: scaleY(0.9);
+            }
+
+            100% {
+                transform: scaleY(0.1);
+            }
+        }
+
+        /* Gaya Tombol "Try" yang Baru */
+        .button {
+          position: relative;
+          text-decoration: none;
+          color: #fff;
+          background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+          padding: 14px 25px;
+          border-radius: 10px;
+          font-size: 1.25em;
+          cursor: pointer;
+          border: none; /* Tambahkan ini untuk menghilangkan border default */
+          display: inline-block; /* Tambahkan ini agar tombol berperilaku seperti inline element */
+        }
+
+        .button span {
+          position: relative;
+          z-index: 1;
+        }
+
+        .button::before {
+          content: "";
+          position: absolute;
+          inset: 1px;
+          background: #272727;
+          border-radius: 9px;
+          transition: 0.5s;
+        }
+
+        .button:hover::before {
+          opacity: 0.7;
+        }
+
+        .button::after {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+          border-radius: 9px;
+          transition: 0.5s;
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        .button:hover:after {
+          opacity: 1;
+        }
+
         /* From Uiverse.io by KSAplay */
         .loader {
           display: flex;
@@ -909,248 +1260,6 @@
           }
         }
 
-        /* From Uiverse.io by Smit-Prajapati */
-        .parent {
-          width: 290px;
-          height: 300px;
-          perspective: 1000px;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1001; /* Ensure it's on top of other content */
-          display: none
-        }
-
-        .card {
-          height: 100%;
-          border-radius: 50px;
-          background: linear-gradient(135deg, rgb(0, 255, 214) 0%, rgb(8, 226, 96) 100%);
-          transition: all 0.5s ease-in-out;
-          transform-style: preserve-3d;
-          box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
-        }
-
-        .glass {
-          transform-style: preserve-3d;
-          position: absolute;
-          inset: 8px;
-          border-radius: 55px;
-          border-top-right-radius: 100%;
-          background: linear-gradient(0deg, rgba(255, 255, 255, 0.349) 0%, rgba(255, 255, 255, 0.815) 100%);
-          /* -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px); */
-          transform: translate3d(0px, 0px, 25px);
-          border-left: 1px solid white;
-          border-bottom: 1px solid white;
-          transition: all 0.5s ease-in-out;
-        }
-
-        .content {
-          padding: 100px 60px 0px 30px;
-          transform: translate3d(0, 0, 26px);
-        }
-
-        .content .title {
-          display: block;
-          color: #00894d;
-          font-weight: 900;
-          font-size: 20px;
-        }
-
-        .content .text {
-          display: block;
-          color: rgba(0, 137, 78, 0.7647058824);
-          font-size: 15px;
-          margin-top: 20px;
-        }
-
-        .bottom {
-          padding: 10px 12px;
-          transform-style: preserve-3d;
-          position: absolute;
-          bottom: 20px;
-          left: 20px;
-          right: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          transform: translate3d(0, 0, 26px);
-        }
-
-        .bottom .view-more {
-          display: flex;
-          align-items: center;
-          width: 40%;
-          justify-content: flex-end;
-          transition: all 0.2s ease-in-out;
-        }
-
-        .bottom .view-more:hover {
-          transform: translate3d(0, 0, 10px);
-        }
-
-        .bottom .view-more .view-more-button {
-          background: none;
-          border: none;
-          color: #00c37b;
-          font-weight: bolder;
-          font-size: 12px;
-        }
-
-        .bottom .view-more .svg {
-          fill: none;
-          stroke: #00c37b;
-          stroke-width: 3px;
-          max-height: 15px;
-        }
-
-        .bottom .social-buttons-container {
-          display: flex;
-          gap: 10px;
-          transform-style: preserve-3d;
-        }
-
-        .bottom .social-buttons-container .social-button {
-          width: 30px;
-          aspect-ratio: 1;
-          padding: 5px;
-          background: rgb(255, 255, 255);
-          border-radius: 50%;
-          border: none;
-          display: grid;
-          place-content: center;
-          box-shadow: rgba(5, 71, 17, 0.5) 0px 7px 5px -5px;
-        }
-
-        .bottom .social-buttons-container .social-button:first-child {
-          transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
-        }
-
-        .bottom .social-buttons-container .social-button:nth-child(2) {
-          transition: transform 0.2s ease-in-out 0.6s, box-shadow 0.2s ease-in-out 0.6s;
-        }
-
-        .bottom .social-buttons-container .social-button:nth-child(3) {
-          transition: transform 0.2s ease-in-out 0.8s, box-shadow 0.2s ease-in-out 0.8s;
-        }
-
-        .bottom .social-buttons-container .social-button .svg {
-          width: 15px;
-          fill: #00894d;
-        }
-
-        .bottom .social-buttons-container .social-button:hover {
-          background: black;
-        }
-
-        .bottom .social-buttons-container .social-button:hover .svg {
-          fill: white;
-        }
-
-        .bottom .social-buttons-container .social-button:active {
-          background: rgb(255, 234, 0);
-        }
-
-        .bottom .social-buttons-container .social-button:active .svg {
-          fill: black;
-        }
-
-        .logo {
-          position: absolute;
-          right: 0;
-          top: 0;
-          transform-style: preserve-3d;
-        }
-
-        .logo .circle {
-          display: block;
-          position: absolute;
-          aspect-ratio: 1;
-          border-radius: 50%;
-          top: 0;
-          right: 0;
-          box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
-          -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-          background: rgba(0, 249, 203, 0.2);
-          transition: all 0.5s ease-in-out;
-        }
-
-        .logo .circle1 {
-          width: 170px;
-          transform: translate3d(0, 0, 20px);
-          top: 8px;
-          right: 8px;
-        }
-
-        .logo .circle2 {
-          width: 140px;
-          transform: translate3d(0, 0, 40px);
-          top: 10px;
-          right: 10px;
-          -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
-          transition-delay: 0.4s;
-        }
-
-        .logo .circle3 {
-          width: 110px;
-          transform: translate3d(0, 0, 60px);
-          top: 17px;
-          right: 17px;
-          transition-delay: 0.8s;
-        }
-
-        .logo .circle4 {
-          width: 80px;
-          transform: translate3d(0, 0, 80px);
-          top: 23px;
-          right: 23px;
-          transition-delay: 1.2s;
-        }
-
-        .logo .circle5 {
-          width: 50px;
-          transform: translate3d(0, 0, 100px);
-          top: 30px;
-          right: 30px;
-          display: grid;
-          place-content: center;
-          transition-delay: 1.6s;
-        }
-
-        .logo .circle5 .svg {
-          width: 20px;
-          fill: white;
-        }
-
-        .parent:hover .card {
-          transform: rotate3d(1, 1, 0, 30deg);
-          box-shadow: rgba(5, 71, 17, 0.3) 30px 50px 25px -40px, rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
-        }
-
-        .parent:hover .card .bottom .social-buttons-container .social-button {
-          transform: translate3d(0, 0, 50px);
-          box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
-        }
-
-        .parent:hover .card .logo .circle2 {
-          transform: translate3d(0, 0, 60px);
-        }
-
-        .parent:hover .card .logo .circle3 {
-          transform: translate3d(0, 0, 80px);
-        }
-
-        .parent:hover .card .logo .circle4 {
-          transform: translate3d(0, 0, 100px);
-        }
-
-        .parent:hover .card .logo .circle5 {
-          transform: translate3d(0, 0, 120px);
-        }
-
     </style>
 </head>
 <body >
@@ -1160,55 +1269,6 @@
         <button id="dark-mode-toggle">Dark Mode</button>
     </div>
 </header>
-
-<!-- From Uiverse.io by Smit-Prajapati -->
-<div id="notification-modal" class="parent">
-        <div class="card">
-            <div class="logo">
-                <span class="circle circle1"></span>
-                <span class="circle circle2"></span>
-                <span class="circle circle3"></span>
-                <span class="circle circle4"></span>
-                <span class="circle circle5">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.667 31.69" class="svg">
-                        <path id="Path_6" data-name="Path 6" d="M12.827,1.628A1.561,1.561,0,0,1,14.31,0h2.964a1.561,1.561,0,0,1,1.483,1.628v11.9a9.252,9.252,0,0,1-2.432,6.852q-2.432,2.409-6.963,2.409T2.4,20.452Q0,18.094,0,13.669V1.628A1.561,1.561,0,0,1,1.483,0h2.98A1.561,1.561,0,0,1,5.947,1.628V13.191a5.635,5.635,0,0,0,.85,3.451,3.153,3.153,0,0,0,2.632,1.094,3.032,3.032,0,0,0,2.582-1.076,5.836,5.836,0,0,0,.816-3.486Z" transform="translate(0 0)"></path>
-                        <path id="Path_7" data-name="Path 7" d="M75.207,20.857a1.561,1.561,0,0,1-1.483,1.628h-2.98a1.561,1.561,0,0,1-1.483-1.628V1.628A1.561,1.561,0,0,1,70.743,0h2.98a1.561,1.561,0,0,1,1.483,1.628Z" transform="translate(-45.91 0)"></path>
-                        <path id="Path_8" data-name="Path 8" d="M0,80.018A1.561,1.561,0,0,1,1.483,78.39h26.7a1.561,1.561,0,0,1,1.483,1.628v2.006a1.561,1.561,0,0,1-1.483,1.628H1.483A1.561,1.561,0,0,1,0,82.025Z" transform="translate(0 -51.963)"></path>
-                      </svg>
-                </span>
-
-            </div>
-            <div class="glass"></div>
-            <div class="content">
-                <span class="title">SELAMAT DATANG</span>
-                <span class="text">Selamat datang di API WANZOFC TECH</span>
-            </div>
-            <div class="bottom">
-
-                <div class="social-buttons-container">
-                    <button class="social-button .social-button1">
-                        <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="svg">
-                            <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"></path>
-                          </svg></button>
-                      <button class="social-button .social-button2">
-                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="svg">
-                            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
-                          </svg>
-                      </button>
-                      <button class="social-button .social-button3">
-                        <svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg" class="svg">
-                            <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"></path>
-                          </svg>
-                      </button>
-                </div>
-                <div class="view-more">
-                    <button class="view-more-button">View more</button>
-                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
-                </div>
-            </div>
-        </div>
-    </div>
-
 <audio id="background-music" loop>
     <source src="https://files.catbox.moe/a3y4z9.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -1218,6 +1278,52 @@
     Your browser does not support the audio element.
 </audio>
 <div id="lottie-container"></div>
+
+<!-- From Uiverse.io by csozidev -->
+<div class="card-musik">
+    <div class="top">
+        <div class="pfp">
+            <div class="playing">
+                <div class="greenline line-1"></div>
+                <div class="greenline line-2"></div>
+                <div class="greenline line-3"></div>
+                <div class="greenline line-4"></div>
+                <div class="greenline line-5"></div>
+            </div>
+        </div>
+        <div class="texts">
+            <p class="title-1">Soldiers Rage</p>
+            <p class="title-2">Tha Mechanic</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="20" width="24" class="volume_button">
+            <path clip-rule="evenodd" d="M11.26 3.691A1.2 1.2 0 0 1 12 4.8v14.4a1.199 1.199 0 0 1-2.048.848L5.503 15.6H2.4a1.2 1.2 0 0 1-1.2-1.2V9.6a1.2 1.2 0 0 1 1.2-1.2h3.103l4.449-4.448a1.2 1.2 0 0 1 1.308-.26Zm6.328-.176a1.2 1.2 0 0 1 1.697 0A11.967 11.967 0 0 1 22.8 12a11.966 11.966 0 0 1-3.515 8.485 1.2 1.2 0 0 1-1.697-1.697A9.563 9.563 0 0 0 20.4 12a9.565 9.565 0 0 0-2.812-6.788 1.2 1.2 0 0 1 0-1.697Zm-3.394 3.393a1.2 1.2 0 0 1 1.698 0A7.178 7.178 0 0 1 18 12a7.18 7.18 0 0 1-2.108 5.092 1.2 1.2 0 1 1-1.698-1.698A4.782 4.782 0 0 0 15.6 12a4.78 4.78 0 0 0-1.406-3.394 1.2 1.2 0 0 1 0-1.698Z" fill-rule="evenodd"></path>
+        </svg>
+        <div class="volume">
+            <div class="slider">
+                <div class="green"></div>
+            </div>
+            <div class="circle"></div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
+            <path clip-rule="evenodd" d="M21.6 12a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0ZM8.4 9.6a1.2 1.2 0 1 1 2.4 0v4.8a1.2 1.2 0 1 1-2.4 0V9.6Zm6-1.2a1.2 1.2 0 0 0-1.2 1.2v4.8a1.2 1.2 0 1 0 2.4 0V9.6a1.2 1.2 0 0 0-1.2-1.2Z" fill-rule="evenodd"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
+            <path clip-rule="evenodd" d="M12 21.6a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z" fill-rule="evenodd"></path>
+        </svg>
+        <div class="air"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" fill="none" height="20" width="24">
+            <path d="M3.343 7.778a4.5 4.5 0 0 1 7.339-1.46L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 20.364l-7.682-7.682a4.501 4.501 0 0 1-.975-4.904Z"></path>
+        </svg>
+    </div>
+    <div class="time">
+        <div class="elapsed"></div>
+    </div>
+    <p class="timetext time_now">1:31</p>
+    <p class="timetext time_full">3:46</p>
+</div>
 
 <h1>API WANZOFC TECH</h1>
 <main>
@@ -1323,506 +1429,509 @@
         { category: "AI", name: "AI - Deepseek Chat", url: "/api/ai/deepseek-chat?content=halo", desc: "Menghasilkan teks dengan model Deepseek Chat.", status: "online" },
         { category: "AI", name: "AI - Image to Text", url: "/api/ai/image2text", desc: "Mengubah gambar menjadi teks.", status: "online" },
         { category: "AI", name: "AI - Gemini Pro", url: "/api/ai/gemini-pro?content=halo", desc: "Menghasilkan teks dengan model Gemini Pro.", status: "online" },
-        { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status:
-Use code with caution.
-Html
-berikan kode yang tidak lengkapnya mulai dari kode ini hingga akhir
-
-{ category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status:
-
-"online" },
-{ category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
-{ category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
-{ category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
-{ category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
-{ category: "AI", name: "AI - meta llama 33 Chat", url: "/api/ai/meta-llama?content=siapa%20itu%20prabowo?", desc: "Menghasilkan teks dengan model META LLAMA 33.", status: "online" },
-{ category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
-{ category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
-{ category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
-{ category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
-{ category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
-{ category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
-{ category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
-{ category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
-{ category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },
-{ category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model Llama ai.", status: "online" },
-{ category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online" },
-{ category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
-{ category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
-{ category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
-{ category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
-{ category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
-{ category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
-{ category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
-{ category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
-{ category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
-{ category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
-{ category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
-{ category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },
-{ category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
-{ category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
-{ category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
-{ category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
-{ category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
-{ category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
-{ category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
-{ category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
-{ category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
-{ category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
-{ category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
-{ category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
-{ category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
-{ category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
-{ category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
-{ category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
-{ category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
-{ category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
-{ category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari bokep.", status: "online" },
-{ category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
-{ category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
-{ category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
-{ category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
-{ category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
-{ category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
-{ category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
-{ category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
-{ category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
-{ category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
-{ category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
-{ category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
-{ category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
-{ category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
-{ category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
-{ category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
-{ category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
-{ category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
-{ category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
-{ category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
-{ category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
-{ category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
-{ category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
-{ category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
-{ category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
-{ category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
-{ category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
-{ category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
-{ category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
-{ category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
-{ category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
-{ category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
-{ category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
-{ category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
-];
-const fetchData = async (url) => {
-try {
-const response = await fetch(url);
-if (!response.ok) {
-const errorData = await response.json();
-throw new Error(HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'});
-}
-return await response.json();
-} catch (error) {
-console.error('Error fetching data:', error);
-const chartContainer = document.getElementById('chart-container');
-chartContainer.innerHTML = <p>Error fetching data: ${error.message}</p>;
-return null;
-}
-};
-function APIList() {
-const [filteredList, setFilteredList] = useState(apiList);
-const searchInput = useRef(null);
-const [activeCategories, setActiveCategories] = useState({});
-const [selectedCategory, setSelectedCategory] = useState('');
-const clickSound = useRef(null);
-const [isLoading, setIsLoading] = useState(false);
-
-useEffect(() => {
-        gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
-    }, []);
-
-    const handleCategoryToggle = (category) => {
-        setActiveCategories((prevCategories) => ({
-            ...prevCategories,
-            [category]: !prevCategories[category],
-        }));
-    };
-
-    const handleCategoryFilterChange = (event) => {
-        setSelectedCategory(event.target.value);
-    };
-
-    const handleSearch = () => {
-        const searchTerm = searchInput.current.value.toLowerCase();
-        const newList = apiList.filter(api =>
-            api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
-        );
-        setFilteredList(newList);
-        gsap.fromTo(".filtered-item",
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
-        )
-    };
-
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            handleSearch();
-        }
-    };
-
-    const getFilteredList = () => {
-        let filtered = apiList;
-        if(selectedCategory) {
-            filtered = filtered.filter(api => api.category === selectedCategory);
-        }
-        if (!searchInput.current || !searchInput.current.value) {
-            return filtered;
-        }
-        const searchTerm = searchInput.current.value.toLowerCase();
-        return filtered.filter(api =>
-            api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
-        );
-    };
-
-    const playClickSound = () => {
-        if(clickSound.current) {
-            clickSound.current.play();
-        }
-    };
-
-   const handleTryClick = (event) => {
-        playClickSound();
-        setIsLoading(true); // Set state loading menjadi true saat tombol diklik
-        event.currentTarget.disabled = true;  // Disable tombol
-        setTimeout(() => {
-            setIsLoading(false); // Setelah 3 detik, set state loading menjadi false
-            event.currentTarget.disabled = false; // Enable tombol
-        }, 3000); // 3000 milidetik = 3 detik
-        event.currentTarget.classList.add('clicked');
-        setTimeout(() => {
-            event.currentTarget.classList.remove('clicked');
-        }, 300)
-    };
-
-    const [previewData, setPreviewData] = useState(null);
-    const [showPreview, setShowPreview] = useState(false);
-    const handlePreviewClick = async (url) => {
+        { category: "AI", name: "AI - Meta Llama", url: "/api/ai/meta-llama?content=halo", desc: "Menghasilkan teks dengan model Meta Llama.", status: "online" },
+        { category: "AI", name: "AI - DBRX Instruct", url: "/api/ai/dbrx-instruct?content=halo", desc: "Menghasilkan teks dengan model DBRX Instruct.", status: "online" },
+        { category: "AI", name: "AI - Deepseek R1", url: "/api/ai/deepseek-r1?content=halo", desc: "Menghasilkan teks dengan model Deepseek R1.", status: "online" },
+        { category: "AI", name: "AI - Gita", url: "/api/gita?q=halo", desc: "Menghasilkan teks dari Gita.", status: "online" },
+        { category: "AI", name: "AI - Uncovr Chat", url: "/api/ai/uncovr?content=siapa%20itu%20wanzofc?", desc: "Menghasilkan teks dengan model Uncovr.", status: "online" },
+        { category: "AI", name: "AI - meta llama 33 Chat", url: "/api/ai/meta-llama?content=siapa%20itu%20prabowo?", desc: "Menghasilkan teks dengan model META LLAMA 33.", status: "online" },
+        { category: "AI", name: "AI - wanzofc", url: "/api/ai/wanzofc?text=belajar%20programming", desc: "Menghasilkan teks dengan model wanzofc.", status: "online" },
+        { category: "AI", name: "AI - Lepton", url: "/api/ai/lepton?text=hai", desc: "Menghasilkan teks dengan model Lepton.", status: "online" },
+        { category: "AI", name: "AI - GPT-3", url: "/api/ai/gpt3?prompt=kamu%20adalah%20wanzofc%20yang%20egois&content=hai wanzofc", desc: "Menghasilkan teks dengan model GPT-3.", status: "online" },
+        { category: "AI", name: "AI - Qwen 257B", url: "/api/ai/qwen257b?prompt=kamu%20adalah%20wanzofc%20yang%20friendly&text=halo bos  aku", desc: "Menghasilkan teks dengan model Qwen 257B.", status: "online" },
+        { category: "AI", name: "AI - QWQ 32B", url: "/api/ai/qwq-32b-preview?content=halo%20sayangku", desc: "Menghasilkan teks dengan model QWQ 32B.", status: "online" },
+        { category: "AI", name: "AI - Stability AI (Image Generation)", url: "/api/ai/stabilityai?prompt=buatkan%20gambar%20hacker", desc: "Menghasilkan gambar dengan model Stability AI.", status: "online" },
+        { category: "AI", name: "AI - Meta AI", url: "/api/ai/metaai?query=Halo meta ai sayangku", desc: "Menghasilkan teks dengan model Meta AI.", status: "online" },
+        { category: "AI", name: "AI - Ustadz AI", url: "/api/ai/ustadz?query=halo pak ustadz", desc: "Menghasilkan teks dengan model Ustadz AI.", status: "online" },
+        { category: "AI", name: "AI - Cekhodam", url: "/api/ai/khodam?content=aabrayy", desc: "Cek khodam kamu.", status: "online" },
+        { category: "AI", name: "AI - Llama", url: "/api/ai/wanzofc-llama?q=halo sayang", desc: "Menghasilkan teks dengan model  Llama ai.", status: "online" },
+        { category: "AI", name: "AI - YOU", url: "/api/ai/wanzofc-you?q=tanggal+berapa+sekarang%3F", desc: "Menghasilkan teks dengan model You ai.", status: "online" },
+        { category: "Anime", name: "Anime - Terbaru", url: "/api/anime/latest", desc: "Mendapatkan daftar anime terbaru.", status: "online" },
+        { category: "Anime", name: "Anime - Anichin Episode", url: "/api/anime/anichin-episode?url=https://anichin.forum/renegade-immortal", desc: "Mendapatkan episode dari Anichin.", status: "online" },
+        { category: "Berita", name: "Berita - Kompas", url: "/api/berita/kompas", desc: "Mendapatkan berita dari Kompas.", status: "online" },
+        { category: "Berita", name: "Berita - JKT48", url: "/api/berita/jkt48", desc: "Mendapatkan berita tentang JKT48.", status: "online" },
+        { category: "Berita", name: "Berita - CNN", url: "/api/berita/cnn", desc: "Mendapatkan berita dari CNN.", status: "online" },
+        { category: "Berita", name: "Berita - CNBC Indonesia", url: "/api/berita/cnbcindonesia", desc: "Mendapatkan berita dari CNBC Indonesia.", status: "online" },
+        { category: "Berita", name: "Berita - Antara", url: "/api/berita/antara", desc: "Mendapatkan berita dari Antara.", status: "online" },
+        { category: "Berita", name: "Berita - Tribunnews", url: "/api/berita/tribunnews", desc: "Mendapatkan berita dari Tribunnews.", status: "online" },
+        { category: "Berita", name: "Berita - Suara", url: "/api/berita/suara", desc: "Mendapatkan berita dari Suara.", status: "online" },
+        { category: "Berita", name: "Berita - Merdeka", url: "/api/berita/merdeka", desc: "Mendapatkan berita dari Merdeka.", status: "online" },
+        { category: "Berita", name: "Berita - Sindonews", url: "/api/berita/sindonews", desc: "Mendapatkan berita dari Sindonews.", status: "online" },
+        { category: "Berita", name: "Berita - Liputan6", url: "/api/berita/liputan6", desc: "Mendapatkan berita dari Liputan6.", status: "online" },
+        { category: "Downloader", name: "Mediafire Downloader", url: "/api/d/mediafire?url=https://www.mediafire.com/file/iojnikfucf67q74/Base_Bot_Simpel.zip/file", desc: "Mengunduh file dari Mediafire.", status: "online" },
+        { category: "Random", name: "Random Blue Archive Image", url: "/api/r/blue-archive", desc: "Mendapatkan gambar acak Blue Archive.", status: "online" },
+        { category: "Random", name: "Random - Waifu", url: "/api/r/waifu", desc: "Mendapatkan gambar acak waifu.", status: "online" },
+        { category: "Random", name: "Random Anime Quotes", url: "/api/r/quotesanime", desc: "Mendapatkan quotes anime acak.", status: "online" },
+        { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
+        { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
+        { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
+        { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
+        { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
+        { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
+        { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
+                { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+        { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
+        { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
+        { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
+        { category: "Search", name: "Search - Pinterest", url: "/api/s/pinterest?query=elaina", desc: "Mencari gambar di Pinterest.", status: "online" },
+        { category: "Search", name: "Search - SoundCloud", url: "/api/s/soundcloud?query=yung kai blue", desc: "Mencari musik di SoundCloud.", status: "online" },
+        { category: "Search", name: "Search - Gitagram", url: "/api/s/gitagram", desc: "Mencari di Gitagram.", status: "online" },
+        { category: "Search", name: "Search - Xnxx", url: "/api/search/xnxx?q=colmek", desc: "Mencari  bokep.", status: "online" },
+        { category: "Search", name: "Search - DuckDuckGo", url: "/api/s/duckduckgo", desc: "Mencari di DuckDuckGo.", status: "online" },
+        { category: "Search", name: "Search - Combot", url: "/api/s/combot", desc: "Mencari di Combot.", status: "online" },
+        { category: "Search", name: "Search - Bukalapak", url: "/api/s/bukalapak", desc: "Mencari di Bukalapak.", status: "online" },
+        { category: "Search", name: "Search - Brave", url: "/api/s/brave", desc: "Mencari di Brave.", status: "online" },
+        { category: "Search", name: "Search - Wikipedia", url: "/api/s/wikipedia?query=prabowo", desc: "Mencari di Wikipedia.", status: "online" },
+        { category: "Search", name: "Search - Spotify", url: "/api/s/spotify?query=Yung KAI blue", desc: "Mencari di Spotify.", status: "online" },
+        { category: "Search", name: "TikTok Search", url: "/api/s/tiktok?query=elaina", desc: "Mencari di TikTok.", status: "online" },
+        { category: "Informasi", name: "Informasi - Jadwal TV", url: "/api/info/jadwaltv", desc: "Mendapatkan jadwal TV.", status: "online" },
+        { category: "Informasi", name: "Informasi - Hari Libur Nasional", url: "/api/info/liburnasional", desc: "Mendapatkan daftar hari libur nasional.", status: "online" },
+        { category: "Informasi", name: "Informasi - BMKG", url: "/api/info/bmkg", desc: "Mendapatkan informasi dari BMKG.", status: "online" },
+        { category: "Informasi", name: "Informasi - Cuaca", url: "/api/info/cuaca", desc: "Mendapatkan informasi cuaca.", status: "online" },
+        { category: "APK", name: "APK - Play Store", url: "/api/apk/playstore?search=pou", desc: "Mencari aplikasi di Play Store.", status: "online" },
+        { category: "APK", name: "APK - HappyMod", url: "/api/apk/happymod", desc: "Mencari aplikasi di HappyMod.", status: "online" },
+        { category: "APK", name: "APK - App Store", url: "/api/apk/appstore", desc: "Mencari aplikasi di App Store.", status: "online" },
+        { category: "APK", name: "APK - APKPure", url: "/api/apk/apkpure", desc: "Mencari aplikasi di APKPure.", status: "online" },
+        { category: "APK", name: "APK - APKMody", url: "/api/apk/apkmody", desc: "Mencari aplikasi di APKMody.", status: "online" },
+        { category: "Tools", name: "Subdomain Scanner", url: "/api/tools/subdomains?domain=wanzofc.us.kg", desc: "Memindai subdomain.", status: "online" },
+        { category: "Tools", name: "Text to Base64", url: "/api/tools/text2base64?text=wanzofc", desc: "Mengubah teks ke Base64.", status: "online" },
+        { category: "Tools", name: "Text to QR Code", url: "/api/tools/text2qr?text=wanzofc", desc: "Membuat QR code dari teks.", status: "online" },
+        { category: "Tools", name: "Text Translator", url: "/api/tools/translate?text=halo&lang=en", desc: "Menerjemahkan teks.", status: "online" },
+        { category: "Tools", name: "Tools - Fake Data", url: "/api/tools/fake-data?type=person&count=5", desc: "Membuat data palsu.", status: "online" },
+        { category: "CF", name: "CF - Sentiment Analysis", url: "/api/cf/sentiment?text=I%20like%20you", desc: "Menganalisis sentimen teks.", status: "online" },
+        { category: "CF", name: "CF - Image Classification", url: "/api/cf/image-classification?imageUrl=https://cataas.com/cat", desc: "Mengklasifikasikan gambar.", status: "online" },
+        { category: "CF", name: "CF - Text Embedding", url: "/api/cf/embedding?text=Sample%20text", desc: "Membuat embedding teks.", status: "online" },
+        { category: "CF", name: "CF - Chatbot", url: "/api/cf/chat?prompt=hai&system=saya%20ingin%20nama%20kamu%20adalah%20wanzofc", desc: "Berinteraksi dengan chatbot.", status: "online" },
+        { category: "Primbon", name: "Primbon - Cek Potensi Penyakit", url: "/api/primbon/cek_potensi_penyakit?tgl=12&bln=05&thn=1998", desc: "Mengecek potensi penyakit berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Ramalan Jodoh", url: "/api/primbon/ramalanjodoh?nama1=wanzofc&tgl1=17&bln1=11&thn1=2007&nama2=keyla&tgl2=1&bln2=1&thn2=2008", desc: "Melihat ramalan jodoh berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Rejeki & Hoki Weton", url: "/api/primbon/rejeki_hoki_weton?tgl=1&bln=1&thn=2025", desc: "Melihat rejeki dan hoki berdasarkan weton.", status: "online" },
+        { category: "Primbon", name: "Primbon - Sifat Usaha & Bisnis", url: "/api/primbon/sifat_usaha_bisnis?tgl=1&bln=1&thn=2025", desc: "Melihat sifat usaha dan bisnis berdasarkan tanggal lahir.", status: "online" },
+        { category: "Primbon", name: "Primbon - Tafsir Mimpi", url: "/api/primbon/tafsirmimpi?mimpi=bertemu", desc: "Mencari tafsir mimpi.", status: "online" },
+        { category: "Primbon", name: "Primbon - Arti Nama", url: "/api/primbon/artinama?nama=Awan", desc: "Mencari arti nama.", status: "online" },
+        { category: "Primbon", name: "Primbon - Kecocokan Nama Pasangan", url: "/api/primbon/kecocokan_nama_pasangan?nama1=Awan&nama2=Gatau", desc: "Melihat kecocokan nama pasangan.", status: "online" },
+        { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
+        { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
+    ];
+    const fetchData = async (url) => {
         try {
-            const data = await fetchData(url);
-            setPreviewData(JSON.stringify(data, null, 2));
-            setShowPreview(true);
+            const response = await fetch(url);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`HTTP error! status: ${response.status}, ${errorData.message || 'Gagal mengambil data'}`);
+            }
+            return await response.json();
         } catch (error) {
-            console.error("Error fetching JSON:", error);
-            setPreviewData(`Error loading JSON: ${error.message}`);
-            setShowPreview(true);
+            console.error('Error fetching data:', error);
+            const chartContainer = document.getElementById('chart-container');
+            chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
+            return null;
         }
     };
-    const closePreview = () => {
-        setShowPreview(false);
-        setPreviewData(null)
-    };
+    function APIList() {
+        const [filteredList, setFilteredList] = useState(apiList);
+        const searchInput = useRef(null);
+        const [activeCategories, setActiveCategories] = useState({});
+        const [selectedCategory, setSelectedCategory] = useState('');
+        const clickSound = useRef(null);
+        const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        if(showPreview) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    }, [showPreview])
+        useEffect(() => {
+            gsap.to(".api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+        }, []);
 
-    const categories = [...new Set(apiList.map(api => api.category))];
-    const filteredApiList = getFilteredList();
+        const handleCategoryToggle = (category) => {
+            setActiveCategories((prevCategories) => ({
+                ...prevCategories,
+                [category]: !prevCategories[category],
+            }));
+        };
 
-    return (
-        
-            <h3>LIST ENDPOINT:</h3>
-              
-                
-                
-                
-                
-                
-                
-                  
-                    <input placeholder="Search..." type="text" name="text" class="input" id="search-input" ref={searchInput} onKeyPress={handleKeyPress} />
-                     
-                    
-                     
-                       
-                         
-                              
-                             
-                                   
-                               
-                            
-                             
-                                  
-                                       
-                                      
-                                      
-                                    
-                                   
-                                
-                             
-                               <button id="search-button" onClick={handleSearch} style={{ position: 'absolute', top: '10px', right: '60px', background: 'none', border: 'none', cursor: 'pointer' }}>
-                              
-                            
-                        
-            
-            
-                Filter Kategori:
-                
-                    Semua
-                    {categories.map((category, index) => (
-                        
-                            {category}
-                        
-                    ))}
-                
-            
-            {categories.map((category, index) => (
-                
-                    
-                        
-                            {category}
-                        
-                        
-                    
-                    
-                        {filteredApiList.filter(api => api.category === category).map((api, i) => (
-                            
-                                
-                                {api.desc}
-                                 {api.status} 
-                                
-                                 
-                                    {isLoading ? (
-                                        
-                                            
-                                                Loading
-                                            
-                                            
-                                                
-                                                    
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                    
-                                                
-                                            
-                                        
-                                    ) : (
-                                        
-                                    )}
-                                
-                             
+        const handleCategoryFilterChange = (event) => {
+            setSelectedCategory(event.target.value);
+        };
+
+        const handleSearch = () => {
+            const searchTerm = searchInput.current.value.toLowerCase();
+            const newList = apiList.filter(api =>
+                api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+            );
+            setFilteredList(newList);
+            gsap.fromTo(".filtered-item",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: "power2.out" }
+            )
+        };
+
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                handleSearch();
+            }
+        };
+
+        const getFilteredList = () => {
+            let filtered = apiList;
+            if(selectedCategory) {
+                filtered = filtered.filter(api => api.category === selectedCategory);
+            }
+            if (!searchInput.current || !searchInput.current.value) {
+                return filtered;
+            }
+            const searchTerm = searchInput.current.value.toLowerCase();
+            return filtered.filter(api =>
+                api.name.toLowerCase().includes(searchTerm) || api.category.toLowerCase().includes(searchTerm)
+            );
+        };
+
+        const playClickSound = () => {
+            if(clickSound.current) {
+                clickSound.current.play();
+            }
+        };
+
+       const handleTryClick = (event) => {
+            playClickSound();
+            setIsLoading(true); // Set state loading menjadi true saat tombol diklik
+            event.currentTarget.disabled = true;  // Disable tombol
+            setTimeout(() => {
+                setIsLoading(false); // Setelah 3 detik, set state loading menjadi false
+                event.currentTarget.disabled = false; // Enable tombol
+            }, 3000); // 3000 milidetik = 3 detik
+            event.currentTarget.classList.add('clicked');
+            setTimeout(() => {
+                event.currentTarget.classList.remove('clicked');
+            }, 300)
+        };
+
+        const [previewData, setPreviewData] = useState(null);
+        const [showPreview, setShowPreview] = useState(false);
+        const handlePreviewClick = async (url) => {
+            try {
+                const data = await fetchData(url);
+                setPreviewData(JSON.stringify(data, null, 2));
+                setShowPreview(true);
+            } catch (error) {
+                console.error("Error fetching JSON:", error);
+                setPreviewData(`Error loading JSON: ${error.message}`);
+                setShowPreview(true);
+            }
+        };
+        const closePreview = () => {
+            setShowPreview(false);
+            setPreviewData(null)
+        };
+
+        useEffect(() => {
+            if(showPreview) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }, [showPreview])
+
+        const categories = [...new Set(apiList.map(api => api.category))];
+        const filteredApiList = getFilteredList();
+
+        return (
+            <div className="container">
+                <h3>LIST ENDPOINT:</h3>
+                  <div id="poda">
+                    <div class="glow"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="white"></div>
+                    <div class="border"></div>
+                      <div id="main">
+                        <input placeholder="Search..." type="text" name="text" class="input" id="search-input" ref={searchInput} onKeyPress={handleKeyPress} />
+                         <div id="input-mask"></div>
+                        <div id="pink-mask"></div>
+                         <div class="filterBorder"></div>
+                           <div id="filter-icon">
+                             <svg
+                                   preserveAspectRatio="none"
+                                  height="27"
+                                   width="27"
+                                   viewBox="4.8 4.56 14.832 15.408"
+                                    fill="none"
+                                  >
+                                 <path
+                                        d="M8.16 6.65002H15.83C16.47 6.65002 16.99 7.17002 16.99 7.81002V9.09002C16.99 9.56002 16.7 10.14 16.41 10.43L13.91 12.64C13.56 12.93 13.33 13.51 13.33 13.98V16.48C13.33 16.83 13.1 17.29 12.81 17.47L12 17.98C11.24 18.45 10.2 17.92 10.2 16.99V13.91C10.2 13.5 9.97 12.98 9.73 12.69L7.52 10.36C7.23 10.08 7 9.55002 7 9.20002V7.87002C7 7.17002 7.52 6.65002 8.16 6.65002Z"
+                                        stroke="#d6d6e6"
+                                        stroke-width="1"
+                                        stroke-miterlimit="10"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                       ></path>
+                                   </svg>
+                                </div>
+                                 <div id="search-icon">
+                                     <svg
+                                       xmlns="http://www.w3.org/2000/svg"
+                                         width="24"
+                                          viewBox="0 0 24 24"
+                                           stroke-width="2"
+                                        stroke-linejoin="round"
+                                          stroke-linecap="round"
+                                           height="24"
+                                          fill="none"
+                                         class="feather feather-search"
+                                     >
+                                      <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
+                                       <line
+                                            stroke="url(#searchl)"
+                                            y2="16.65"
+                                             y1="22"
+                                            x2="16.65"
+                                            x1="22"
+                                        ></line>
+                                      <defs>
+                                        <linearGradient gradientTransform="rotate(50)" id="search">
+                                            <stop stop-color="#f8e7f8" offset="0%"></stop>
+                                               <stop stop-color="#b6a9b7" offset="50%"></stop>
+                                            </linearGradient>
+                                            <linearGradient id="searchl">
+                                                  <stop stop-color="#b6a9b7" offset="0%"></stop>
+                                                  <stop stop-color="#837484" offset="50%"></stop>
+                                               </linearGradient>
+                                        </defs>
+                                    </svg>
+                                 </div>
+                                   <button id="search-button" onClick={handleSearch} style={{ position: 'absolute', top: '10px', right: '60px', background: 'none', border: 'none', cursor: 'pointer' }}>
+                                  </button>
+                                </div>
+                            </div>
+                <div id="category-filter">
+                    <label htmlFor="category-select">Filter Kategori:</label>
+                    <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
+                        <option value="">Semua</option>
+                        {categories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
                         ))}
-                    
-                
-            ))}
-            {showPreview && (
-                
-                    
-                        
-                            
-                                
-                                    
-                                        
-                                            
-                                        
-                                        
-                                            
-                                        
-                                        
-                                    
-                                
-                            
-                            
-                                
-                            
-                        
-                    
-                
-            )}
-            
-                
-                Your browser does not support the audio element.
-            
-        
-    );
-}
-ReactDOM.createRoot(document.getElementById("root")).render();
+                    </select>
+                </div>
+                {categories.map((category, index) => (
+                    <div key={index} className="api-category">
+                        <div className="category-header" onClick={() => handleCategoryToggle(category)}>
+                            <h3>{category}</h3>
+                            <i className={`fas ${activeCategories[category] ? 'fa-minus' : 'fa-plus'}`}></i>
+                        </div>
+                        <div className={`category-content ${activeCategories[category] ? 'show' : ''}`}>
+                            {filteredApiList.filter(api => api.category === category).map((api, i) => (
+                                <div key={i} className="api-item">
+                                    <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
+                                    <span className="api-item-desc">{api.desc}</span>
+                                    <span className={`api-item-status ${api.status}`}> {api.status} </span> 
+                                    <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
+                                     <a href={api.url} target="_blank"  aria-label={`Try ${api.name} API Endpoint`}>
+                                        <button className="button" onClick={handleTryClick} disabled={isLoading}>
+                                            {isLoading ? (
+                                                <div className="loader">
+                                                    <div className="loading-text">
+                                                        Loading<span className="dot">.</span><span className="dot">.</span><span className="dot">.</span>
+                                                    </div>
+                                                    <div className="loading-bar-background">
+                                                        <div className="loading-bar">
+                                                            <div className="white-bars-container">
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                                <div className="white-bar"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <span>Try</span>
+                                            )}
+                                        </button>
+                                     </a>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+                {showPreview && (
+                    <div className="json-preview-overlay">
+                        <div class="card">
+                            <div class="titlebar">
+                                <span class="buttons">
+                                    <button class="minimize">
+                                        <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1"></rect></svg>
+                                    </button>
+                                    <button class="maximize">
+                                        <svg viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z"></path></svg>
+                                    </button>
+                                    <button class="close" onClick={closePreview}>
+                                        <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1"></polygon></svg>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="cppcode">
+                                <pre id="pre"><code>{previewData}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                <audio ref={clickSound} id="click-sound">
+                    <source src="https://files.catbox.moe/h0s183.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
 
-hljs.highlightAll();
-Use code with caution.
+    hljs.highlightAll();
 </script>
 <script>
-const { createApp, ref, onMounted } = Vue;
-createApp({
-setup() {
-const vueApiList = ref(apiList);
-onMounted(() => {
-gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
-});
-return {
-vueApiList,
-};
-},
-template: `
-{{ api.name }}
-                
-            
-        
-    `,
-}).mount('#vue-app');
-Use code with caution.
+    const { createApp, ref, onMounted } = Vue;
+    createApp({
+        setup() {
+            const vueApiList = ref(apiList);
+            onMounted(() => {
+                gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
+            });
+            return {
+                vueApiList,
+            };
+        },
+        template: `
+            <div class="container">
+                <h3>TEST:</h3>
+                <div v-for="(api, index) in vueApiList" :key="index" class="api-item">
+                    <a :href="api.url" target="_blank" :aria-label="'Link to ' + api.name + ' API Endpoint'">{{ api.name }}</a>
+                    <a :href="api.url" target="_blank" class="try-button" :aria-label="'Try ' + api.name + ' API Endpoint'">Try</a>
+                </div>
+            </div>
+        `,
+    }).mount('#vue-app');
 </script>
 <script>
-const chartContainer = document.getElementById('chart-container');
-const renderChart = async () => {
-const loadingSkeleton = document.createElement('div');
-loadingSkeleton.className = 'loading-skeleton';
-chartContainer.appendChild(loadingSkeleton);
-const data = await fetchData('/api/r/quotesanime');
-    chartContainer.innerHTML = '';
-    if(data && data.length > 0) {
-        const quotes = data.map((quote) => quote.quote);
-        const ctx = document.createElement('canvas');
-        chartContainer.appendChild(ctx);
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: quotes.map((_, index) => `Quote ${index + 1}`),
-                datasets: [{
-                    label: 'Anime Quotes',
-                    data: quotes.map(() => 1),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            display: false
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            display: false
-                        }
-                    }
+    const chartContainer = document.getElementById('chart-container');
+    const renderChart = async () => {
+        const loadingSkeleton = document.createElement('div');
+        loadingSkeleton.className = 'loading-skeleton';
+        chartContainer.appendChild(loadingSkeleton);
+
+        const data = await fetchData('/api/r/quotesanime');
+        chartContainer.innerHTML = '';
+        if(data && data.length > 0) {
+            const quotes = data.map((quote) => quote.quote);
+            const ctx = document.createElement('canvas');
+            chartContainer.appendChild(ctx);
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: quotes.map((_, index) => `Quote ${index + 1}`),
+                    datasets: [{
+                        label: 'Anime Quotes',
+                        data: quotes.map(() => 1),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
                 },
-                plugins: {
-                    legend: {
-                        display: false
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                display: false
+                            }
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: 'Jumlah Quote'
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Quote'
+                        }
                     }
                 }
-            }
-        });
-    } else {
-        chartContainer.innerHTML = "Gagal memuat data untuk Chart";
+            });
+        } else {
+            chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
+        }
+    };
+    renderChart();
+</script>
+<script>
+    const backgroundMusic = document.getElementById('background-music');
+    const playPauseButton = document.getElementById('play-pause-button');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    let musicStarted = false;
+    let currentTrackTime = 0;
+    let isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
     }
-};
-renderChart();
-Use code with caution.
+    function toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        body.classList.toggle('dark-mode', isDarkMode);
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+    function playMusic() {
+        if (!musicStarted) {
+            backgroundMusic.play();
+            musicStarted = true;
+            playPauseButton.textContent = 'Pause';
+        } else {
+            backgroundMusic.currentTime = currentTrackTime;
+            backgroundMusic.play();
+            playPauseButton.textContent = 'Pause';
+        }
+    }
+    function pauseMusic() {
+        currentTrackTime = backgroundMusic.currentTime;
+        backgroundMusic.pause();
+        playPauseButton.textContent = 'Play';
+    }
+    playPauseButton.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            playMusic();
+        } else {
+            pauseMusic();
+        }
+    });
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+    window.addEventListener('focus', playMusic);
+    window.addEventListener('blur', pauseMusic);
+    playMusic();
 </script>
 <script>
-const backgroundMusic = document.getElementById('background-music');
-const playPauseButton = document.getElementById('play-pause-button');
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const body = document.body;
-let musicStarted = false;
-let currentTrackTime = 0;
-let isDarkMode = localStorage.getItem('darkMode') === 'true';
-if (isDarkMode) {
-body.classList.add('dark-mode');
-}
-function toggleDarkMode() {
-isDarkMode = !isDarkMode;
-body.classList.toggle('dark-mode', isDarkMode);
-localStorage.setItem('darkMode', isDarkMode);
-}
-function playMusic() {
-if (!musicStarted) {
-backgroundMusic.play();
-musicStarted = true;
-playPauseButton.textContent = 'Pause';
-} else {
-backgroundMusic.currentTime = currentTrackTime;
-backgroundMusic.play();
-playPauseButton.textContent = 'Pause';
-}
-}
-function pauseMusic() {
-currentTrackTime = backgroundMusic.currentTime;
-backgroundMusic.pause();
-playPauseButton.textContent = 'Play';
-}
-playPauseButton.addEventListener('click', () => {
-if (backgroundMusic.paused) {
-playMusic();
-} else {
-pauseMusic();
-}
-});
-darkModeToggle.addEventListener('click', toggleDarkMode);
-window.addEventListener('focus', playMusic);
-window.addEventListener('blur', pauseMusic);
-playMusic();
+    function lazyLoadImages() {
+        const images = document.querySelectorAll('img[data-src]');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        images.forEach(img => {
+            observer.observe(img);
+        });
+    }
+    lazyLoadImages();
 </script>
-<script>
-function lazyLoadImages() {
-const images = document.querySelectorAll('img[data-src]');
-const observer = new IntersectionObserver((entries, observer) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const img = entry.target;
-img.src = img.dataset.src;
-img.removeAttribute('data-src');
-observer.unobserve(img);
-}
-});
-});
-images.forEach(img => {
-observer.observe(img);
-});
-}
-lazyLoadImages();
-</script>
-<script>
-// Function to show the modal
-function showNotificationModal() {
-document.getElementById('notification-modal').style.display = 'block';
-}
-// Function to hide the modal
-function hideNotificationModal() {
-document.getElementById('notification-modal').style.display = 'none';
-}
-
-// Show the modal after 3 seconds (3000 milliseconds)
-setTimeout(showNotificationModal, 3000);
-
-// You can also add a button or other event to manually close the modal if needed
-// For example, adding an onclick event to the "View more" button:
-const viewMoreButton = document.querySelector('#notification-modal .view-more-button');
-if (viewMoreButton) {
-viewMoreButton.onclick = hideNotificationModal;
-}
-</script>
-
 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="Boost_Referralbot" data-size="large" data-auth-url="https://wanzofc.us.kg" data-request-access="write"></script>
 </body>
 </html>
