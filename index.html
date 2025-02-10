@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API WANZOFC TECH</title>
     <style>
-/* General Styles */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -236,8 +235,6 @@ body {
 .feature .ttt:hover {
     background: #09ff0d;
 }
-
-/* From Uiverse.io by mrtqzbek11 */
 button {
     width: 165px;
     height: 62px;
@@ -249,7 +246,7 @@ button {
     position: relative;
     background: #100720;
     transition: 0.1s;
-    margin-top: 20px; /* Add some margin above the button */
+    margin-top: 20px;
 }
 
 button::after {
@@ -263,14 +260,11 @@ button::after {
     left: 0;
     top: 0;
 }
-
 button:active {
     transform: scale(0.9) rotate(3deg);
     background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
     transition: 0.5s;
 }
-
-/* Hover effect for the entire card */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -278,7 +272,6 @@ button:active {
     </style>
 </head>
 <body>
-
     <section class="product-container product-1" id="container">
         <div class="card" id="card1">
             <div class="photo"></div>
@@ -293,14 +286,13 @@ button:active {
                 </div>
                 <div class="feature color">
                     <div>JENIS :</div>
-                    <span>ENCRYPT</span>
-                    <span class="tt">NO ENCRYPT</span>
-                    <span class="ttt">ONLY SC</span>
+                    <span onclick="selectOption(this, 'ENCRYPT', 'SCIRPT AUTOAI')">ENCRYPT</span>
+                    <span class="tt" onclick="selectOption(this, 'NO ENCRYPT', 'SCIRPT AUTOAI')">NO ENCRYPT</span>
+                    <span class="ttt" onclick="selectOption(this, 'ONLY SC', 'SCIRPT AUTOAI')">ONLY SC</span>
                 </div>
-                <button class="btn-docs" onclick="wa.me/62895402567224">BUY</button>
+                <button class="btn-docs" onclick="buy('SCIRPT AUTOAI')">BUY</button>
             </div>
         </div>
-
         <div class="card" id="card2">
             <div class="photo"></div>
             <div class="content">
@@ -314,24 +306,55 @@ button:active {
                 </div>
                 <div class="feature color">
                     <div>JENIS :</div>
-                    <span>ONLY SC</span>
-                    <span class="tt">NO ENC</span>
-                    <span class="ttt">FREE UPDATE</span>
+                    <span onclick="selectOption(this, 'ONLY SC', 'SC AUTOAI BUTTON')">ONLY SC</span>
+                    <span class="tt" onclick="selectOption(this, 'NO ENC', 'SC AUTOAI BUTTON')">NO ENC</span>
+                    <span class="ttt" onclick="selectOption(this, 'FREE UPDATE', 'SC AUTOAI BUTTON')">FREE UPDATE</span>
                 </div>
-                <button class="btn-docs" onclick="wa.me/62895402567224">BUY</button>
+                <button class="btn-docs" onclick="buy('SC AUTOAI BUTTON')">BUY</button>
             </div>
         </div>
-
-        <button onclick="/docs">Dashboard</button>
+        <a href="/docs"><button>Dashboard</button></a>
     </section>
-
-
     <script>
-        function goToDashboard() {
-            window.location.href = "/docs"; // Ganti dengan URL dashboard Anda
+        function buy(productName) {
+            let hargaElement;
+            if (productName === 'SCIRPT AUTOAI') {
+                hargaElement = document.querySelector('#card1 .feature.size');
+            } else if (productName === 'SC AUTOAI BUTTON') {
+                hargaElement = document.querySelector('#card2 .feature.size');
+        }
+            let harga = '';
+            if (hargaElement) {
+                harga = Array.from(hargaElement.querySelectorAll('span')).map(span => span.textContent).join('');
+                harga = harga + 'K'; 
+        }
+            let jenisElement;
+            if (productName === 'SCIRPT AUTOAI') {
+                jenisElement = document.querySelector('#card1 .feature.color .selected');
+            } else if (productName === 'SC AUTOAI BUTTON') {
+                jenisElement = document.querySelector('#card2 .feature.color .selected');
+            }
+
+            let jenis = jenisElement ? jenisElement.textContent : 'Tidak ada jenis yang dipilih';
+
+            let pesan = `SAYA TERTARIK UNTUK MEMBELI *${productName}*.%0a` +
+                       `Harga: ${harga}%0a` +
+                       `Jenis: ${jenis}`;
+            let nomorWA = '62895402567224';
+            let urlWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+            window.open(urlWA, '_blank');
         }
 
+        function selectOption(element, option, productName) {
+            let card;
+            if (productName === 'SCIRPT AUTOAI') {
+                card = document.querySelector('#card1');
+            } else if (productName === 'SC AUTOAI BUTTON') {
+                card = document.querySelector('#card2');
+        }
+            card.querySelectorAll('.feature.color span').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
     </script>
-
 </body>
 </html>
