@@ -3,18 +3,25 @@ const axios = require('axios');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
+
 app.use(express.json());
-app.use(express.static(__dirname)); 
+app.use(express.static(__dirname));
+
 const formatParagraph = (text) => text ? text.replace(/\.\s+/g, ".\n\n") : "Tidak ada jawaban.";
+
 app.get("/kebijakan", (req, res) => {
     res.sendFile(path.join(__dirname, "kebijakan.html"));
 });
-app.get("/docs", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+
+// Route untuk mengakses docs.html
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'docs.html'));
 });
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
+
 app.get('/daftar', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
