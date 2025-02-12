@@ -490,7 +490,8 @@ app.get('/api/tools/text2base64', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/text2base64?text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Text to Base64", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/tools/text2base64:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke Base64." });
     }
 });
@@ -501,7 +502,8 @@ app.get('/api/tools/text2qr', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/text2qr?text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Text to QR Code", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/tools/text2qr:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengonversi teks ke QR Code." });
     }
 });
@@ -513,7 +515,8 @@ app.get('/api/tools/translate', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/translate?text=${encodeURIComponent(text)}&lang=${lang}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Text Translation", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/tools/translate:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal menerjemahkan teks." });
     }
 });
@@ -524,7 +527,8 @@ app.get('/api/ai/lepton', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/lepton?text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Lepton AI Response", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/lepton:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari Lepton AI." });
     }
 });
@@ -536,7 +540,8 @@ app.get('/api/ai/gpt3', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/gpt3?prompt=${encodeURIComponent(prompt)}&content=${encodeURIComponent(content)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "GPT-3 AI Response", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/gpt3:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari GPT-3 AI." });
     }
 });
@@ -544,7 +549,8 @@ app.get('/api/r/waifu', async (req, res) => {
     try {
         const { data } = await axios.get("https://api.siputzx.my.id/api/r/waifu");
         res.json({ creator: "WANZOFC TECH", result: true, message: "Random Waifu Image", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/r/waifu:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan waifu random." });
     }
 });
@@ -555,7 +561,8 @@ app.get('/api/cf/sentiment', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/cf/sentiment?text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Sentiment Analysis Result", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/cf/sentiment:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil analisis sentimen." });
     }
 });
@@ -566,7 +573,8 @@ app.get('/api/cf/image-classification', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/cf/image-classification?imageUrl=${encodeURIComponent(imageUrl)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Image Classification Result", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/cf/image-classification:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengklasifikasikan gambar." });
     }
 });
@@ -577,7 +585,8 @@ app.get('/api/cf/embedding', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/cf/embedding?text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Text Embedding Result", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/cf/embedding:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan embedding teks." });
     }
 });
@@ -589,7 +598,8 @@ app.get('/api/cf/chat', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/cf/chat?prompt=${encodeURIComponent(prompt)}&system=${encodeURIComponent(system)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Cloudflare AI Chat Response", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/cf/chat:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari chatbot AI." });
     }
 });
@@ -601,7 +611,8 @@ app.get('/api/ai/qwen257b', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/qwen257b?prompt=${encodeURIComponent(prompt)}&text=${encodeURIComponent(text)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Qwen 257B AI Response", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/qwen257b:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI Qwen 257B." });
     }
 });
@@ -612,7 +623,8 @@ app.get('/api/ai/qwq-32b-preview', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/qwq-32b-preview?content=${encodeURIComponent(content)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "QWQ 32B AI Response", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/qwq-32b-preview:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI QWQ 32B." });
     }
 });
@@ -623,7 +635,8 @@ app.get('/api/s/pinterest', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/pinterest?query=${encodeURIComponent(query)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Hasil pencarian Pinterest", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/s/pinterest:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil dari Pinterest." });
     }
 });
@@ -634,7 +647,8 @@ app.get('/api/s/soundcloud', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/soundcloud?query=${encodeURIComponent(query)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Hasil pencarian SoundCloud", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/s/soundcloud:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan hasil dari SoundCloud." });
     }
 });
@@ -645,7 +659,8 @@ app.get('/api/stalk/npm', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/stalk/npm?packageName=${encodeURIComponent(packageName)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Informasi NPM Package", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/stalk/npm:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan informasi dari NPM." });
     }
 });
@@ -656,7 +671,8 @@ app.get('/api/ai/stabilityai', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/stabilityai?prompt=${encodeURIComponent(prompt)}`);
         res.json({ creator: "WANZOFC TECH", result: true, message: "Gambar dari Stability AI", data: data });
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/stabilityai:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan gambar dari Stability AI." });
     }
 });
@@ -667,7 +683,8 @@ app.get('/api/s/wikipedia', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/wikipedia?query=${encodeURIComponent(query)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/s/wikipedia:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Wikipedia." });
     }
 });
@@ -678,7 +695,8 @@ app.get('/api/s/spotify', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(query)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/s/spotify:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Spotify." });
     }
 });
@@ -689,7 +707,8 @@ app.get('/api/tools/fake-data', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/tools/fake-data?type=${type}&count=${count}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/tools/fake-data:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil fake data." });
     }
 });
@@ -700,7 +719,8 @@ app.get('/api/primbon/cek_potensi_penyakit', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/cek_potensi_penyakit?tgl=${tgl}&bln=${bln}&thn=${thn}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/cek_potensi_penyakit:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Primbon Penyakit." });
     }
 });
@@ -712,7 +732,8 @@ app.get('/api/primbon/ramalanjodoh', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/ramalanjodoh?nama1=${encodeURIComponent(nama1)}&tgl1=${tgl1}&bln1=${bln1}&thn1=${thn1}&nama2=${encodeURIComponent(nama2)}&tgl2=${tgl2}&bln2=${bln2}&thn2=${thn2}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/ramalanjodoh:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Ramalan Jodoh." });
     }
 });
@@ -723,7 +744,8 @@ app.get('/api/primbon/rejeki_hoki_weton', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/rejeki_hoki_weton?tgl=${tgl}&bln=${bln}&thn=${thn}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/rejeki_hoki_weton:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Rejeki Weton." });
     }
 });
@@ -734,7 +756,8 @@ app.get('/api/primbon/sifat_usaha_bisnis', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/sifat_usaha_bisnis?tgl=${tgl}&bln=${bln}&thn=${thn}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/sifat_usaha_bisnis:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Sifat Usaha." });
     }
 });
@@ -745,7 +768,8 @@ app.get('/api/primbon/tafsirmimpi', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/tafsirmimpi?mimpi=${encodeURIComponent(mimpi)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/tafsirmimpi:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Tafsir Mimpi." });
     }
 });
@@ -756,7 +780,8 @@ app.get('/api/primbon/artinama', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/artinama?nama=${encodeURIComponent(nama)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/artinama:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Arti Nama." });
     }
 });
@@ -768,7 +793,8 @@ app.get('/api/primbon/kecocokan_nama_pasangan', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/kecocokan_nama_pasangan?nama1=${encodeURIComponent(nama1)}&nama2=${encodeURIComponent(nama2)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/kecocokan_nama_pasangan:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Kecocokan Nama Pasangan." });
     }
 });
@@ -780,7 +806,8 @@ app.get('/api/primbon/nomorhoki', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/nomorhoki?phoneNumber=${phoneNumber}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/nomorhoki:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Nomor Hoki." });
     }
 });
@@ -792,7 +819,8 @@ app.get('/api/primbon/zodiak', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/primbon/zodiak?zodiak=${encodeURIComponent(zodiak)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/primbon/zodiak:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Zodiak." });
     }
 });
@@ -803,7 +831,8 @@ app.get('/api/ai/metaai', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/metaai?query=${encodeURIComponent(query)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/metaai:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Meta AI." });
     }
 });
@@ -815,7 +844,8 @@ app.get('/api/ai/ustadz', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/muslimai?query=${encodeURIComponent(query)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/ustadz:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data USTADZ AI." });
     }
 });
@@ -827,7 +857,8 @@ app.get('/api/ai/khodam', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/dukun?content=${encodeURIComponent(content)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/khodam:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Khodam AI." });
     }
 });
@@ -837,7 +868,8 @@ app.get('/api/ai/wanzofc-you', async (req, res) => {
         if (!q) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter q!" });
         const { data } = await axios.get(`https://api.neoxr.eu/api/you?q=${encodeURIComponent(q)}&apikey=PJaLJu`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/wanzofc-you:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc You." });
     }
 });
@@ -847,7 +879,8 @@ app.get('/api/ai/wanzofc-llama', async (req, res) => {
         if (!q) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter q!" });
         const { data } = await axios.get(`https://api.neoxr.eu/api/llama?q=${encodeURIComponent(q)}&apikey=PJaLJu`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/wanzofc-llama:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari wanzofc Llama." });
     }
 });
@@ -858,7 +891,8 @@ app.get('/api/ai/meta-llama', async (req, res) => {
 
         const { data } = await axios.get(`https://api.siputzx.my.id/api/ai/meta-llama-33-70B-instruct-turbo?content=${encodeURIComponent(content)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/ai/meta-llama:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari Meta LLaMA." });
     }
 });
@@ -869,10 +903,39 @@ app.get('/api/search/xnxx', async (req, res) => {
 
         const { data } = await axios.get(`https://archive-ui.tanakadomp.biz.id/search/xnxx?q=${encodeURIComponent(query)}`);
         res.json(data);
-    } catch {
+    } catch (error) {
+        console.error("Error in /api/search/xnxx:", error); // Log error
         res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari XNXX." });
     }
 });
+
+// New Endpoint for Chat Widget
+app.post('/api/chat', async (req, res) => {
+    try {
+        const message = req.body.message;
+        if (!message) {
+            return res.status(400).json({ result: false, message: "Harap masukkan pesan!" });
+        }
+
+        const prompt = "Kamu adalah wanzofc asisten website rest api wanzofc"; // Define the prompt
+        const apiKey = "ET386PIT"; // Replace with your actual API key
+
+        const apiUrl = `https://wanzofc.us.kg/api/ai/gpt3?prompt=${encodeURIComponent(prompt)}&content=${encodeURIComponent(message)}&apikey=${apiKey}`;
+
+        const { data } = await axios.get(apiUrl);
+
+        if (data.status === 'Success') {
+            res.json({ result: true, message: "GPT-3 Response", data: data.result });
+        } else {
+            console.error("GPT-3 API Error:", data);
+            res.status(500).json({ result: false, message: "Gagal mendapatkan respons dari GPT-3 AI.", error: data });
+        }
+    } catch (error) {
+        console.error("Error in /api/chat:", error);
+        res.status(500).json({ result: false, message: "Terjadi kesalahan saat memproses permintaan.", error: error.message });
+    }
+});
+
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
