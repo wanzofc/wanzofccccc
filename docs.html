@@ -22,9 +22,9 @@
             "description": "Kumpulan API dari WanzoFC Tech"
         }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <style>
-        /* From Uiverse.io by Lakshay-art */
-        .grid {
+          .grid {
             height: 800px;
             width: 800px;
             background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
@@ -1327,6 +1327,29 @@
 
 <h1>API WANZOFC TECH</h1>
 <main>
+    <div class="container">
+        <h2>Coba API Interaktif</h2>
+        <div id="api-explorer">
+            <div class="api-selector">
+                <label for="api-endpoint">Pilih Endpoint:</label>
+                <select id="api-endpoint">
+                    <option value="">Pilih...</option>
+                    <!-- Daftar endpoint API Anda di sini -->
+                    <option value="/api/ai/gemini-pro">Gemini Pro (AI)</option>
+                    <option value="/api/berita/kompas">Berita Kompas</option>
+                    <!-- Tambahkan opsi lainnya -->
+                </select>
+            </div>
+            <div id="api-parameters">
+                <!-- Parameter akan muncul di sini -->
+            </div>
+            <button id="execute-api">Jalankan!</button>
+            <div id="api-response">
+                <h3>Respons:</h3>
+                <pre><code class="json"></code></pre>
+            </div>
+        </div>
+    </div>
     <div id="root"></div>
     <div id="vue-app"></div>
     <div id="chart-container"></div>
@@ -1356,7 +1379,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script>
     const animationContainer = document.getElementById('lottie-container');
     const animationData = {
@@ -1465,11 +1487,11 @@
         { category: "Anime", name: "Anime - Otakudesu Search", url: "/api/anime/otakudesu/search?s=demon slayer", desc: "Mencari anime di Otakudesu.", status: "online" },
         { category: "Downloader", name: "TikTok Downloader", url: "/api/d/tiktok?url=https://vt.tiktok.com/ZSjXNEnbC", desc: "Mengunduh video dari TikTok.", status: "online" },
         { category: "Downloader", name: "Instagram Downloader", url: "/api/d/igdl?url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1&igsh=MWF2dXU3aWtpazY2NQ==", desc: "Mengunduh gambar/video dari Instagram.", status: "online" },
-        { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
+                { category: "Downloader", name: "SnackVideo Downloader", url: "/api/d/snackvideo?url=https://s.snackvideo.com/p/dwlMd51U", desc: "Mengunduh video dari SnackVideo.", status: "online" },
         { category: "Downloader", name: "CapCut Template Downloader", url: "/api/d/capcut?url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic", desc: "Mengunduh template dari CapCut.", status: "online" },
         { category: "Downloader", name: "Downloader - SaveFrom", url: "/api/d/savefrom?url=https://vt.tiktok.com/ZSjG7XCnB", desc: "Mengunduh dari SaveFrom.", status: "online" },
         { category: "Downloader", name: "Downloader - GitHub Repository", url: "/api/d/github?url=https://github.com/wanzofc/portofolio", desc: "Mengunduh repository GitHub.", status: "online" },
-                { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
+        { category: "Stalker", name: "YouTube Stalker", url: "/api/stalk/youtube?username=wanzofc", desc: "Melihat info profil YouTube.", status: "online" },
         { category: "Stalker", name: "TikTok Stalker", url: "/api/stalk/tiktok?username=wanzofc2", desc: "Melihat info profil TikTok.", status: "online" },
         { category: "Stalker", name: "GitHub Stalker", url: "/api/stalk/github?user=wanzbrayy", desc: "Melihat info profil GitHub.", status: "online" },
         { category: "Stalker", name: "Stalk - NPM", url: "/api/stalk/npm?packageName=express", desc: "Melihat info paket NPM.", status: "online" },
@@ -1512,6 +1534,7 @@
         { category: "Primbon", name: "Primbon - Nomor Hoki", url: "/api/primbon/nomorhoki?phoneNumber=62895402567224", desc: "Melihat nomor hoki berdasarkan nomor HP.", status: "online" },
         { category: "Primbon", name: "Primbon - Zodiak", url: "/api/primbon/zodiak?zodiak=Pisces", desc: "Melihat informasi zodiak.", status: "online" }
     ];
+
     const fetchData = async (url) => {
         try {
             const response = await fetch(url);
@@ -1522,11 +1545,10 @@
             return await response.json();
         } catch (error) {
             console.error('Error fetching data:', error);
-            const chartContainer = document.getElementById('chart-container');
-            chartContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
             return null;
         }
     };
+
     function APIList() {
         const [filteredList, setFilteredList] = useState(apiList);
         const searchInput = useRef(null);
@@ -1570,7 +1592,7 @@
 
         const getFilteredList = () => {
             let filtered = apiList;
-            if(selectedCategory) {
+            if (selectedCategory) {
                 filtered = filtered.filter(api => api.category === selectedCategory);
             }
             if (!searchInput.current || !searchInput.current.value) {
@@ -1583,19 +1605,19 @@
         };
 
         const playClickSound = () => {
-            if(clickSound.current) {
+            if (clickSound.current) {
                 clickSound.current.play();
             }
         };
 
-       const handleTryClick = (event) => {
+        const handleTryClick = (event) => {
             playClickSound();
-            setIsLoading(true); // Set state loading menjadi true saat tombol diklik
-            event.currentTarget.disabled = true;  // Disable tombol
+            setIsLoading(true);
+            event.currentTarget.disabled = true;
             setTimeout(() => {
-                setIsLoading(false); // Setelah 3 detik, set state loading menjadi false
-                event.currentTarget.disabled = false; // Enable tombol
-            }, 3000); // 3000 milidetik = 3 detik
+                setIsLoading(false);
+                event.currentTarget.disabled = false;
+            }, 3000);
             event.currentTarget.classList.add('clicked');
             setTimeout(() => {
                 event.currentTarget.classList.remove('clicked');
@@ -1621,7 +1643,7 @@
         };
 
         useEffect(() => {
-            if(showPreview) {
+            if (showPreview) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
@@ -1634,72 +1656,72 @@
         return (
             <div className="container">
                 <h3>LIST ENDPOINT:</h3>
-                  <div id="poda">
+                <div id="poda">
                     <div class="glow"></div>
                     <div class="darkBorderBg"></div>
                     <div class="darkBorderBg"></div>
                     <div class="darkBorderBg"></div>
                     <div class="white"></div>
                     <div class="border"></div>
-                      <div id="main">
+                    <div id="main">
                         <input placeholder="Search..." type="text" name="text" class="input" id="search-input" ref={searchInput} onKeyPress={handleKeyPress} />
-                         <div id="input-mask"></div>
+                        <div id="input-mask"></div>
                         <div id="pink-mask"></div>
-                         <div class="filterBorder"></div>
-                           <div id="filter-icon">
-                             <svg
-                                   preserveAspectRatio="none"
-                                  height="27"
-                                   width="27"
-                                   viewBox="4.8 4.56 14.832 15.408"
-                                    fill="none"
-                                  >
-                                 <path
-                                        d="M8.16 6.65002H15.83C16.47 6.65002 16.99 7.17002 16.99 7.81002V9.09002C16.99 9.56002 16.7 10.14 16.41 10.43L13.91 12.64C13.56 12.93 13.33 13.51 13.33 13.98V16.48C13.33 16.83 13.1 17.29 12.81 17.47L12 17.98C11.24 18.45 10.2 17.92 10.2 16.99V13.91C10.2 13.5 9.97 12.98 9.73 12.69L7.52 10.36C7.23 10.08 7 9.55002 7 9.20002V7.87002C7 7.17002 7.52 6.65002 8.16 6.65002Z"
-                                        stroke="#d6d6e6"
-                                        stroke-width="1"
-                                        stroke-miterlimit="10"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                       ></path>
-                                   </svg>
-                                </div>
-                                 <div id="search-icon">
-                                     <svg
-                                       xmlns="http://www.w3.org/2000/svg"
-                                         width="24"
-                                          viewBox="0 0 24 24"
-                                           stroke-width="2"
-                                        stroke-linejoin="round"
-                                          stroke-linecap="round"
-                                           height="24"
-                                          fill="none"
-                                         class="feather feather-search"
-                                     >
-                                      <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
-                                       <line
-                                            stroke="url(#searchl)"
-                                            y2="16.65"
-                                             y1="22"
-                                            x2="16.65"
-                                            x1="22"
-                                        ></line>
-                                      <defs>
-                                        <linearGradient gradientTransform="rotate(50)" id="search">
-                                            <stop stop-color="#f8e7f8" offset="0%"></stop>
-                                               <stop stop-color="#b6a9b7" offset="50%"></stop>
-                                            </linearGradient>
-                                            <linearGradient id="searchl">
-                                                  <stop stop-color="#b6a9b7" offset="0%"></stop>
-                                                  <stop stop-color="#837484" offset="50%"></stop>
-                                               </linearGradient>
-                                        </defs>
-                                    </svg>
-                                 </div>
-                                   <button id="search-button" onClick={handleSearch} style={{ position: 'absolute', top: '10px', right: '60px', background: 'none', border: 'none', cursor: 'pointer' }}>
-                                  </button>
-                                </div>
-                            </div>
+                        <div class="filterBorder"></div>
+                        <div id="filter-icon">
+                            <svg
+                                preserveAspectRatio="none"
+                                height="27"
+                                width="27"
+                                viewBox="4.8 4.56 14.832 15.408"
+                                fill="none"
+                            >
+                                <path
+                                    d="M8.16 6.65002H15.83C16.47 6.65002 16.99 7.17002 16.99 7.81002V9.09002C16.99 9.56002 16.7 10.14 16.41 10.43L13.91 12.64C13.56 12.93 13.33 13.51 13.33 13.98V16.48C13.33 16.83 13.1 17.29 12.81 17.47L12 17.98C11.24 18.45 10.2 17.92 10.2 16.99V13.91C10.2 13.5 9.97 12.98 9.73 12.69L7.52 10.36C7.23 10.08 7 9.55002 7 9.20002V7.87002C7 7.17002 7.52 6.65002 8.16 6.65002Z"
+                                    stroke="#d6d6e6"
+                                    stroke-width="1"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div id="search-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                height="24"
+                                fill="none"
+                                class="feather feather-search"
+                            >
+                                <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
+                                <line
+                                    stroke="url(#searchl)"
+                                    y2="16.65"
+                                    y1="22"
+                                    x2="16.65"
+                                    x1="22"
+                                ></line>
+                                <defs>
+                                    <linearGradient gradientTransform="rotate(50)" id="search">
+                                        <stop stop-color="#f8e7f8" offset="0%"></stop>
+                                        <stop stop-color="#b6a9b7" offset="50%"></stop>
+                                    </linearGradient>
+                                    <linearGradient id="searchl">
+                                        <stop stop-color="#b6a9b7" offset="0%"></stop>
+                                        <stop stop-color="#837484" offset="50%"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <button id="search-button" onClick={handleSearch} style={{ position: 'absolute', top: '10px', right: '60px', background: 'none', border: 'none', cursor: 'pointer' }}>
+                        </button>
+                    </div>
+                </div>
                 <div id="category-filter">
                     <label htmlFor="category-select">Filter Kategori:</label>
                     <select id="category-select" value={selectedCategory} onChange={handleCategoryFilterChange}>
@@ -1720,9 +1742,9 @@
                                 <div key={i} className="api-item">
                                     <a href={api.url} target="_blank" aria-label={`Link to ${api.name} API Endpoint`}>{api.name}</a>
                                     <span className="api-item-desc">{api.desc}</span>
-                                    <span className={`api-item-status ${api.status}`}> {api.status} </span> 
+                                    <span className={`api-item-status ${api.status}`}> {api.status} </span>
                                     <button className="preview-button" onClick={() => handlePreviewClick(api.url)}>Preview</button>
-                                     <a href={api.url} target="_blank"  aria-label={`Try ${api.name} API Endpoint`}>
+                                    <a href={api.url} target="_blank" aria-label={`Try ${api.name} API Endpoint`}>
                                         <button className="button" onClick={handleTryClick} disabled={isLoading}>
                                             {isLoading ? (
                                                 <div className="loader">
@@ -1750,7 +1772,7 @@
                                                 <span>Try</span>
                                             )}
                                         </button>
-                                     </a>
+                                    </a>
                                 </div>
                             ))}
                         </div>
@@ -1785,18 +1807,23 @@
             </div>
         );
     }
+
     ReactDOM.createRoot(document.getElementById("root")).render(<APIList />);
 
     hljs.highlightAll();
 </script>
+
 <script>
     const { createApp, ref, onMounted } = Vue;
+
     createApp({
         setup() {
             const vueApiList = ref(apiList);
+
             onMounted(() => {
                 gsap.to("#vue-app .api-item", { opacity: 1, y: 10, stagger: 0.1, duration: 0.5, ease: "power2.out" });
             });
+
             return {
                 vueApiList,
             };
@@ -1812,8 +1839,10 @@
         `,
     }).mount('#vue-app');
 </script>
+
 <script>
     const chartContainer = document.getElementById('chart-container');
+
     const renderChart = async () => {
         const loadingSkeleton = document.createElement('div');
         loadingSkeleton.className = 'loading-skeleton';
@@ -1821,7 +1850,7 @@
 
         const data = await fetchData('/api/r/quotesanime');
         chartContainer.innerHTML = '';
-        if(data && data.length > 0) {
+        if (data && data.length > 0) {
             const quotes = data.map((quote) => quote.quote);
             const ctx = document.createElement('canvas');
             chartContainer.appendChild(ctx);
@@ -1867,24 +1896,30 @@
             chartContainer.innerHTML = "<p>Gagal memuat data untuk Chart</p>";
         }
     };
+
     renderChart();
 </script>
+
 <script>
     const backgroundMusic = document.getElementById('background-music');
     const playPauseButton = document.getElementById('play-pause-button');
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
+
     let musicStarted = false;
     let currentTrackTime = 0;
     let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
     if (isDarkMode) {
         body.classList.add('dark-mode');
     }
+
     function toggleDarkMode() {
         isDarkMode = !isDarkMode;
         body.classList.toggle('dark-mode', isDarkMode);
         localStorage.setItem('darkMode', isDarkMode);
     }
+
     function playMusic() {
         if (!musicStarted) {
             backgroundMusic.play();
@@ -1896,11 +1931,13 @@
             playPauseButton.textContent = 'Pause';
         }
     }
+
     function pauseMusic() {
         currentTrackTime = backgroundMusic.currentTime;
         backgroundMusic.pause();
         playPauseButton.textContent = 'Play';
     }
+
     playPauseButton.addEventListener('click', () => {
         if (backgroundMusic.paused) {
             playMusic();
@@ -1908,11 +1945,15 @@
             pauseMusic();
         }
     });
+
     darkModeToggle.addEventListener('click', toggleDarkMode);
+
     window.addEventListener('focus', playMusic);
     window.addEventListener('blur', pauseMusic);
+
     playMusic();
 </script>
+
 <script>
     function lazyLoadImages() {
         const images = document.querySelectorAll('img[data-src]');
@@ -1926,12 +1967,114 @@
                 }
             });
         });
+
         images.forEach(img => {
             observer.observe(img);
         });
     }
+
     lazyLoadImages();
 </script>
-<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="Boost_Referralbot" data-size="large" data-auth-url="https://wanzofc.us.kg" data-request-access="write"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const apiEndpointSelect = document.getElementById('api-endpoint');
+        const apiParametersDiv = document.getElementById('api-parameters');
+        const executeApiButton = document.getElementById('execute-api');
+        const apiResponsePre = document.querySelector('#api-response pre code');
+
+        const getParameterDefinitions = (endpoint) => {
+            switch (endpoint) {
+                case '/api/ai/gemini-pro':
+                    return [
+                        { name: 'content', description: 'Teks untuk diproses oleh Gemini Pro', type: 'text', required: true },
+                        { name: 'model', description: 'Model AI yang digunakan (opsional)', type: 'select', options: ['gemini-1.0-pro', 'gemini-1.5-pro'], required: false }
+                    ];
+                case '/api/berita/kompas':
+                    return [
+                        { name: 'page', description: 'Nomor halaman berita (opsional)', type: 'number', required: false }
+                    ];
+                // Tambahkan definisi parameter untuk endpoint lain di sini
+                default:
+                    return [];
+            }
+        };
+
+        const createParameterInput = (paramDef) => {
+            const label = document.createElement('label');
+            label.textContent = `${paramDef.name}: ${paramDef.description} ${paramDef.required ? '(Wajib)' : '(Opsional)'}`;
+            label.setAttribute('title', paramDef.description); // Tooltip
+
+            let input;
+            if (paramDef.type === 'select') {
+                input = document.createElement('select');
+                paramDef.options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    input.appendChild(optionElement);
+                });
+            } else {
+                input = document.createElement('input');
+                input.type = paramDef.type;
+            }
+
+            input.name = paramDef.name;
+            input.required = paramDef.required;
+
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('api-parameter');
+            wrapper.appendChild(label);
+            wrapper.appendChild(input);
+            return wrapper;
+        };
+
+        apiEndpointSelect.addEventListener('change', function () {
+            const selectedEndpoint = this.value;
+            apiParametersDiv.innerHTML = ''; // Bersihkan parameter sebelumnya
+
+            const parameterDefinitions = getParameterDefinitions(selectedEndpoint);
+            parameterDefinitions.forEach(paramDef => {
+                const inputElement = createParameterInput(paramDef);
+                apiParametersDiv.appendChild(inputElement);
+            });
+        });
+
+        executeApiButton.addEventListener('click', async function () {
+            const selectedEndpoint = apiEndpointSelect.value;
+            if (!selectedEndpoint) {
+                alert('Pilih endpoint API terlebih dahulu.');
+                return;
+            }
+
+            let apiUrl = selectedEndpoint;
+            const params = new URLSearchParams();
+            const inputs = apiParametersDiv.querySelectorAll('input, select');
+
+            inputs.forEach(input => {
+                if (input.value) { // Hanya tambahkan parameter jika ada nilainya
+                    params.append(input.name, input.value);
+                }
+            });
+
+            if (params.toString()) {
+                apiUrl += '?' + params.toString();
+            }
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                apiResponsePre.textContent = JSON.stringify(data, null, 2);
+                hljs.highlightAll();
+            } catch (error) {
+                apiResponsePre.textContent = `Error: ${error}`;
+                hljs.highlightAll();
+            }
+        });
+    });
+</script>
 </body>
 </html>
